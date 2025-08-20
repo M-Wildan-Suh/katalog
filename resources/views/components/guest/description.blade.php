@@ -9,14 +9,16 @@
             @endforeach
         </div>
         <p class="text-lg sm:text-3xl font-bold">{{$data->judul}}</p>
-        <div class=" w-full">
-            <a href="https://{{ preg_replace('/^https?:\/\//', '', $data->articles->link_domain) }}" target="_blank">
-                <button style="background-color: {{$template->desc_second_color ?? '#1d588d'}}" class=" flex items-center gap-1 px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md">
-                    <p>Lihat Desain</p>
-                    <svg class=" w-4" class="feather feather-external-link" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
-                </button>
-            </a>
-        </div>
+        @if ($data->articles->link_domain)
+            <div class=" w-full">
+                <a href="https://{{ preg_replace('/^https?:\/\//', '', $data->articles->link_domain) }}" target="_blank">
+                    <button style="background-color: {{$template->desc_second_color ?? '#1d588d'}}" class=" flex items-center gap-1 px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md">
+                        <p>Lihat Desain</p>
+                        <svg class=" w-4" class="feather feather-external-link" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                    </button>
+                </a>
+            </div>
+        @endif
         <div class=" flex gap-4 sm:gap-6 items-center text-opacity-60 text-sm sm:text-base">
             <a href="{{ route('author', ['username' => $data->articles->user->slug]) }}" class=" flex gap-1.5 sm:gap-2 items-center">
                 <div style="color: {{$template->desc_second_color ?? '#1d588d'}}" class=" w-4 aspect-square">
