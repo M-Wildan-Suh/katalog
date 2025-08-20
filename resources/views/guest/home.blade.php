@@ -8,7 +8,7 @@
                         <div class=" w-full flex justify-between items-center">
                             <div class=" w-full flex items-center gap-2 sm:gap-4">
                                 <div class=" w-1 sm:w-1.5 h-7 sm:h-10 bg-byolink-2 rounded-full"></div>
-                                <p class=" text-xl sm:text-3xl font-bold text-center">Artikel Terbaru</p>
+                                <p class=" text-xl sm:text-3xl font-bold text-center">Template Terbaru</p>
                             </div>
                             <a href="{{route('allarticle')}}">
                                 <button class=" px-4 py-2 flex items-center gap-1 border rounded-full text-nowrap text-xs text-neutral-600 border-neutral-600 hover:text-byolink-1 hover:border-byolink-1 duration-300">
@@ -30,7 +30,7 @@
                         <div class=" md:sticky top-24 space-y-4 sm:space-y-6">
                             <div class=" w-full flex items-center gap-2 sm:gap-4 h-7 sm:h-10">
                                 <div class=" w-1 h-7 bg-byolink-2 rounded-full"></div>
-                                <p class=" text-xl font-bold text-center">Artikel Populer</p>
+                                <p class=" text-xl font-bold text-center">Template Populer</p>
                             </div>
                             <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 sm:gap-6">
                                 @foreach ($trend as $item)

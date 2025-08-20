@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('video_type');
             $table->string('youtube')->nullable();
             $table->string('tiktok')->nullable();
+            $table->string('link_domain')->nullable();
             $table->string('no_telephone')->nullable();
             $table->string('no_whatsapp')->nullable();
             $table->boolean('schedule')->default(0);

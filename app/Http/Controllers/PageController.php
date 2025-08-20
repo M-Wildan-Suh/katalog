@@ -77,8 +77,18 @@ class PageController extends Controller
             $tag = ArticleTag::where('slug', $tag)->first()->tag;
             $title = 'Tag : '.$tag;
         } elseif ($request->search) {
-            $data = ArticleShow::where('judul', 'like', '%' . $request->search . '%')->where('status', 'publish')
-                ->latest()->paginate(12);
+            $data = ArticleShow::where('status', 'publish')
+                ->where(function ($query) use ($request) {
+                    $query->where('judul', 'like', '%' . $request->search . '%')
+                        ->orWhereHas('articles.articleCategory', function ($q) use ($request) {
+                            $q->where('category', 'like', '%' . $request->search . '%');
+                        })
+                        ->orWhereHas('articles.articleTag', function ($q) use ($request) {
+                            $q->where('tag', 'like', '%' . $request->search . '%');
+                        });
+                })
+                ->latest()
+                ->paginate(12);
 
             $data->withPath("/artikel/page");
             $title = 'Pecaharian : '.$request->search;

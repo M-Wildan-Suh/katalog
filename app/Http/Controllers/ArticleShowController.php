@@ -47,7 +47,11 @@ class ArticleShowController extends Controller
         $category = ArticleCategory::all();
         $template = Template::all();
         $first = PhoneNumber::orderBy('id')->first();
-        $phonenumber = PhoneNumber::where('id', '!=', $first->id)->get();
+        if ($first) {
+            $phonenumber = PhoneNumber::where('id', '!=', $first->id)->get();
+        } else {
+            $phonenumber = null;
+        }
         return view('admin.article.create-unique', compact('template', 'tag', 'phonenumber', 'category'));
     }
 
@@ -102,6 +106,7 @@ class ArticleShowController extends Controller
             $newarticle->user_id = Auth::id();
             $newarticle->judul = $request->judul;
             $newarticle->article = $request->article;
+            $newarticle->link_domain = $request->domain;
     
             if ($request->status === "schedule") {
                 $newarticle->schedule = true;
@@ -301,7 +306,11 @@ class ArticleShowController extends Controller
         $category = ArticleCategory::whereNotIn('id', $categoryid)->get();
         $template = Template::all();
         $first = PhoneNumber::orderBy('id')->first();
-        $phonenumber = PhoneNumber::where('id', '!=', $first->id)->where('id', '!=', $articleShow->phone_number_id)->get();
+        if ($first) {
+            $phonenumber = PhoneNumber::where('id', '!=', $first->id)->where('id', '!=', $articleShow->phone_number_id)->get();
+        } else {
+            $phonenumber = null;
+        }
         return view('admin.article.edit-unique', compact('articleShow', 'tag', 'template', 'phonenumber', 'category'));
     }
 
@@ -365,6 +374,7 @@ class ArticleShowController extends Controller
 
         $newarticle->judul = $request->judul;
         $newarticle->article = $request->article;
+        $newarticle->link_domain = $request->domain;
 
         if ($request->status === "schedule") {
             $newarticle->schedule = true;

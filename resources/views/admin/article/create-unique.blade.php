@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <x-admin.component.nochoseinput title="Phone Number (optional)" :phone="$phonenumber" :value="old('no_tlp')" name="no_tlp" />
+    <x-admin.component.nochoseinput title="Phone Number (optional)" :phone="$phonenumber ?? []" :value="old('no_tlp')" name="no_tlp" />
 
     <div class=" w-full relative pt-10 sm:pt-11">
         <div class=" w-full">
@@ -119,6 +119,7 @@
             }
         </script>
         <x-admin.component.linkinput title="Video (Link Youtube/Tiktok)" placeholder="Masukkan link..." :value="old('link')" name="link" link="Url" />
+        <x-admin.component.linkinput title="Link Domain (Opsional)" placeholder="Masukkan link..." :value="old('domain')" name="domain" link="Url" />
     </x-slot:additional>
     <x-slot:template>
         <div class=" space-y-2">

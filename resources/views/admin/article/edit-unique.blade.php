@@ -158,6 +158,7 @@
             }
         </script>
         <x-admin.component.linkinput title="Video (Link Youtube/Tiktok) (Optional)" placeholder="Masukkan link..." value="{{ old('link', ($articleShow->articles->video_type === 'youtube') ? $articleShow->articles->youtube : (($articleShow->articles->video_type === 'tiktok') ? $articleShow->articles->tiktok : '')) }}" name="link" link="Url" />
+        <x-admin.component.linkinput title="Link Domain (Opsional)" placeholder="Masukkan link..." :value="old('domain', $articleShow->articles->link_domain)" name="domain" link="Url" />
     </x-slot:additional>
     <x-slot:template>
         <div class=" space-y-2">
