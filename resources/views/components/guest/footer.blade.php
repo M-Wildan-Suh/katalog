@@ -10,7 +10,7 @@
                             <p class=" text-3xl sm:text-4xl font-bold text-white">Bizlink</p>
                             {{-- <img src="{{asset('assets/images/logo.png')}}" alt=""> --}}
                         </div>
-                        <p class=" text-sm">Sebarkan bisnis anda dengan ribuan artikel.</p>
+                        <p class=" text-sm">Sebarkan bisnis anda dengan ribuan template.</p>
                     </div>
                     <div class=" space-y-4">
                         <div class=" flex flex-row gap-2">
@@ -38,7 +38,7 @@
                     </div>
                     <div class=" text-white flex flex-col gap-2 text-sm pl-4">
                         <a href="{{route('home')}}" class=" list-item hover:underline duration-300">Beranda</a>
-                        <a href="{{route('allarticle')}}" class=" list-item hover:underline duration-300">Artikel</a>
+                        <a href="{{route('allarticle')}}" class=" list-item hover:underline duration-300">Template</a>
                         <a href="{{ request()->routeIs('business') ? route('home') : '' }}#kontak" class=" list-item hover:underline duration-300">Kontak</a>
                     </div>
                 </div>
