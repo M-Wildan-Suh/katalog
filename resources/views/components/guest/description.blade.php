@@ -82,6 +82,10 @@
         </div>
         <style>
             .article strong,
+            ul,
+            ol,
+            li,
+            span,
             p,
             h1,
             h2,
