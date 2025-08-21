@@ -1,8 +1,12 @@
 <x-admin.article.form head="Edit Article Unique" title="Admin - Edit Article Unique" :link="route('business', ['slug' => $articleShow->slug])" :form="route('article-show.update', ['article_show' => $articleShow->id])">
     @method('PUT')
     <x-admin.component.textinput title="Judul" placeholder="Masukkan Judul" :value=" old('judul', $articleShow->judul)" name="judul" />
-    <x-admin.component.categoryinput title="Kategori" :tag="$category" :value="old('category', $articleShow->articles->articlecategory)" name="category[]" />
-    <x-admin.component.taginput title="Tag" :tag="$tag" :value="old('tag', $articleShow->articles->articletag)" name="tag[]" />
+    <x-admin.component.priceinput title="Harga (opsional)" placeholder="Masukkan Harga" :value="old('price', $articleShow->articles->price)" name="price" />
+    <div class=" w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <x-admin.component.categoryinput title="Kategori" :tag="$category" :value="old('category', $articleShow->articles->articlecategory)" name="category[]" />
+        <x-admin.component.taginput title="Tag" :tag="$tag" :value="old('tag', $articleShow->articles->articletag)" name="tag[]" />
+    </div>
+    <x-admin.component.linkinput title="Link Domain (opsional)" placeholder="Masukkan link..." :value="old('domain', $articleShow->articles->link_domain)" name="domain" link="Url" />
     <x-admin.component.summernoteinput title="Artikel" :value="old('article', $articleShow->article)" name="article" />
     <div class=" grid grid-cols-2 gap-4">
         <div class="flex flex-col gap-2 text-sm sm:text-base font-medium">
@@ -34,7 +38,7 @@
             </div>
         </div>
     </div>
-    <x-admin.component.nochoseinput title="Phone Number (optional)" :phone="$phonenumber" :value="old('no_tlp', $articleShow->phoneNumber->no_tlp ?? null)" name="no_tlp" />
+    <x-admin.component.nochoseinput title="Phone Number (opsional)" :phone="$phonenumber" :value="old('no_tlp', $articleShow->phoneNumber->no_tlp ?? null)" name="no_tlp" />
         
     <div class=" w-full relative pt-10 sm:pt-11">
         <div class=" w-full">
@@ -69,7 +73,7 @@
             </div>
         </div>
         <div x-data="galleryComponent({{ $articleShow->articleshowgallery }}, {{ $articleShow->id }}, {{ $articleShow->article_id }})" class="flex flex-col gap-2">
-            <label class="text-sm sm:text-base font-semibold" for="image_gallery">Galeri (Max 6)</label>
+            <label class="text-sm sm:text-base font-semibold" for="image_gallery">Galeri (Max 6) (opsional)</label>
             <input type="file" class="hidden" id="image_gallery" name="image_gallery[]" multiple accept="image/*" @change="addImages($event)">
             <div class="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4">
                 <template x-for="(image, index) in images" :key="index">
@@ -158,7 +162,6 @@
             }
         </script>
         <x-admin.component.linkinput title="Video (Link Youtube/Tiktok) (Optional)" placeholder="Masukkan link..." value="{{ old('link', ($articleShow->articles->video_type === 'youtube') ? $articleShow->articles->youtube : (($articleShow->articles->video_type === 'tiktok') ? $articleShow->articles->tiktok : '')) }}" name="link" link="Url" />
-        <x-admin.component.linkinput title="Link Domain (Opsional)" placeholder="Masukkan link..." :value="old('domain', $articleShow->articles->link_domain)" name="domain" link="Url" />
     </x-slot:additional>
     <x-slot:template>
         <div class=" space-y-2">

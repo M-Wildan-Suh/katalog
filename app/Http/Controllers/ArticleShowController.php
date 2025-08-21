@@ -105,6 +105,7 @@ class ArticleShowController extends Controller
     
             $newarticle->user_id = Auth::id();
             $newarticle->judul = $request->judul;
+            $newarticle->price = $request->price;
             $newarticle->article = $request->article;
             $newarticle->link_domain = $request->domain;
     
@@ -373,6 +374,7 @@ class ArticleShowController extends Controller
         $newarticle = Article::find($articleShow->article_id);
 
         $newarticle->judul = $request->judul;
+        $newarticle->price = $request->price;
         $newarticle->article = $request->article;
         $newarticle->link_domain = $request->domain;
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->text('judul');
+            $table->integer('price');
             $table->longText('article');
             $table->string('article_type')->default('unique');
             $table->string('video_type');

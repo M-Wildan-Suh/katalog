@@ -1,7 +1,11 @@
 <x-admin.article.form head="Create Article Unique" title="Admin - Create Article Unique" :form="route('article-show.store')" >
     <x-admin.component.textinput title="Judul" placeholder="Masukkan Judul" :value="old('judul')" name="judul" />
-    <x-admin.component.categoryinput title="Kategori" :tag="$category" :value="old('category')" name="category[]" />
-    <x-admin.component.taginput title="Tag" :tag="$tag" :value="old('tag')" name="tag[]" />
+    <x-admin.component.numberinput title="Harga (opsional)" placeholder="Masukkan Harga" :value="old('price')" name="price" />
+    <div class=" w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <x-admin.component.categoryinput title="Kategori" :tag="$category" :value="old('category')" name="category[]" />
+        <x-admin.component.taginput title="Tag" :tag="$tag" :value="old('tag')" name="tag[]" />
+    </div> 
+    <x-admin.component.linkinput title="Link Domain (opsional)" placeholder="Masukkan link..." :value="old('domain')" name="domain" link="Url" />
     <x-admin.component.summernoteinput title="Artikel" :value="old('article')" name="article" />
     <div class=" grid grid-cols-2 gap-4">
         <div class="flex flex-col gap-2 text-sm sm:text-base font-medium">
@@ -37,23 +41,15 @@
     <div class=" w-full relative pt-10 sm:pt-11">
         <div class=" w-full">
             <input type="radio" name="status" value="publish" id="publish" class="hidden peer" checked>
-            <label for="publish" class=" absolute w-[calc(33%-8px)] cursor-pointer left-0 top-0 flex justify-center p-2 text-sm sm:text-base text-center font-medium rounded-md duration-300 peer-checked:bg-byolink-1 peer-checked:text-white">Publish</label>
+            <label for="publish" class=" absolute w-[calc(50%-8px)] cursor-pointer left-0 top-0 flex justify-center p-2 text-sm sm:text-base text-center font-medium rounded-md duration-300 peer-checked:bg-byolink-1 peer-checked:text-white">Publish</label>
             <div class="peer-checked:block hidden mt-4">
                 <p class=" text-sm sm:text-base text-neutral-600">*Artikel akan langsung diterbitkan dan ditampilkan</p>
-            </div>
-        </div>
-
-        <div class=" w-full">
-            <input type="radio" name="status" value="schedule" id="schedule" class="hidden peer" {{old('status') === 'schedule' ? 'checked' : ''}}>
-            <label for="schedule" class=" absolute w-[calc(33%-8px)] cursor-pointer left-1/2 -translate-x-1/2 top-0 flex justify-center p-2 text-sm sm:text-base text-center font-medium rounded-md duration-300 peer-checked:bg-byolink-1 peer-checked:text-white">Schedule</label>
-            <div class="peer-checked:block hidden mt-4">
-                <input type="date" class=" w-full text-sm sm:text-base font-normal rounded-md border border-byolink-1 focus:ring-byolink-3 focus:border-byolink-3 bg-neutral-100" value="{{old('release')}}" name="release" min="{{ date('Y-m-d') }}" id="">
             </div>
         </div>
         
         <div class=" w-full">
             <input type="radio" name="status" value="private" id="private" class="hidden peer" {{old('status') === 'private' ? 'checked' : ''}}>
-            <label for="private" class=" absolute w-[calc(33%-8px)] cursor-pointer right-0 top-0 flex justify-center p-2 text-sm sm:text-base text-center font-medium rounded-md duration-300 peer-checked:bg-byolink-1 peer-checked:text-white">Private</label>
+            <label for="private" class=" absolute w-[calc(50%-8px)] cursor-pointer right-0 top-0 flex justify-center p-2 text-sm sm:text-base text-center font-medium rounded-md duration-300 peer-checked:bg-byolink-1 peer-checked:text-white">Private</label>
             <div class="peer-checked:block hidden mt-4">
                 <p class=" text-sm sm:text-base text-neutral-600">*Artikel akan langsung diterbitkan akan tetapi tidak langsung ditampilkan</p>
             </div>
@@ -72,7 +68,7 @@
             </div>
         </div>
         <div x-data="imageGallery" class="flex flex-col gap-2">
-            <label class=" text-sm sm:text-base font-semibold" for="image_gallery">Galeri (Max 6)</label>
+            <label class=" text-sm sm:text-base font-semibold" for="image_gallery">Galeri (Max 6) (opsional)</label>
             <input type="file" class="hidden" id="image_gallery" name="image_gallery[]" multiple @input="previewImages" accept="image/*">
             
             <!-- Pratinjau Gambar -->
@@ -118,8 +114,7 @@
                 };
             }
         </script>
-        <x-admin.component.linkinput title="Video (Link Youtube/Tiktok)" placeholder="Masukkan link..." :value="old('link')" name="link" link="Url" />
-        <x-admin.component.linkinput title="Link Domain (Opsional)" placeholder="Masukkan link..." :value="old('domain')" name="domain" link="Url" />
+        <x-admin.component.linkinput title="Video (Link Youtube/Tiktok) (opsional)" placeholder="Masukkan link..." :value="old('link')" name="link" link="Url" />
     </x-slot:additional>
     <x-slot:template>
         <div class=" space-y-2">

@@ -1,14 +1,10 @@
 @props(['data' => null, 'template' => null])
 <div class=" w-full max-w-[600px] mx-auto">
     <div style="background-color: {{$template->desc_main_color ?? 'white'}}; color: {{$template->desc_text_color}}" class=" w-full rounded-md shadow-md p-4 space-y-2 sm:space-y-4">
-        <div class=" w-full flex flex-wrap gap-2">
-            @foreach ($data->articles->articlecategory as $item)
-                <a href="{{route('category', ['category' => $item->slug])}}">
-                    <button style="background-color: {{$template->desc_second_color ?? '#1d588d'}}" class=" px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md">{{$item->category}}</button>
-                </a>
-            @endforeach
+        <div class=" pt-4 flex items-center justify-between gap-2">
+            <p class="text-lg sm:text-3xl font-bold">{{$data->judul}}</p>
+            <p class=" text-nowrap text-xs sm:text-base">IDR {{ number_format($data->articles->price, 0, ',', '.') }}</p>
         </div>
-        <p class="text-lg sm:text-3xl font-bold">{{$data->judul}}</p>
         @if ($data->articles->link_domain)
             <div class=" w-full">
                 <a href="https://{{ preg_replace('/^https?:\/\//', '', $data->articles->link_domain) }}" target="_blank">
@@ -45,9 +41,18 @@
         <div class=" article ">
             {!! nl2br($data->article == '' ? '' : $data->article) !!}
             <div class=" pt-4 flex flex-wrap gap-2">
+                <p class=" text-sm sm:text-base">Category :</p>
+                @foreach ($data->articles->articlecategory as $item)
+                    <a href="{{route('category', ['category' => $item->slug])}}">
+                        <button style="background-color: {{$template->desc_second_color ?? '#1d588d'}}" class=" px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md">{{$item->category}}</button>
+                    </a>
+                @endforeach
+            </div>
+            <div class=" pt-4 flex flex-wrap gap-2">
+                <p class=" text-sm sm:text-base">Tag :</p>
                 @foreach ($data->articles->articletag as $item)
                     <a href="{{route('tag', ['tag' => $item->slug])}}">
-                        <button style="background-color: {{hexToRgba($template->desc_second_color) ?? '#1d588d'}}" class=" px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md lowercase">#{{$item->tag}}</button>
+                        <button style="background-color: {{$template->desc_second_color ?? '#1d588d'}}" class=" px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md lowercase">#{{$item->tag}}</button>
                     </a>
                 @endforeach
             </div>
