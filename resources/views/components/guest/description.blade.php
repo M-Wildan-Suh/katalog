@@ -82,9 +82,6 @@
         </div>
         <style>
             .article strong,
-            ul,
-            ol,
-            li,
             span,
             p,
             h1,
@@ -108,11 +105,13 @@
             }
 
             .article ol {
+                color: inherit !important;
                 padding-left: 16px;
                 list-style-type: decimal;
             }
 
             .article ul {
+                color: inherit !important;
                 padding-left: 16px;
                 list-style-type: disc;
             }
