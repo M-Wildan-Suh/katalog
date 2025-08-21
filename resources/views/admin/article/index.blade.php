@@ -65,7 +65,7 @@
                 </tbody>
                 <tr>
                     <td id="loader" colspan="6" class=" text-center text-neutral-600 h-10">
-                        {{$data->count() > 20 ? 'Loading...' : 'Semua data telah dimuat'}}
+                        {{ $data->count() > 20 ? 'Loading...' : 'Semua data telah dimuat' }}
                     </td>
                 </tr>
             </table>
@@ -87,43 +87,56 @@
                     };
                 }
 
-                window.addEventListener('scroll', () => {
-                    if (loading) return;
-
-                    const loader = document.getElementById('loader');
+                document.addEventListener("DOMContentLoaded", () => {
+                    const loader = document.getElementById("loader");
 
                     const search = "{!! request('search') ? '&search=' . urlencode(request('search')) : '' !!}";
+                    let loading = false;
+                    let page = 2; // kalau halaman awal = 1
 
-                    // Scroll benar-benar mentok
-                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    function loadMoreData() {
+                        if (loading) return;
                         loading = true;
-                        loader.textContent = 'Loading...';
+                        loader.textContent = "Loading...";
 
                         fetch(`?page=${page}${search}`, {
                                 headers: {
-                                    'X-Requested-With': 'XMLHttpRequest'
+                                    "X-Requested-With": "XMLHttpRequest"
                                 }
                             })
                             .then(response => response.text())
                             .then(html => {
-                                // Tambahkan delay 1 detik sebelum tampilkan data
                                 setTimeout(() => {
-                                    if (html.trim() !== '') {
-                                        document.getElementById('guardian-container').insertAdjacentHTML(
-                                            'beforeend', html);
+                                    if (html.trim() !== "") {
+                                        document
+                                            .getElementById("guardian-container")
+                                            .insertAdjacentHTML("beforeend", html);
+
                                         page++;
+                                        loader.textContent = "Loading...";
                                         loading = false;
-                                        loader.textContent = 'Loading...';
                                     } else {
-                                        loader.textContent = 'Semua data telah dimuat';
+                                        loader.textContent = "Semua data telah dimuat";
+                                        observer.disconnect(); // stop observer kalau sudah habis
                                     }
-                                }, 500); // delay 1 detik
+                                }, 500);
                             })
                             .catch(() => {
-                                loader.textContent = 'Gagal memuat data';
+                                loader.textContent = "Gagal memuat data";
                                 loading = false;
                             });
                     }
+
+                    // Observer untuk mendeteksi ketika loader terlihat
+                    const observer = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                loadMoreData();
+                            }
+                        });
+                    });
+
+                    observer.observe(loader);
                 });
             </script>
         </div>
