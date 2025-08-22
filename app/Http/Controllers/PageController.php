@@ -91,7 +91,7 @@ class PageController extends Controller
                 ->paginate(12);
 
             $data->withPath("/artikel/page");
-            $title = 'Pecaharian : '.$request->search;
+            $title = 'Pencarian : '.$request->search;
         } else {
             $data = ArticleShow::where('status', 'publish')
                 ->latest()->paginate(12);
