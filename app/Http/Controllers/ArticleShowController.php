@@ -432,6 +432,11 @@ class ArticleShowController extends Controller
             $imageFullPath = $imagePath . $imageName . '.webp';
             $image->save($imageFullPath);
 
+            if (!$banner) {
+                $banner = new ArticleBanner();
+                $banner->article_id = $newarticle;
+            }
+
             $banner->image = $imageName . '.webp';
             $banner->image_alt = $imageName;
 
