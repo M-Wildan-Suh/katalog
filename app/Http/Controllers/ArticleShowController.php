@@ -409,10 +409,12 @@ class ArticleShowController extends Controller
         if ($request->hasFile('image')) {
             $banner = ArticleBanner::where('article_id', $articleShow->article_id)->first();
 
-            $path = public_path('storage/images/article/banner/' . $banner->image);
-
-            if (file_exists($path)) {
-                unlink($path);
+            if ($banner) {
+                $path = public_path('storage/images/article/banner/' . $banner->image);
+    
+                if (file_exists($path)) {
+                    unlink($path);
+                }
             }
 
             $imageFile = $request->file('image');
