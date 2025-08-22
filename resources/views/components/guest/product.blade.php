@@ -8,7 +8,7 @@
                 </div>
             </a>
             <div class=" absolute bottom-2 left-2 w-full flex flex-wrap gap-2">
-                @foreach ($item->articles->articlecategory as $category)
+                @foreach ($item->articles->articlecategory->take(2) as $category)
                     <a href="{{route('category', ['category' => $category->slug])}}" aria-label="{{$category->category}}">
                         <div class=" py-0.5 px-3 bg-white text-gray-600 text-xs rounded-full">{{$category->category}}</div>
                     </a>
