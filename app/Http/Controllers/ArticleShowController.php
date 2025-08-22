@@ -434,7 +434,7 @@ class ArticleShowController extends Controller
 
             if (!$banner) {
                 $banner = new ArticleBanner();
-                $banner->article_id = $newarticle;
+                $banner->article_id = $newarticle->id;
             }
 
             $banner->image = $imageName . '.webp';
