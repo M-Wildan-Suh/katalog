@@ -81,6 +81,10 @@
             </div>
         </div>
         <style>
+            .article div {
+                max-width: 100% !important;
+            }
+
             .article strong,
             span,
             p,
