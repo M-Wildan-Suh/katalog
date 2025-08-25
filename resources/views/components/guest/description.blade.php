@@ -60,7 +60,7 @@
             }
         @endphp
         <div class=" article ">
-            {!! nl2br($data->article == '' ? '' : $data->article) !!}
+            {!! $data->article == '' ? '' : $data->article !!}
             <div class=" pt-4 flex flex-wrap gap-2">
                 <p class=" text-sm sm:text-base">Category :</p>
                 @foreach ($data->articles->articlecategory as $item)
