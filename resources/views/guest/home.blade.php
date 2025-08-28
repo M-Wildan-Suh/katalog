@@ -3,16 +3,6 @@
         <div class=" w-full py-6 sm:py-10 px-4 sm:px-6 space-y-8 sm:space-y-12">
             @include('components.guest.home.header')
             <div class=" w-full max-w-[1080px] mx-auto">
-                <div style="background-image: url('https://katalog.jasawebsite.biz/wp-content/uploads/2024/07/kataloog-bg.jpg')" class=" bg-center bg-cover w-full aspect-[3/1] sm:aspect-[4/1]  rounded-md overflow-hidden relative">
-                    <div class=" absolute inset-0 bg-byolink-2 bg-opacity-80 mix-blend-multiply"></div>
-                    <div class=" w-full h-full relative">
-                        <div class=" flex items-center justify-center text-center w-full h-full p-4 text-white relative">
-                            <p class=" text-sm sm:text-2xl font-bold">Webmandiri adalah website siap pakai yang di edit oleh kamu, dan di setup oleh kami</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=" w-full max-w-[1080px] mx-auto">
                 <div class=" grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div class=" md:col-span-3 w-full space-y-4 sm:space-y-6">
                         <div class=" w-full flex justify-between items-center">
