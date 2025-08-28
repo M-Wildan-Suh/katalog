@@ -53,9 +53,9 @@
             {!! $data->article == '' ? '' : $data->article !!}
             <div class=" pt-4">
                 <p><b>Isi Paket :</b></p>
+                <p>✔ Website siap pakai</p>
                 <p>✔ Domain .my.id/.biz.id</p>
-                <p>✔ Login Dashboard Wordpress</p>
-                <p>✔ Video Tutorial Edit Template</p>
+                <p>❌ Login Dashboard Wordpress</p>
                 <p>❌ Akses Cpanel</p>
             </div>
             <div class=" pt-4 flex flex-wrap gap-2">
