@@ -23,7 +23,6 @@
                 <a href="{{ route('author', ['username' => $item->articles->user->slug]) }}" aria-label="{{$item->judul}}">
                     <p class="font-bold text-neutral-600 hover:text-blue-600 duration-300">{{$item->articles->user->name}}</p>
                 </a>
-                <p class=" text-right text-neutral-600">{{$item->date}}</p>
             </div>
         </div>
     </div>

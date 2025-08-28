@@ -38,16 +38,6 @@
                 </div>
                 <p>{{ $data->articles->user->name }}</p>
             </a>
-            <div class=" flex gap-1.5 sm:gap-2 items-center">
-                <div style="color: {{ $template->desc_second_color ?? '#1d588d' }}" class=" w-4 aspect-square">
-                    <svg class="feather feather-calendar" fill="none" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
-                        <path d="M16 2v4M8 2v4M3 10h18"></path>
-                    </svg>
-                </div>
-                <p>{{ $data->date }}</p>
-            </div>
         </div>
         @php
             function hexToRgba($hex, $opacity = 0.6)
@@ -61,6 +51,13 @@
         @endphp
         <div class=" article ">
             {!! $data->article == '' ? '' : $data->article !!}
+            <div class=" pt-4">
+                <p><b>Isi Paket :</b></p>
+                <p>✔ Domain .my.id/.biz.id</p>
+                <p>✔ Login Dashboard Wordpress</p>
+                <p>✔ Video Tutorial Edit Template</p>
+                <p>❌ Akses Cpanel</p>
+            </div>
             <div class=" pt-4 flex flex-wrap gap-2">
                 <p class=" text-sm sm:text-base">Category :</p>
                 @foreach ($data->articles->articlecategory as $item)
