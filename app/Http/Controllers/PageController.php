@@ -97,7 +97,7 @@ class PageController extends Controller
                 ->latest()->paginate(12);
 
             $data->withPath("/artikel/page");
-            $title = 'Artikel Terbaru';
+            $title = 'Desain Terbaru';
         }
 
         $data->transform(function ($data) {
