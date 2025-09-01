@@ -6,7 +6,7 @@
                     <div class=" absolute inset-0 bg-byolink-2 bg-opacity-80 mix-blend-multiply"></div>
                     <div class=" w-full h-full relative">
                         <div class=" flex items-center justify-center text-center w-full h-full p-4 text-white relative">
-                            <p class=" text-sm sm:text-2xl font-bold">Berikut ini adalah pilihan desain website simple dan portfolionya. Pilih saja desain yang kamu suka kami modifikasi dan sesuaikan dengan bisnis kamu.
+                            <p class=" text-sm sm:text-2xl font-bold">Berikut ini adalah pilihan desain website simple dan portfolionya. Pilih saja desain yang kamu suka, atau serahkan saja pada kami jika masih bingung akan kami sesuaikan dengan bisnis usaha Anda.
                             </p>
                         </div>
                     </div>
