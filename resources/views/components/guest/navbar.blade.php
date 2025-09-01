@@ -5,7 +5,7 @@
             <a href="{{route('home')}}">
                 <div class=" h-10 sm:h-12 flex items-center overflow-hidden">
                     {{-- <p class=" text-3xl sm:text-4xl font-bold">Bizlink</p> --}}
-                    <img src="{{asset('assets/images/logo-jbiz.jpg')}}" class=" w-full h-full object-contain" alt="">
+                    <img src="{{asset('assets/images/logo-jbiz.png')}}" class=" w-full h-full object-contain" alt="">
                 </div>
             </a>
             <div class=" hidden md:block flex-grow">
