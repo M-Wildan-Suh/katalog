@@ -30,6 +30,7 @@
     .note-editable div {
         width: 100% !important;
         max-width: 100% !important;
+        height: auto !important;
     }
 
     /* Override gaya default Tailwind untuk h1 hingga h6 */
