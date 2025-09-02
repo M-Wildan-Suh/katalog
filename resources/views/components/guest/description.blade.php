@@ -81,6 +81,7 @@
             .article div {
                 width: 100% !important;
                 max-width: 100% !important;
+                height: auto !important;
             }
 
             .article strong,
