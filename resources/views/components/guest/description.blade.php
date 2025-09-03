@@ -54,10 +54,10 @@
         </div>
         <div class=" flex flex-col gap-1">
             <p><b>Isi Paket :</b></p>
-            <p class=" bg-green-200 px-1 rounded-md">✔ Domain .my.id/.biz.id</p>
-            <p class=" bg-green-200 px-1 rounded-md">✔ Login Dashboard Wordpress</p>
-            <p class=" bg-green-200 px-1 rounded-md">✔ Video Tutorial Edit Template</p>
-            <p class=" bg-red-200 px-1 rounded-md">❌ Akses Cpanel</p>
+            <p class=" bg-green-500 px-1 rounded-md">✔ Domain .my.id/.biz.id</p>
+            <p class=" bg-green-500 px-1 rounded-md">✔ Login Dashboard Wordpress</p>
+            <p class=" bg-green-500 px-1 rounded-md">✔ Video Tutorial Edit Template</p>
+            <p class=" bg-red-500 px-1 rounded-md">❌ Akses Cpanel</p>
         </div>
         <div class=" flex flex-wrap gap-2">
             <p class=" text-sm sm:text-base">Category :</p>
