@@ -1,11 +1,11 @@
 <div class="w-full max-w-[100vw] min-h-screen flex flex-row" x-data="{ open: true }">
     <div :class="open ? 'min-w-20 w-20 lg:min-w-72 lg:w-72' : 'min-w-20 w-20'"
         class=" hidden sm:block bg-white space-y-6 transition-all duration-300 overflow-x-hidden sticky top-0 h-screen">
-        <div class="w-full h-20 p-4 flex items-end ">
+        <div class="w-full h-20 p-4 flex items-end gap-2">
             <div class="aspect-square h-full">
                 <img src="{{ asset('assets/images/logo.png') }}" alt="">
             </div>
-            <p class="font-bold text-2xl duration-300 pb-1" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">izlink
+            <p class="font-bold text-2xl duration-300 pb-1" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Bizlink
             </p>
         </div>
         <div class="pl-4 space-y-4">
