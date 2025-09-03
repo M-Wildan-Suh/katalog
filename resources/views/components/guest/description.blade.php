@@ -54,10 +54,10 @@
         </div>
         <div class=" flex flex-col gap-1">
             <p><b>Isi Paket :</b></p>
-            <p class=" bg-green-200 rounded-md">✔ Website siap pakai</p>
-            <p class=" bg-green-200 rounded-md">✔ Domain .my.id/.biz.id</p>
-            <p class=" bg-red-200 rounded-md">❌ Login Dashboard Wordpress</p>
-            <p class=" bg-red-200 rounded-md">❌ Akses Cpanel</p>
+            <p class=" bg-green-500 rounded-md">✔ Website siap pakai</p>
+            <p class=" bg-green-500 rounded-md">✔ Domain .my.id/.biz.id</p>
+            <p class=" bg-red-500 rounded-md">❌ Login Dashboard Wordpress</p>
+            <p class=" bg-red-500 rounded-md">❌ Akses Cpanel</p>
         </div>
         <div class=" pt-4 flex flex-wrap gap-2">
             <p class=" text-sm sm:text-base">Category :</p>
@@ -85,14 +85,14 @@
             }
 
             .article strong,
-            span,
-            p,
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
+            .article span,
+            .article p,
+            .article h1,
+            .article h2,
+            .article h3,
+            .article h4,
+            .article h5,
+            .article h6 {
                 color: inherit !important;
                 margin: 0 !important;
                 padding: 0 !important;
