@@ -5,7 +5,7 @@
             <div class="aspect-square h-full">
                 <img src="{{ asset('assets/images/logo-jbiz.png') }}" alt="">
             </div>
-            <p class="font-bold text-2xl duration-300 pb-1" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">izlink
+            <p class="font-bold text-2xl duration-300 pb-1" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Bizlink
             </p>
         </div>
         <div class="pl-4 space-y-4">
