@@ -51,31 +51,31 @@
         @endphp
         <div class=" article ">
             {!! $data->article == '' ? '' : $data->article !!}
-            <div class=" pt-4">
-                <p><b>Isi Paket :</b></p>
-                <p>✔ Domain .my.id/.biz.id</p>
-                <p>✔ Login Dashboard Wordpress</p>
-                <p>✔ Video Tutorial Edit Template</p>
-                <p>❌ Akses Cpanel</p>
-            </div>
-            <div class=" pt-4 flex flex-wrap gap-2">
-                <p class=" text-sm sm:text-base">Category :</p>
-                @foreach ($data->articles->articlecategory as $item)
-                    <a href="{{ route('category', ['category' => $item->slug]) }}">
-                        <button style="background-color: {{ $template->desc_second_color ?? '#1d588d' }}"
-                            class=" px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md">{{ $item->category }}</button>
-                    </a>
-                @endforeach
-            </div>
-            <div class=" pt-4 flex flex-wrap gap-2">
-                <p class=" text-sm sm:text-base">Tag :</p>
-                @foreach ($data->articles->articletag as $item)
-                    <a href="{{ route('tag', ['tag' => $item->slug]) }}">
-                        <button style="background-color: {{ $template->desc_second_color ?? '#1d588d' }}"
-                            class=" px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md lowercase">#{{ $item->tag }}</button>
-                    </a>
-                @endforeach
-            </div>
+        </div>
+        <div class=" flex flex-col gap-1">
+            <p><b>Isi Paket :</b></p>
+            <p class=" bg-green-200 px-1 rounded-md">✔ Domain .my.id/.biz.id</p>
+            <p class=" bg-green-200 px-1 rounded-md">✔ Login Dashboard Wordpress</p>
+            <p class=" bg-green-200 px-1 rounded-md">✔ Video Tutorial Edit Template</p>
+            <p class=" bg-red-200 px-1 rounded-md">❌ Akses Cpanel</p>
+        </div>
+        <div class=" flex flex-wrap gap-2">
+            <p class=" text-sm sm:text-base">Category :</p>
+            @foreach ($data->articles->articlecategory as $item)
+                <a href="{{ route('category', ['category' => $item->slug]) }}">
+                    <button style="background-color: {{ $template->desc_second_color ?? '#1d588d' }}"
+                        class=" px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md">{{ $item->category }}</button>
+                </a>
+            @endforeach
+        </div>
+        <div class=" flex flex-wrap gap-2">
+            <p class=" text-sm sm:text-base">Tag :</p>
+            @foreach ($data->articles->articletag as $item)
+                <a href="{{ route('tag', ['tag' => $item->slug]) }}">
+                    <button style="background-color: {{ $template->desc_second_color ?? '#1d588d' }}"
+                        class=" px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md lowercase">#{{ $item->tag }}</button>
+                </a>
+            @endforeach
         </div>
         <style>
             .article div {
