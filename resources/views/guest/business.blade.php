@@ -10,7 +10,7 @@
 
     $sentence = Str::limit(trim($cleanText), 155);
 @endphp
-<x-layout.guest :title="$data->judul. ' - Bizlink'" :desc="$sentence" :tags="$data->articles->articletag" :category="$category">
+<x-layout.guest :title="$data->judul. ' - Catalog'" :desc="$sentence" :tags="$data->articles->articletag" :category="$category">
     <div class=" background w-full">
         {{-- Header --}}
         @include('components.guest.header.'.$template->head_type)

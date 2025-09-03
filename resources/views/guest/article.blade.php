@@ -1,4 +1,4 @@
-<x-layout.guest title="Bizlink {{$page ? ' - Page ' . $page : ''}}" :category="$category">
+<x-layout.guest title="Catalog {{$page ? ' - Page ' . $page : ''}}" :category="$category">
     <div class=" w-full min-h-[calc(100vh-370px)]">
         <div class=" w-full py-6 sm:py-10 px-4 sm:px-6 space-y-8 sm:space-y-12">
             <div class=" w-full max-w-[1080px] mx-auto">
