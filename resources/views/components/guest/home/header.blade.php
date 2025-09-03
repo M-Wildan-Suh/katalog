@@ -10,20 +10,13 @@
                         <div style="box-shadow: 0px -178px 115px -74px rgba(0,0,0,0.75) inset;" class=" w-full h-full flex items-end relative bg-black/20">
                             <div class=" w-full py-4 text-white divide-y-2 divide-white/50">
                                 <div class=" px-4 sm:px-6 pb-4 space-y-2">
-                                    <div class=" w-full flex flex-wrap gap-2">
-                                        @foreach ($item->articles->articlecategory as $category)
-                                            <a href="{{route('category', ['category' => $category->slug])}}">
-                                                <div class=" py-0.5 px-3 bg-white text-gray-600 text-xs rounded-full">{{$category->category}}</div>
-                                            </a>
-                                        @endforeach
-                                    </div>
                                     <a href="{{route('business', ['slug' => $item->slug])}}">
                                         <p class=" text-xl sm:text-3xl font-bold line-clamp-2">{{$item->judul}}</p>
                                     </a>
                                     <p class=" line-clamp-1 sm:line-clamp-2 text-sm sm:text-base">{!! nl2br(Str::limit(strip_tags($item->article), 200)) !!}</p>
                                 </div>
                                 <p class=" px-4 sm:px-6 pt-2 text-sm sm:text-base">
-                                    <a href="{{ route('author', ['username' => $item->articles->user->slug]) }}" class=" font-semibold">{{$item->articles->user->name}}</a>
+                                    <br>
                                 </p>
                             </div>
                         </div>
@@ -46,20 +39,10 @@
                     <div style="box-shadow: 0px -178px 115px -74px rgba(0,0,0,0.75) inset;" class=" w-full h-full flex items-end relative bg-black/20">
                         <div class=" w-full py-4 text-white">
                             <div class=" px-4 sm:px-6 space-y-2">
-                                <div class=" w-full flex flex-wrap gap-2">
-                                    @foreach ($item->articles->articlecategory as $category)
-                                        <a href="{{route('category', ['category' => $category->slug])}}">
-                                            <div class=" py-0.5 px-3 bg-white text-gray-600 text-xs rounded-full">{{$category->category}}</div>
-                                        </a>
-                                    @endforeach
-                                </div>
                                 <a href="{{route('business', ['slug' => $item->slug])}}">
                                     <p class=" text-base sm:text-lg font-bold line-clamp-2">{{ $item->judul }}</p>
                                 </a>
                             </div>
-                            <p class=" px-4 sm:px-6 pt-2 text-xs">
-                                <a href="{{ route('author', ['username' => $item->articles->user->slug]) }}" class=" font-semibold">{{$item->articles->user->name}}</a>
-                            </p>
                         </div>
                     </div>
                 </div>

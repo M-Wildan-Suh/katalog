@@ -19,12 +19,14 @@
                 {{-- Gallery --}}
                 @include('components.guest.gallery.'. $template->gallery_type)
             @endif
-            {{-- Description --}}
-            <x-guest.description :template="$template" :data="$data"/>
+            
             {{-- Video --}}
             @if ($data->articles->video_type != 'none')  
                 @include('components.guest.'.$data->articles->video_type)
             @endif
+            
+            {{-- Description --}}
+            <x-guest.description :template="$template" :data="$data"/>
         </div>
         {{-- Contact --}}
         @include('components.guest.contact.one')
