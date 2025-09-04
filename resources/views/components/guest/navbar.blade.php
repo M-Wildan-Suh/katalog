@@ -1,5 +1,5 @@
 {{-- Navigation --}}
-<div class="" x-data="{ open: false }">
+<div class="" x-data="{ open: false, article: false }">
     <div class=" fixed top-0 left-0 grid grid-col-3 w-full bg-white px-4 md:px-8 py-4 z-40 shadow-md shadow-black/10">
         <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-10 justify-between">
             <a href="{{ route('home') }}">
@@ -32,28 +32,9 @@
             <div class=" hidden md:flex flex-row gap-6 items-center text-neutral-500">
                 <x-guest.nav-button route="{{ route('home') }}"
                     active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
-                <div x-data="{ article: false }" class=" relative">
-                    <button @click="article = !article"
-                        class="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') ? 'text-byolink-1' : 'hover:text-black hover:-translate-y-1' }} text-lg font-black py-2 duration-300"
-                        aria-label="Tipe Desain">Tipe Desain</button>
-                    <div x-show="article" class="fixed inset-0 p-4 bg-black/50 flex justify-center items-center z-50">
-                        <div @click.outside="article = false"
-                            class=" w-full max-w-96 max-h-full bg-white pb-6 rounded-md flex flex-col gap-4 relative overflow-hidden">
-                            <div class=" pt-6 pb-3 border-b border-neutral-600">
-                                <h2 class=" px-6 text-lg sm:text-2xl text-center font-bold">Pilih Tipe Desain</h2>
-                            </div>
-                            <div class="flex text-sm sm:text-base flex-col gap-2 overflow-auto">
-                                <a href="{{ route('allarticle') }}"
-                                    class=" w-full text-center text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Desain
-                                    Terbaru</a>
-                                @foreach ($category as $item)
-                                    <a href="{{ route('category', ['category' => $item->slug]) }}"
-                                        class=" w-full text-center text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">{{ $item->category }}</a>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button @click="article = !article"
+                    class="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') ? 'text-byolink-1' : 'hover:text-black hover:-translate-y-1' }} flex text-lg font-black py-2 duration-300"
+                    aria-label="Tipe Desain">Tipe Desain</button>
                 <x-guest.nav-button route="{{ request()->routeIs('business') ? route('home') : '' }}#kontak"
                     active="">Kontak</x-guest.nav-button>
                 {{-- @if (Route::has('login'))
@@ -83,31 +64,12 @@
         </div>
     </div>
     <div :class="{ ' top-[70px] sm:top-20': open, '-translate-y-full top-0': !open }"
-        class=" fixed flex md:hidden flex-col bg-white w-full left-0 justify-center gap-4 font-semibold text-neutral-600 pt-2 px-4 pb-4 duration-300 z-40">
+        class=" fixed flex md:hidden flex-col bg-white w-full left-0 justify-center gap-4 font-semibold text-neutral-600 pt-2 px-4 pb-4 duration-300 z-30">
         <x-guest.nav-button route="{{ route('home') }}"
             active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
-        <div x-data="{ article: false }">
-            <button @click="article = !article"
-                class="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') ? 'text-byolink-1' : 'hover:text-black hover:-translate-y-1' }} text-lg font-black py-2 duration-300"
-                aria-label="Tipe Desain">Tipe Desain</button>
-            <div x-show="article" class="fixed inset-0 p-4 bg-black/50 flex justify-center items-center z-50">
-                <div @click.outside="article = false"
-                    class=" w-full max-w-96 max-h-full bg-white pb-6 rounded-md flex flex-col gap-4 relative overflow-hidden">
-                    <div class=" pt-6 pb-3 border-b border-neutral-600">
-                        <h2 class=" px-6 text-lg sm:text-2xl text-center font-bold">Pilih Tipe Desain</h2>
-                    </div>
-                    <div class="flex text-sm sm:text-base flex-col gap-2 overflow-auto">
-                        <a href="{{ route('allarticle') }}"
-                            class=" w-full text-center text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Desain
-                            Terbaru</a>
-                        @foreach ($category as $item)
-                            <a href="{{ route('category', ['category' => $item->slug]) }}"
-                                class=" w-full text-center text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">{{ $item->category }}</a>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
+        <button @click="article = !article"
+            class="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') ? 'text-byolink-1' : 'hover:text-black hover:-translate-y-1' }} flex text-lg font-black py-2 duration-300"
+            aria-label="Tipe Desain">Tipe Desain</button>
         <x-guest.nav-button route="{{ request()->routeIs('business') ? route('home') : '' }}#kontak"
             active="">Kontak</x-guest.nav-button>
         <form action="{{ route('allarticle') }}" method="get">
@@ -143,5 +105,22 @@
                 </a>
             @endauth
         @endif --}}
+    </div>
+    <div x-show="article" class="fixed inset-0 p-4 bg-black/50 flex justify-center items-center z-50">
+        <div @click.outside="article = false"
+            class=" w-full max-w-96 max-h-full bg-white pb-6 rounded-md flex flex-col gap-4 relative overflow-hidden">
+            <div class=" pt-6 pb-3 border-b border-neutral-600">
+                <h2 class=" px-6 text-lg sm:text-2xl text-center font-bold">Pilih Tipe Desain</h2>
+            </div>
+            <div class="flex text-sm sm:text-base flex-col gap-2 overflow-auto">
+                <a href="{{ route('allarticle') }}"
+                    class=" w-full text-center text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Desain
+                    Terbaru</a>
+                @foreach ($category as $item)
+                    <a href="{{ route('category', ['category' => $item->slug]) }}"
+                        class=" w-full text-center text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">{{ $item->category }}</a>
+                @endforeach
+            </div>
+        </div>
     </div>
 </div>
