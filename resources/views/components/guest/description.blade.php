@@ -3,7 +3,7 @@
     <div style="background-color: {{ $template->desc_main_color ?? 'white' }}; color: {{ $template->desc_text_color }}"
         class=" w-full rounded-md shadow-md p-4 space-y-2 sm:space-y-4">
         <div class=" pt-4 flex items-center justify-between gap-2">
-            <p class="text-lg sm:text-3xl font-bold">{{ $data->judul }}</p>
+            <p class="text-lg sm:text-3xl font-bold capitalize">{{ $data->judul }}</p>
             @if ($data->articles->price)
                 <p class=" text-nowrap text-xs sm:text-base">IDR {{ number_format($data->articles->price, 0, ',', '.') }}
                 </p>
