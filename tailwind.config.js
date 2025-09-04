@@ -16,7 +16,7 @@ export default {
             },
             colors: {
                 'byolink-1' : '#3b82f6',
-                'byolink-2' : '#fac534',
+                'byolink-2' : '#ff9800',
                 'byolink-3' : '#1e40af',
             }
         },

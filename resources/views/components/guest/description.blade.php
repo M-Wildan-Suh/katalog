@@ -1,8 +1,8 @@
 @props(['data' => null, 'template' => null])
 <div class=" w-full max-w-[600px] mx-auto">
     <div style="background-color: {{ $template->desc_main_color ?? 'white' }}; color: {{ $template->desc_text_color }}"
-        class=" w-full rounded-md shadow-md p-4 space-y-2 sm:space-y-4">
-        <div class=" pt-4 flex items-center justify-between gap-2">
+        class=" w-full rounded-md shadow-md py-4 space-y-2 sm:space-y-4">
+        <div class=" px-4 flex items-center justify-between gap-2">
             <p class="text-lg sm:text-3xl font-bold capitalize">{{ $data->judul }}</p>
             @if ($data->articles->price)
                 <p class=" text-nowrap text-xs sm:text-base">IDR {{ number_format($data->articles->price, 0, ',', '.') }}
@@ -10,7 +10,7 @@
             @endif
         </div>
         @if ($data->articles->link_domain)
-            <div class=" w-full">
+            <div class=" w-full px-4">
                 <a href="https://{{ preg_replace('/^https?:\/\//', '', $data->articles->link_domain) }}" target="_blank">
                     <button style="background-color: {{ $template->desc_second_color ?? '#1d588d' }}"
                         class=" flex items-center gap-1 px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md">
@@ -26,7 +26,7 @@
                 </a>
             </div>
         @endif
-        <div class=" flex gap-4 sm:gap-6 items-center text-opacity-60 text-sm sm:text-base">
+        <div class=" px-4 flex gap-4 sm:gap-6 items-center text-opacity-60 text-sm sm:text-base">
             <a href="{{ route('author', ['username' => $data->articles->user->slug]) }}"
                 class=" flex gap-1.5 sm:gap-2 items-center">
                 <div style="color: {{ $template->desc_second_color ?? '#1d588d' }}" class=" w-4 aspect-square">
@@ -39,27 +39,16 @@
                 <p>{{ $data->articles->user->name }}</p>
             </a>
         </div>
-        @php
-            function hexToRgba($hex, $opacity = 0.6)
-            {
-                $hex = str_replace('#', '', $hex);
-                $r = hexdec(substr($hex, 0, 2));
-                $g = hexdec(substr($hex, 2, 2));
-                $b = hexdec(substr($hex, 4, 2));
-                return "rgba($r, $g, $b, $opacity)";
-            }
-        @endphp
-        <div class=" article ">
+        <div class=" px-4 article ">
             {!! $data->article == '' ? '' : $data->article !!}
         </div>
-        <div class=" flex flex-col gap-1">
-            <p><b>Isi Paket :</b></p>
-            <p class=" bg-green-500 px-1 rounded-md">✔ Domain .my.id/.biz.id</p>
-            <p class=" bg-green-500 px-1 rounded-md">✔ Login Dashboard Wordpress</p>
-            <p class=" bg-green-500 px-1 rounded-md">✔ Video Tutorial Edit Template</p>
-            <p class=" bg-red-500 px-1 rounded-md">❌ Akses Cpanel</p>
+        <div style="background-color: {{$template->desc_second_color}};border-color: {{ $template->desc_text_color }}" class=" text-white px-4 py-4 flex flex-col gap-1 border-t-2 border-b-2">
+            <p><b>Apa yang didapatkan :</b></p>
+            <p>- Domain .my.id/.biz.id</p>
+            <p>- Login Dashboard Wordpress</p>
+            <p>- Video Tutorial Edit Template</p>
         </div>
-        <div class=" flex flex-wrap gap-2">
+        <div class=" px-4 flex flex-wrap gap-2">
             <p class=" text-sm sm:text-base">Category :</p>
             @foreach ($data->articles->articlecategory as $item)
                 <a href="{{ route('category', ['category' => $item->slug]) }}">
@@ -68,7 +57,7 @@
                 </a>
             @endforeach
         </div>
-        <div class=" flex flex-wrap gap-2">
+        <div class=" px-4 flex flex-wrap gap-2">
             <p class=" text-sm sm:text-base">Tag :</p>
             @foreach ($data->articles->articletag as $item)
                 <a href="{{ route('tag', ['tag' => $item->slug]) }}">
@@ -85,14 +74,14 @@
             }
 
             .article strong,
-            span,
-            p,
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
+            .article span,
+            .article p,
+            .article h1,
+            .article h2,
+            .article h3,
+            .article h4,
+            .article h5,
+            .article h6 {
                 color: inherit !important;
                 margin: 0 !important;
                 padding: 0 !important;
