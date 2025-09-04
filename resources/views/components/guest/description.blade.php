@@ -1,8 +1,8 @@
 @props(['data' => null, 'template' => null])
 <div class=" w-full max-w-[600px] mx-auto">
     <div style="background-color: {{ $template->desc_main_color ?? 'white' }}; color: {{ $template->desc_text_color }}"
-        class=" w-full rounded-md shadow-md p-4 space-y-2 sm:space-y-4">
-        <div class=" pt-4 flex items-center justify-between gap-2">
+        class=" w-full rounded-md shadow-md py-4 space-y-2 sm:space-y-4">
+        <div class=" pt-4 px-4 flex items-center justify-between gap-2">
             <p class="text-lg sm:text-3xl font-bold capitalize">{{ $data->judul }}</p>
             @if ($data->articles->price)
                 <p class=" text-nowrap text-xs sm:text-base">IDR {{ number_format($data->articles->price, 0, ',', '.') }}
@@ -10,7 +10,7 @@
             @endif
         </div>
         @if ($data->articles->link_domain)
-            <div class=" w-full">
+            <div class=" px-4 w-full">
                 <a href="https://{{ preg_replace('/^https?:\/\//', '', $data->articles->link_domain) }}" target="_blank">
                     <button style="background-color: {{ $template->desc_second_color ?? '#1d588d' }}"
                         class=" flex items-center gap-1 px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md">
@@ -26,19 +26,6 @@
                 </a>
             </div>
         @endif
-        <div class=" flex gap-4 sm:gap-6 items-center text-opacity-60 text-sm sm:text-base">
-            <a href="{{ route('author', ['username' => $data->articles->user->slug]) }}"
-                class=" flex gap-1.5 sm:gap-2 items-center">
-                <div style="color: {{ $template->desc_second_color ?? '#1d588d' }}" class=" w-4 aspect-square">
-                    <svg class="feather feather-user" fill="none" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                </div>
-                <p>{{ $data->articles->user->name }}</p>
-            </a>
-        </div>
         @php
             function hexToRgba($hex, $opacity = 0.6)
             {
@@ -49,17 +36,16 @@
                 return "rgba($r, $g, $b, $opacity)";
             }
         @endphp
-        <div class=" article ">
+        <div class=" px-4 article">
             {!! $data->article == '' ? '' : $data->article !!}
         </div>
-        <div class=" flex flex-col gap-1">
-            <p><b>Isi Paket :</b></p>
-            <p class=" bg-green-500 rounded-md">✔ Website siap pakai</p>
-            <p class=" bg-green-500 rounded-md">✔ Domain .my.id/.biz.id</p>
-            <p class=" bg-red-500 rounded-md">❌ Login Dashboard Wordpress</p>
-            <p class=" bg-red-500 rounded-md">❌ Akses Cpanel</p>
+        <div style="background-color: {{$template->desc_second_color}}; border-color: {{$template->desc_text_color}}" class=" text-white p-4 flex flex-col border-t-2 border-b-2 gap-1">
+            <p><b>Apa yang didapatkan :</b></p>
+            <p>- Website siap pakai</p>
+            <p>- Domain .my.id/.biz.id</p>
+            <p>- Bisa request warna yg diinginkan</p>
         </div>
-        <div class=" pt-4 flex flex-wrap gap-2">
+        <div class=" px-4 flex flex-wrap gap-2">
             <p class=" text-sm sm:text-base">Category :</p>
             @foreach ($data->articles->articlecategory as $item)
                 <a href="{{ route('category', ['category' => $item->slug]) }}">
@@ -68,7 +54,7 @@
                 </a>
             @endforeach
         </div>
-        <div class=" pt-4 flex flex-wrap gap-2">
+        <div class=" px-4 flex flex-wrap gap-2">
             <p class=" text-sm sm:text-base">Tag :</p>
             @foreach ($data->articles->articletag as $item)
                 <a href="{{ route('tag', ['tag' => $item->slug]) }}">
