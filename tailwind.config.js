@@ -15,8 +15,8 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                'byolink-1' : '#3b82f6',
-                'byolink-2' : '#ff9800',
+                'byolink-1' : '#141414',
+                'byolink-2' : '#de0301',
                 'byolink-3' : '#1e40af',
             }
         },

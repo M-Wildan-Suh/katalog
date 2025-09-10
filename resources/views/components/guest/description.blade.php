@@ -2,12 +2,15 @@
 <div class=" w-full max-w-[600px] mx-auto">
     <div style="background-color: {{ $template->desc_main_color ?? 'white' }}; color: {{ $template->desc_text_color }}"
         class=" w-full rounded-md shadow-md py-4 space-y-2 sm:space-y-4">
-        <div class=" pt-4 px-4 flex items-center justify-between gap-2">
-            <p class="text-lg sm:text-3xl font-bold capitalize">{{ $data->judul }}</p>
-            @if ($data->articles->price)
-                <p class=" text-nowrap text-xs sm:text-base">IDR {{ number_format($data->articles->price, 0, ',', '.') }}
-                </p>
-            @endif
+        <div class="pt-4 px-4">
+            <div class=" text-sm sm:text-lg font-bold">Nama Desain :</div>
+            <div class=" flex items-center justify-between gap-2">
+                <p class="text-lg sm:text-3xl font-bold capitalize">{{ $data->judul }}</p>
+                @if ($data->articles->price)
+                    <p class=" text-nowrap text-xs sm:text-base">IDR {{ number_format($data->articles->price, 0, ',', '.') }}
+                    </p>
+                @endif
+            </div>
         </div>
         @if ($data->articles->link_domain)
             <div class=" px-4 w-full">
@@ -41,8 +44,7 @@
         </div>
         <div style="background-color: {{$template->desc_second_color}}; border-color: {{$template->desc_text_color}}" class=" text-white p-4 flex flex-col border-t-2 border-b-2 gap-1">
             <p><b>Apa yang didapatkan :</b></p>
-            <p>- Website siap pakai</p>
-            <p>- Domain .my.id/.biz.id</p>
+            <p>- Website terima beres</p>
             <p>- Bisa request warna yg diinginkan</p>
         </div>
         <div class=" px-4 flex flex-wrap gap-2">
