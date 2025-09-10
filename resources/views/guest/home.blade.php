@@ -2,16 +2,18 @@
     <div class=" w-full min-h-[calc(100vh-370px)]">
         <div class=" w-full py-6 sm:py-10 px-4 sm:px-6 space-y-8 sm:space-y-12">
             <div class=" w-full max-w-[1080px] mx-auto">
-                <div style="background-image: url('https://katalog.jasawebsite.biz/wp-content/uploads/2024/07/kataloog-bg.jpg')" class=" bg-center bg-cover w-full aspect-[2/1]  rounded-md overflow-hidden relative">
+                <div style="background-image: url('https://katalog.jasawebsite.biz/wp-content/uploads/2024/07/kataloog-bg.jpg')" class=" bg-center bg-cover w-full p-6 sm:p-10 pb-0 sm:pb-10 rounded-md overflow-hidden relative">
                     <div class=" absolute inset-0 bg-byolink-2 bg-opacity-80 mix-blend-multiply"></div>
-                    <div class=" grid grid-cols-2 w-full h-full relative">
-                        <div class=" flex flex-col justify-center gap-4 w-full h-full pl-10 text-white relative">
-                            <p class=" text-xl sm:text-5xl font-bold">Catalog</p>
-                            <p class=" text-lg sm:text-4xl font-bold">Template Desain Website</p>
-                            <p class=" text-sm sm:text-base">Berikut ini adalah pilihan desain website simple dan portfolionya. Pilih saja desain yang kamu suka, atau serahkan saja pada kami dan akan kami sesuaikan dengan bisnis usaha Anda.
+                    <div class=" grid grid-cols-1 sm:grid-cols-2 w-full h-full relative">
+                        <div class=" flex flex-col justify-center text-center sm:text-left gap-2 sm:gap-4 w-full h-full text-white relative">
+                            <div class=" space-y-0 sm:space-y-4">
+                                <p class=" text-2xl sm:text-5xl font-bold">Catalog</p>
+                                <p class=" text-lg sm:text-4xl font-bold">Template Desain Website</p>
+                            </div>
+                            <p class=" text-xs sm:text-base">Berikut ini adalah pilihan desain website simple dan portfolionya. Pilih saja desain yang kamu suka, atau serahkan saja pada kami dan akan kami sesuaikan dengan bisnis usaha Anda.
                             </p>
                         </div>
-                        <div class=" p-5">
+                        <div class="">
                             <img src="{{ asset('/assets/images/banner.png') }}" class=" w-full h-full" alt="">
                         </div>
                     </div>
@@ -25,8 +27,8 @@
                             <p class=" text-xl sm:text-3xl font-bold text-center">Kategori Desain</p>
                         </div>
                         <a href="{{route('allcategory')}}">
-                            <button class=" px-4 py-2 flex items-center gap-1 border rounded-full text-nowrap text-xs text-neutral-600 border-neutral-600 hover:text-byolink-2 hover:border-byolink-2 duration-300">
-                                <p class="hidden sm:block">Lihat Kategori Lainnya</p>
+                            <button class=" px-4 py-2 flex items-center gap-1 rounded-full text-nowrap text-xs font-semibold bg-byolink-2 text-white hover:bg-byolink-1 duration-300">
+                                <p class="hidden sm:block">Lihat Lainnya</p>
                                 <div class=" w-3 aspect-square">
                                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M22 9a1 1 0 0 0 0 1.42l4.6 4.6H3.06a1 1 0 1 0 0 2h23.52L22 21.59A1 1 0 0 0 22 23a1 1 0 0 0 1.41 0l6.36-6.36a.88.88 0 0 0 0-1.27L23.42 9A1 1 0 0 0 22 9Z" data-name="Layer 2" fill="currentColor" class="fill-000000"></path></svg>
                                 </div>
@@ -55,7 +57,7 @@
                             <p class=" text-xl sm:text-3xl font-bold text-center">Piilihan Desain Terbaru</p>
                         </div>
                         <a href="{{route('allarticle')}}">
-                            <button class=" px-4 py-2 flex items-center gap-1 border rounded-full text-nowrap text-xs text-neutral-600 border-neutral-600 hover:text-byolink-2 hover:border-byolink-2 duration-300">
+                            <button class=" px-4 py-2 flex items-center gap-1 rounded-full text-nowrap text-xs font-semibold bg-byolink-2 text-white hover:bg-byolink-1 duration-300">
                                 <p class=" hidden sm:block">Lihat Lainnya</p>
                                 <div class=" w-3 aspect-square">
                                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M22 9a1 1 0 0 0 0 1.42l4.6 4.6H3.06a1 1 0 1 0 0 2h23.52L22 21.59A1 1 0 0 0 22 23a1 1 0 0 0 1.41 0l6.36-6.36a.88.88 0 0 0 0-1.27L23.42 9A1 1 0 0 0 22 9Z" data-name="Layer 2" fill="currentColor" class="fill-000000"></path></svg>
