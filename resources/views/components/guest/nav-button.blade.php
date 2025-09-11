@@ -1,2 +1,2 @@
 @props(['route', 'active'])
-<a href="{{$route ?? ''}}" class="{{ $active ? 'text-white' : 'hover:text-white hover:-translate-y-1'}} text-lg font-black py-2 duration-300" aria-label="{{$slot}}">{{$slot}}</a>
+<a href="{{$route ?? ''}}" class="{{ $active ? 'text-byolink-1' : 'hover:text-byolink-1 hover:-translate-y-1'}} text-lg font-black py-2 duration-300" aria-label="{{$slot}}">{{$slot}}</a>

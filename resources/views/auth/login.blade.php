@@ -39,7 +39,7 @@
 
         <div class="flex flex-col items-center justify-end mt-4 gap-2">
             <button
-                class=" w-full py-2 bg-byolink-1 rounded-md text-white font-bold duration-300 hover:bg-byolink-3">Login</button>
+                class=" w-full py-2 bg-byolink-2 rounded-md text-white font-bold duration-300 hover:bg-byolink-3">Login</button>
             {{-- @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none"
                     href="{{ route('password.request') }}">

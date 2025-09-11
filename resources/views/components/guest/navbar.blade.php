@@ -24,7 +24,6 @@
                         </div>
                     </div>
                 </div>
->>>>>>> 984ce7a13b0dff010d69a1468ef89a672c147780
                 <x-guest.nav-button route="{{ request()->routeIs('business') ? route('home') : '' }}#kontak"
                     active="">Kontak</x-guest.nav-button>
                 {{-- @if (Route::has('login'))
@@ -44,10 +43,10 @@
                 <form action="{{ route('allarticle') }}" class="w-full flex justify-end" method="get">
                     <div class=" flex items-center justify-between w-full max-w-[420px] h-10">
                         <input type="text" name="search" value="{{ request('search') }}"
-                            class=" min-w-0 sm:flex-grow h-10 text-sm px-4 sm:px-6 border-r-0 rounded-l-full focus:border-byolink-1 focus:ring-0"
+                            class=" min-w-0 sm:flex-grow h-10 text-sm px-4 sm:px-6 border-r-0 rounded-l-full focus:border-byolink-3 focus:ring-0"
                             placeholder="Cari Tipe Desain....">
                         <button aria-label="Cari"
-                            class=" px-4 sm:px-6 bg-byolink-2 hover:bg-black rounded-r-full text-white duration-300 h-10">
+                            class=" px-4 sm:px-6 bg-byolink-2 hover:bg-byolink-3 rounded-r-full text-white duration-300 h-10">
                             <div class=" w-[18px] aspect-square overflow-hidden">
                                 <svg aria-hidden="true" class="e-font-icon-svg e-fas-search" viewBox="0 0 512 512"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +71,7 @@
         </div>
     </div>
     <div :class="{ ' top-[70px] sm:top-20': open, '-translate-y-full top-0': !open }"
-        class=" fixed flex md:hidden flex-col bg-byolink-1 w-full left-0 justify-center gap-4 font-semibold text-neutral-600 pt-2 px-4 pb-4 duration-300 z-30">
+        class=" fixed flex md:hidden flex-col bg-white w-full left-0 justify-center gap-4 font-semibold text-neutral-600 pt-2 px-4 pb-4 duration-300 z-30">
         <x-guest.nav-button route="{{ route('home') }}"
             active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('allcategory') }}"
@@ -81,11 +80,10 @@
             active="">Kontak</x-guest.nav-button>
         <form action="{{ route('allarticle') }}" method="get">
             <div class=" flex items-center justify-between h-10">
->>>>>>> 984ce7a13b0dff010d69a1468ef89a672c147780
                 <input type="text" name="search" value="{{ request('search') }}"
-                    class="flex-grow h-10 text-sm px-4 sm:px-6 border-r-0 rounded-l-full focus:border-byolink-1 focus:ring-0"
+                    class="flex-grow h-10 text-sm px-4 sm:px-6 border-r-0 rounded-l-full focus:border-byolink-2 focus:ring-0"
                     placeholder="Cari Tipe Desain....">
-                <button class=" px-6 bg-byolink-1 hover:bg-byolink-3 rounded-r-full text-white duration-300 h-10"
+                <button class=" px-6 bg-byolink-2 hover:bg-byolink-3 rounded-r-full text-white duration-300 h-10"
                     aria-label="cari">
                     <div class=" w-[18px] aspect-square overflow-hidden">
                         <svg aria-hidden="true" class="e-font-icon-svg e-fas-search" viewBox="0 0 512 512"
