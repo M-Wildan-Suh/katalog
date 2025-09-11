@@ -54,7 +54,7 @@
                     <div class=" w-full flex justify-between items-center">
                         <div class=" w-full flex items-center gap-2 sm:gap-4">
                             <div class=" w-1 sm:w-1.5 h-7 sm:h-10 bg-byolink-2 rounded-full"></div>
-                            <p class=" text-xl sm:text-3xl font-bold text-center">Piilihan Desain Terbaru</p>
+                            <p class=" text-xl sm:text-3xl font-bold text-center">Pilihan Desain Terbaru</p>
                         </div>
                         <a href="{{route('allarticle')}}">
                             <button class=" px-4 py-2 flex items-center gap-1 rounded-full text-nowrap text-xs font-semibold bg-byolink-2 text-white hover:bg-byolink-1 duration-300">
