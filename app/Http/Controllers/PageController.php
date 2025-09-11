@@ -23,6 +23,25 @@ class PageController extends Controller
 
         $category = ArticleCategory::all();
 
+        $usedImages = [];
+
+        $category->each(function ($cat) use (&$usedImages) {
+            // cari artikel yang punya banner unik
+            $article = $cat->articles->first(function ($article) use (&$usedImages) {
+                $banner = $article->articlebanner->first();
+                if ($banner && !in_array($banner->id, $usedImages)) {
+                    $usedImages[] = $banner->id;
+                    return true;
+                }
+                return false;
+            });
+        
+            // simpan ke attribute tambahan
+            $cat->thumbnail = $article && $article->articlebanner->first()
+                ? $article->articlebanner->first()->image
+                : null;
+        });
+
         $data->transform(function ($data) {
             $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
             $data->articles->articletag;
@@ -34,7 +53,7 @@ class PageController extends Controller
             ->where('status', 'publish')
             ->take(6)->get();
             
-        $data->withPath("/artikel/page");
+        $data->withPath("/desain/page");
         return view('guest.home', compact('data', 'trend', 'category'));
     }
 
@@ -53,7 +72,7 @@ class PageController extends Controller
 
             $user = User::where('slug', $username)->first();
             
-            $data->withPath("/penulis/{$user->slug}/page");
+            $data->withPath("/pembuat/{$user->slug}/page");
             
             $title = 'Penulis : '.$user->name;
         } elseif ($category) {
@@ -62,7 +81,7 @@ class PageController extends Controller
                 })
                 ->where('status', 'publish')->latest()->paginate(12);
 
-            $data->withPath("/kategori/{$category}/page");
+            $data->withPath("/tipe-desain/{$category}/page");
             
             $category = ArticleCategory::where('slug', $category)->first()->category;
             $title = 'Kategori : '.$category;
@@ -90,13 +109,13 @@ class PageController extends Controller
                 ->latest()
                 ->paginate(12);
 
-            $data->withPath("/artikel/page");
+            $data->withPath("/desain/page");
             $title = 'Pencarian : '.$request->search;
         } else {
             $data = ArticleShow::where('status', 'publish')
                 ->latest()->paginate(12);
 
-            $data->withPath("/artikel/page");
+            $data->withPath("/desain/page");
             $title = 'Desain Terbaru';
         }
 
@@ -110,6 +129,35 @@ class PageController extends Controller
         $category = ArticleCategory::all();
 
         return view('guest.article', compact('data', 'title', 'page', 'category'));
+    }
+
+    public function category() {
+        $category = ArticleCategory::orderBy('category', 'asc')->get();
+
+
+        $catsection = ArticleCategory::withCount('articles')
+            ->having('articles_count', '>=', 4)
+            ->take(6)
+            ->get();
+
+        $catsection->transform(function ($cat) {
+            // Ambil semua ArticleShow dari setiap artikel di kategori
+            $cat->articles = ArticleShow::whereHas('articles.articleCategory', function ($query) use ($cat) {
+                    $query->where('slug', $cat->slug);
+                })
+                ->where('status', 'publish')->latest()->paginate(12);
+
+            $cat->articles->transform(function ($data) {
+                $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
+                $data->articles->articletag;
+                $data->articles->user ;
+                return $data;
+            });
+
+            return $cat;
+        });
+
+        return view('guest.category', compact('category', 'catsection'));
     }
 
     public function business($slug) {

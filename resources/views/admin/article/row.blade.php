@@ -11,9 +11,7 @@
             @endif
         </td>
         <td class="px-3 py-1 text-center hidden md:table-cell">
-            @foreach ($item->articlecategory as $cat)
-                {{$cat->category}}
-            @endforeach
+            {{ $item->articlecategory->pluck('category')->implode(', ') }}
         </td>
         <td class="px-3 py-1 text-center text-nowrap hidden md:table-cell">{{ $item->user->name }}</td>
         <td class="px-1 sm:px-2">

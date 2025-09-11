@@ -7,10 +7,10 @@
                 <div class=" col-span-3 md:col-span-1 space-y-6">
                     <div class=" space-y-2">
                         <div class=" w-44 h-10 sm:h-12 flex items-start overflow-hidden">
-                            <p class=" text-3xl sm:text-4xl font-bold text-white">Bizlink</p>
+                            <p class=" text-3xl sm:text-4xl font-bold text-white">Catalog</p>
                             {{-- <img src="{{asset('assets/images/logo.png')}}" alt=""> --}}
                         </div>
-                        <p class=" text-sm">Sebarkan bisnis anda dengan ribuan template.</p>
+                        <p class=" text-sm">Pilih saja desain yang kamu suka, atau serahkan saja pada kami dan akan kami sesuaikan dengan bisnis usaha Anda.</p>
                     </div>
                     <div class=" space-y-4">
                         <div class=" flex flex-row gap-2">
@@ -38,7 +38,7 @@
                     </div>
                     <div class=" text-white flex flex-col gap-2 text-sm pl-4">
                         <a href="{{route('home')}}" class=" list-item hover:underline duration-300">Beranda</a>
-                        <a href="{{route('allarticle')}}" class=" list-item hover:underline duration-300">Template</a>
+                        <a href="{{route('allcategory')}}" class=" list-item hover:underline duration-300">Tipe Desain</a>
                         <a href="{{ request()->routeIs('business') ? route('home') : '' }}#kontak" class=" list-item hover:underline duration-300">Kontak</a>
                     </div>
                 </div>

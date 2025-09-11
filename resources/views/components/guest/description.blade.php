@@ -2,15 +2,18 @@
 <div class=" w-full max-w-[600px] mx-auto">
     <div style="background-color: {{ $template->desc_main_color ?? 'white' }}; color: {{ $template->desc_text_color }}"
         class=" w-full rounded-md shadow-md py-4 space-y-2 sm:space-y-4">
-        <div class=" px-4 flex items-center justify-between gap-2">
-            <p class="text-lg sm:text-3xl font-bold capitalize">{{ $data->judul }}</p>
-            @if ($data->articles->price)
-                <p class=" text-nowrap text-xs sm:text-base">IDR {{ number_format($data->articles->price, 0, ',', '.') }}
-                </p>
-            @endif
+        <div class="pt-4 px-4">
+            <div class=" text-sm sm:text-lg font-bold">Nama Desain :</div>
+            <div class=" flex items-center justify-between gap-2">
+                <p class="text-lg sm:text-3xl font-bold capitalize">{{ $data->judul }}</p>
+                @if ($data->articles->price)
+                    <p class=" text-nowrap text-xs sm:text-base">IDR {{ number_format($data->articles->price, 0, ',', '.') }}
+                    </p>
+                @endif
+            </div>
         </div>
         @if ($data->articles->link_domain)
-            <div class=" w-full px-4">
+            <div class=" px-4 w-full">
                 <a href="https://{{ preg_replace('/^https?:\/\//', '', $data->articles->link_domain) }}" target="_blank">
                     <button style="background-color: {{ $template->desc_second_color ?? '#1d588d' }}"
                         class=" flex items-center gap-1 px-2 sm:px-3 py-1 text-xs sm:text-sm text-white rounded-md">

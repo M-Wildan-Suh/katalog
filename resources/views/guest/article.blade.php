@@ -7,7 +7,7 @@
                         <div class=" w-1 sm:w-1.5 h-7 sm:h-10 bg-byolink-2 rounded-full"></div>
                         <p class=" text-xl sm:text-3xl font-bold text-center capitalize">{{$title}}</p>
                     </div>
-                    <div class=" w-full grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class=" w-full grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                         @include('components.guest.product')
                     </div>
                     <div class=" w-full">
