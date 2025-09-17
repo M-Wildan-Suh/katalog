@@ -2,7 +2,7 @@
     <div class=" w-full min-h-[calc(100vh-370px)]">
         <div class="w-full sm:h-screen px-4 sm:px-6 relative overflow-hidden">
             <div class=" absolute inset-0 bg-[linear-gradient(190deg,#DADEE2_0%,#C7CFD8_100%)] mix-blend-multiply"></div>
-            <div style="background-image: url({{asset('/assets/images/bgbanner.jpg')}})" class=" absolute inset-0 opacity-40 bg-cover"></div>
+            <div style="background-image: url({{asset('/assets/images/bg-banner.jpg')}})" class=" absolute inset-0 opacity-40 bg-center bg-cover"></div>
             <div class=" pt-32 sm:pt-20 flex flex-col justify-end w-full h-full max-w-[960px] mx-auto relative">
                 <div class="space-y-4">
                     <div style='font-family: "Montserrat", Sans-serif;' class=" w-full text-center text-2xl sm:text-5xl font-bold tracking-tight">
