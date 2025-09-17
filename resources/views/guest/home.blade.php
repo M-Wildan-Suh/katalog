@@ -1,25 +1,25 @@
-<x-layout.guest title="Catalog" :category="$category" :home="true">
+<x-layout.guest title="WebMandiri" :category="$category" :home="true">
     <div class=" w-full min-h-[calc(100vh-370px)]">
         <div class="w-full sm:h-screen px-4 sm:px-6 relative overflow-hidden">
-            <div class=" absolute inset-0 bg-[linear-gradient(190deg,#DADEE2_0%,#C7CFD8_100%)] mix-blend-multiply"></div>
-            <div style="background-image: url({{asset('/assets/images/bgbanner.jpg')}})" class=" absolute inset-0 opacity-40 bg-cover"></div>
-            <div class=" pt-32 sm:pt-20 flex flex-col justify-end w-full h-full max-w-[960px] mx-auto relative">
-                <div class="space-y-4">
-                    <div style='font-family: "Montserrat", Sans-serif;' class=" w-full text-center text-2xl sm:text-5xl font-bold tracking-tight">
-                        <p>Solusi Website All-in-One</p>
+            <div class=" absolute inset-0 bg-[radial-gradient(at_right_bottom,rgba(255,0,0,0.5)_0%,rgb(233,229,255)_64%)] mix-blend-multiply"></div>
+            <div style="background-image: url({{asset('/assets/images/bg-banner.jpg')}})" class=" absolute inset-0 opacity-40 bg-center bg-cover"></div>
+            <div class=" pt-32 pb-20 sm:pt-20 sm:pb-0 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full h-full max-w-[1080px] mx-auto relative">
+                <div class="flex flex-col justify-center gap-4">
+                    <div style='font-family: "Montserrat", Sans-serif;' class=" w-full text-left text-3xl sm:text-5xl font-bold tracking-tight">
+                        <p class=" text-byolink-2">Solusi Website <span class=" text-nowrap">All-in-One</span></p>
                         <p>Desain Modern, Hasil Optimal</p>
                     </div>
-                    <p class=" text-center text-sm sm:text-base text-neutral-600">Punya usaha tapi belum punya website? Tinggal pilih desain favoritmu, bisa di edit mandiri dipandu dengan video tutorial yang kami siapkan</p>
-                    <div class=" flex justify-center">
+                    <p class=" text-left text-sm sm:text-base text-neutral-600">Punya usaha tapi belum punya website? Tinggal pilih desain favoritmu, bisa di edit mandiri dipandu dengan video tutorial yang kami siapkan</p>
+                    <div class=" flex">
                         <a href="{{route('allarticle')}}" class="flex">
                             <button class=" px-6 py-2 flex items-center gap-1 rounded-full text-nowrap text-sm sm:text-base font-semibold bg-byolink-2 text-white hover:bg-byolink-1 duration-300">
                                 Lihat Desain Template
                             </button>
                         </a>
                     </div>
-                    <div class=" w-full h-56 sm:h-80 flex justify-center items-end">
-                        <img src="{{asset('/assets/images/banner.png')}}" class=" w-full h-full object-contain object-bottom" alt="">
-                    </div>
+                </div>
+                <div class=" w-full flex justify-center items-center">
+                    <img src="{{asset('/assets/images/banner.png')}}" class=" w-full h-full object-contain object-center" alt="">
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
                     scrolled = window.scrollY > 100;
                 }
             })"
-        :class="scrolled ? 'bg-black' : (open ? 'bg-black' : 'bg-transparent')"
+        :class="scrolled ? 'bg-white' : (open ? 'bg-white' : 'bg-transparent')"
         class=" fixed top-0 left-0 grid grid-col-3 w-full px-4 md:px-8 py-4 z-40 duration-500">
         <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-10 justify-between">
             <a href="{{ route('home') }}" class=" flex w-52">
@@ -18,8 +18,7 @@
                 </div>
             </a>
             <div
-                :class="scrolled ? ' text-neutral-400' : 'text-neutral-600'" 
-                class=" hidden md:flex flex-row gap-6 items-center">
+                class=" hidden md:flex flex-row gap-6 items-center text-neutral-600">
                 <x-guest.nav-button route="{{ route('home') }}"
                     active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
                 <div class=" group relative">
@@ -64,7 +63,6 @@
                             placeholder="Cari Tipe Desain....">
                         {{-- <button aria-label="Cari"
                             class=" px-4 sm:px-6 bg-byolink-2 hover:bg-black rounded-r-full text-white duration-300 h-10">
->>>>>>> 1534f84e69d9d5edf8085246c3486c334cd8aa56
                             <div class=" w-[18px] aspect-square overflow-hidden">
                                 <svg aria-hidden="true" class="e-font-icon-svg e-fas-search" viewBox="0 0 512 512"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +88,7 @@
     </div>
     <div x-data="{ scrolled: true }"
         :class="{ ' top-[70px] sm:top-20': open, '-translate-y-full top-0': !open }"
-        class=" fixed flex md:hidden flex-col bg-byolink-1 w-full left-0 justify-center gap-4 font-semibold text-neutral-400 pt-2 px-4 pb-4 duration-300 z-30">
+        class=" fixed flex md:hidden flex-col bg-white w-full left-0 justify-center gap-4 font-semibold text-neutral-400 pt-2 px-4 pb-4 duration-300 z-30">
         <x-guest.nav-button route="{{ route('home') }}"
             active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('allcategory') }}"
