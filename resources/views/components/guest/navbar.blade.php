@@ -1,15 +1,25 @@
 {{-- Navigation --}}
 <div class="" x-data="{ open: false, article: false }">
-    <div class=" fixed top-0 left-0 grid grid-col-3 w-full bg-white px-4 md:px-8 py-4 z-40 shadow-md shadow-black/10">
+    <div
+        x-data="{ scrolled: {{ $home ? 'false' : 'true' }} }" 
+        x-init="window.addEventListener('scroll', () => {
+                if ({{ $home ? 'true' : 'false' }}) {
+                    scrolled = window.scrollY > 100;
+                }
+            })"
+        :class="scrolled ? 'bg-black' : (open ? 'bg-black' : 'bg-transparent')"
+        class=" fixed top-0 left-0 grid grid-col-3 w-full px-4 md:px-8 py-4 z-40 duration-500">
         <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-10 justify-between">
-            <a href="{{ route('home') }}">
+            <a href="{{ route('home') }}" class=" flex w-52">
                 <div class=" h-10 sm:h-12 flex items-center overflow-hidden">
                     {{-- <p class=" text-3xl sm:text-4xl font-bold">Bizlink</p> --}}
                     <img src="{{ asset('assets/images/logo-jbiz.png') }}" class=" w-full h-full object-contain"
                         alt="">
                 </div>
             </a>
-            <div class=" hidden md:flex flex-row gap-6 items-center text-neutral-400">
+            <div
+                :class="scrolled ? ' text-neutral-400' : 'text-neutral-600'" 
+                class=" hidden md:flex flex-row gap-6 items-center">
                 <x-guest.nav-button route="{{ route('home') }}"
                     active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
                 <div class=" group relative">
@@ -17,7 +27,7 @@
                     active="{{ request()->routeIs('allcategory', 'allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Tipe Desain</x-guest.nav-button>
                     <div class=" hidden group-hover:block absolute top-full left-0 bg-white min-w-40 py-2 rounded-md shadow-md shadow-black/20 text-sm">
                         <div class=" max-h-36 overflow-auto flex flex-col gap-1">
-                            <a href="{{route('allarticle')}}" class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Artikel Terbaru</a>
+                            <a href="{{route('allarticle')}}" class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Desain Terbaru</a>
                             @foreach ($category as $item)
                                 <a href="{{route('category', ['category' => $item->slug])}}" class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">{{$item->category}}</a>
                             @endforeach
@@ -39,14 +49,22 @@
                     @endauth
                 @endif --}}
             </div>
-            <div class=" hidden md:block flex-grow">
+            <div class=" hidden md:block">
                 <form action="{{ route('allarticle') }}" class="w-full flex justify-end" method="get">
-                    <div class=" flex items-center justify-between w-full max-w-[420px] h-10">
-                        <input type="text" name="search" value="{{ request('search') }}"
-                            class=" min-w-0 sm:flex-grow h-10 text-sm px-4 sm:px-6 border-r-0 rounded-l-full focus:border-byolink-3 focus:ring-0"
-                            placeholder="Cari Tipe Desain....">
+                    <div class=" flex items-center justify-between w-full max-w-52 h-10 group rounded-full border border-neutral-400">
                         <button aria-label="Cari"
-                            class=" px-4 sm:px-6 bg-byolink-2 hover:bg-byolink-3 rounded-r-full text-white duration-300 h-10">
+                            class=" pl-4 rounded-l-full duration-300 h-10">
+                            <div class=" w-[18px] aspect-square overflow-hidden text-neutral-400">
+                                <svg id="Layer_1" style="enable-background:new 0 0 64 64;" version="1.1" viewBox="0 0 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g id="Icon-Search" transform="translate(30.000000, 230.000000)"><path fill="currentColor" d="M-2.3-182.9c-10.7,0-19.5-8.7-19.5-19.5c0-10.7,8.7-19.5,19.5-19.5s19.5,8.7,19.5,19.5     C17.1-191.6,8.4-182.9-2.3-182.9L-2.3-182.9z M-2.3-219c-9.2,0-16.7,7.5-16.7,16.7c0,9.2,7.5,16.7,16.7,16.7s16.7-7.5,16.7-16.7     C14.3-211.5,6.8-219-2.3-219L-2.3-219z" id="Fill-1"/><polyline fill="currentColor" id="Fill-2" points="23.7,-174.2 10.1,-187.7 12.3,-189.9 25.8,-176.3 23.7,-174.2    "/></g></g></svg>
+                            </div>
+                        </button>
+                        <input type="text" name="search" value="{{ request('search') }}"
+                            :class="scrolled ? 'text-neutral-200' : 'text-black'"
+                            class=" bg-transparent min-w-0 sm:flex-grow h-10 text-sm px-4 border-0 border-transparent focus:ring-0"
+                            placeholder="Cari Tipe Desain....">
+                        {{-- <button aria-label="Cari"
+                            class=" px-4 sm:px-6 bg-byolink-2 hover:bg-black rounded-r-full text-white duration-300 h-10">
+>>>>>>> 1534f84e69d9d5edf8085246c3486c334cd8aa56
                             <div class=" w-[18px] aspect-square overflow-hidden">
                                 <svg aria-hidden="true" class="e-font-icon-svg e-fas-search" viewBox="0 0 512 512"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -55,11 +73,11 @@
                                     </path>
                                 </svg>
                             </div>
-                        </button>
+                        </button> --}}
                     </div>
                 </form>
             </div>
-            <div class=" h-8 sm:h-10 block sm:hidden">
+            <div class=" h-8 md:h-10 block md:hidden">
                 <button @click="open = !open" class="w-8 h-8 p-2 bg-byolink-2 rounded-md text-white flex flex-col justify-between items-center relative">
                     <span :class="open ? 'w-0 translate-y-2.5' : 'w-full'" class=" h-0.5 bg-white rounded-full duration-300"></span>
                     <span :class="open ? 'w-0' : 'w-full'" class=" h-0.5 bg-white rounded-full duration-300"></span>
@@ -70,8 +88,9 @@
             </div>
         </div>
     </div>
-    <div :class="{ ' top-[70px] sm:top-20': open, '-translate-y-full top-0': !open }"
-        class=" fixed flex md:hidden flex-col bg-white w-full left-0 justify-center gap-4 font-semibold text-neutral-600 pt-2 px-4 pb-4 duration-300 z-30">
+    <div x-data="{ scrolled: true }"
+        :class="{ ' top-[70px] sm:top-20': open, '-translate-y-full top-0': !open }"
+        class=" fixed flex md:hidden flex-col bg-byolink-1 w-full left-0 justify-center gap-4 font-semibold text-neutral-400 pt-2 px-4 pb-4 duration-300 z-30">
         <x-guest.nav-button route="{{ route('home') }}"
             active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('allcategory') }}"
@@ -83,7 +102,7 @@
                 <input type="text" name="search" value="{{ request('search') }}"
                     class="flex-grow h-10 text-sm px-4 sm:px-6 border-r-0 rounded-l-full focus:border-byolink-2 focus:ring-0"
                     placeholder="Cari Tipe Desain....">
-                <button class=" px-6 bg-byolink-2 hover:bg-byolink-3 rounded-r-full text-white duration-300 h-10"
+                <button class=" px-6 bg-byolink-2 hover:bg-byolink-1 rounded-r-full text-white duration-300 h-10"
                     aria-label="cari">
                     <div class=" w-[18px] aspect-square overflow-hidden">
                         <svg aria-hidden="true" class="e-font-icon-svg e-fas-search" viewBox="0 0 512 512"

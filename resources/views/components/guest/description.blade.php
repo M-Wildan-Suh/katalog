@@ -45,7 +45,7 @@
         <div class=" px-4 article ">
             {!! $data->article == '' ? '' : $data->article !!}
         </div>
-        <div style="background-color: {{$template->desc_second_color}};border-color: {{ $template->desc_text_color }}" class=" text-white px-4 py-4 flex flex-col gap-1 border-t-2 border-b-2">
+        <div style="background-color: {{$template->desc_second_color}}; border-color: {{$template->desc_text_color}}" class=" text-white text-sm sm:text-base p-4 flex flex-col border-t-2 border-b-2 gap-1">
             <p><b>Apa yang didapatkan :</b></p>
             <p>- Domain .my.id/.biz.id</p>
             <p>- Login Dashboard Wordpress</p>

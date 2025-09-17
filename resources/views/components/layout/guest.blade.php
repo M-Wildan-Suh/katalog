@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-@props(['title' => null, 'desc' => null, 'tags' => null, 'category' => null])
+@props(['home' => false, 'title' => null, 'desc' => null, 'tags' => null, 'category' => null])
 <html class=" scroll-smooth" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -84,7 +84,7 @@
             }
         </style>
         @include('components.guest.navbar')
-        <div class=" pt-[70px] sm:pt-20 min-h-screen bg-neutral-100">
+        <div class=" {{$home ? '' : 'pt-20'}} min-h-screen">
             {{$slot}}
         </div>
     </body>
