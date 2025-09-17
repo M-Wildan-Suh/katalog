@@ -14,12 +14,13 @@ use Illuminate\Pagination\Paginator;
 
 class PageController extends Controller
 {
-    public function home(Request $request) {
+    public function home(Request $request)
+    {
         Paginator::currentPageResolver(function () use ($request) {
             return $request->route('page', 1); // default ke halaman 1
         });
         $data = ArticleShow::where('status', 'publish')
-            ->latest()->paginate(12);
+            ->latest()->simplePaginate(6);
 
         $category = ArticleCategory::all();
 
@@ -35,7 +36,7 @@ class PageController extends Controller
                 }
                 return false;
             });
-        
+
             // simpan ke attribute tambahan
             $cat->thumbnail = $article && $article->articlebanner->first()
                 ? $article->articlebanner->first()->image
@@ -45,56 +46,44 @@ class PageController extends Controller
         $data->transform(function ($data) {
             $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
             $data->articles->articletag;
-            $data->articles->user ;
+            $data->articles->user;
             return $data;
         });
 
         $trend = ArticleShow::orderBy('view', 'desc')
             ->where('status', 'publish')
             ->take(6)->get();
-            
+
         $data->withPath("/desain/page");
         return view('guest.home', compact('data', 'trend', 'category'));
     }
 
-    public function article(Request $request, $username = null, $category = null, $tag = null) {
-        Paginator::currentPageResolver(function () use ($request) {
-            return $request->route('page', 1);
-        });
-
-        $page = $request->route('page') ?? null;
-
+    public function article(Request $request, $username = null, $category = null, $tag = null)
+    {
         if ($username) {
             $data = ArticleShow::whereHas('articles.user', function ($query) use ($username) {
-                    $query->where('slug', $username);
-                })
-                ->where('status', 'publish')->latest()->paginate(12);
+                $query->where('slug', $username);
+            })
+                ->where('status', 'publish')->latest()->simplePaginate(12);
 
             $user = User::where('slug', $username)->first();
-            
-            $data->withPath("/pembuat/{$user->slug}/page");
-            
-            $title = 'Penulis : '.$user->name;
+            $title = 'Penulis : ' . $user->name;
         } elseif ($category) {
             $data = ArticleShow::whereHas('articles.articleCategory', function ($query) use ($category) {
-                    $query->where('slug', $category);
-                })
-                ->where('status', 'publish')->latest()->paginate(12);
+                $query->where('slug', $category);
+            })
+                ->where('status', 'publish')->latest()->simplePaginate(12);
 
-            $data->withPath("/tipe-desain/{$category}/page");
-            
             $category = ArticleCategory::where('slug', $category)->first()->category;
-            $title = 'Kategori : '.$category;
+            $title = 'Kategori : ' . $category;
         } elseif ($tag) {
             $data = ArticleShow::whereHas('articles.articleTag', function ($query) use ($tag) {
-                    $query->where('slug', $tag);
-                })
-                ->where('status', 'publish')->latest()->paginate(12);
+                $query->where('slug', $tag);
+            })
+                ->where('status', 'publish')->latest()->simplePaginate(12);
 
-            $data->withPath("/tag/{$tag}/page");
-            
             $tag = ArticleTag::where('slug', $tag)->first()->tag;
-            $title = 'Tag : '.$tag;
+            $title = 'Tag : ' . $tag;
         } elseif ($request->search) {
             $data = ArticleShow::where('status', 'publish')
                 ->where(function ($query) use ($request) {
@@ -107,31 +96,34 @@ class PageController extends Controller
                         });
                 })
                 ->latest()
-                ->paginate(12);
+                ->sinplePaginate(12);
 
-            $data->withPath("/desain/page");
-            $title = 'Pencarian : '.$request->search;
+            $title = 'Pencarian : ' . $request->search;
         } else {
             $data = ArticleShow::where('status', 'publish')
-                ->latest()->paginate(12);
+                ->latest()->simplePaginate(12);
 
-            $data->withPath("/desain/page");
             $title = 'Desain Terbaru';
         }
 
         $data->transform(function ($data) {
             $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
             $data->articles->articletag;
-            $data->articles->user ;
+            $data->articles->user;
             return $data;
         });
-        
+
+        if ($request->ajax()) {
+            return view('components.guest.product', compact('data'))->render();
+        }
+
         $category = ArticleCategory::all();
 
-        return view('guest.article', compact('data', 'title', 'page', 'category'));
+        return view('guest.article', compact('data', 'title', 'category'));
     }
 
-    public function category() {
+    public function category()
+    {
         $category = ArticleCategory::orderBy('category', 'asc')->get();
 
 
@@ -143,14 +135,14 @@ class PageController extends Controller
         $catsection->transform(function ($cat) {
             // Ambil semua ArticleShow dari setiap artikel di kategori
             $cat->articles = ArticleShow::whereHas('articles.articleCategory', function ($query) use ($cat) {
-                    $query->where('slug', $cat->slug);
-                })
+                $query->where('slug', $cat->slug);
+            })
                 ->where('status', 'publish')->latest()->paginate(12);
 
             $cat->articles->transform(function ($data) {
                 $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
                 $data->articles->articletag;
-                $data->articles->user ;
+                $data->articles->user;
                 return $data;
             });
 
@@ -160,8 +152,27 @@ class PageController extends Controller
         return view('guest.category', compact('category', 'catsection'));
     }
 
-    public function business($slug) {
-        $data = ArticleShow::where('slug', $slug)->first();
+    public function business($slug)
+    {
+        $data = ArticleShow::where('slug', $slug)
+            ->with('articles.articleCategory')
+            ->first();
+
+        $categoryIds = $data->articles->articlecategory->pluck('id');
+        $totalCategories = $categoryIds->count();
+
+        // Query gabungan
+        $related = ArticleShow::where('article_shows.id', '!=', $data->id)
+            ->where('article_shows.status', 'publish')
+            ->withCount(['articles as match_count' => function ($query) use ($categoryIds) {
+                $query->whereHas('articleCategory', function ($q) use ($categoryIds) {
+                    $q->whereIn('article_categories.id', $categoryIds);
+                });
+            }])
+            ->orderByRaw("CASE WHEN match_count = ? THEN 1 ELSE 2 END", [$totalCategories])
+            ->orderByDesc('match_count')
+            ->take(2)
+            ->get();
 
         if (!$data) {
             return redirect()->route('not.found');
@@ -170,7 +181,7 @@ class PageController extends Controller
         $data->view = $data->view + 1;
 
         $data->save();
-        
+
         $template = $data->template;
 
         // dd($data->articles->phoneNumber);
@@ -184,19 +195,21 @@ class PageController extends Controller
 
         $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
         // dd($data->articles);
-        
+
         $category = ArticleCategory::all();
 
-        return view('guest.business', compact('data', 'template', 'category'));
+        return view('guest.business', compact('data', 'related', 'template', 'category'));
     }
 
-    public function notFound() {
+    public function notFound()
+    {
         $category = ArticleCategory::all();
 
         return view('guest.pagenotfound', compact('category'));
     }
 
-    public function test() {
+    public function test()
+    {
         $duplikatJudul = ArticleShow::select('judul')
             ->groupBy('judul')
             ->havingRaw('COUNT(*) > 1')

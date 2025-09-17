@@ -27,6 +27,16 @@
             
             {{-- Description --}}
             <x-guest.description :template="$template" :data="$data"/>
+            
+            {{-- Related --}}
+            <div class=" w-full max-w-[600px] mx-auto space-y-4">
+                <div style="background-color: {{ $template->desc_main_color ?? 'white' }}; color: {{ $template->desc_text_color }}" class=" w-auto p-4 text-base sm:text-xl font-bold rounded-md shadow-md">Pilihan Desain Lainnya</div>
+                <div class=" w-full grid grid-cols-2  gap-4">
+                    @foreach ($related as $item)
+                        @include('components.guest.item')
+                    @endforeach
+                </div>
+            </div>
         </div>
         {{-- Contact --}}
         @include('components.guest.contact.one')
