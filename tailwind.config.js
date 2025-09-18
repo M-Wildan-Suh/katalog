@@ -13,6 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                montserrat: ["Montserrat", sans-serif],
             },
             colors: {
                 'byolink-1' : '#141414',
