@@ -33,9 +33,9 @@
                             </div>
                         </div>
                         @php
-                            $data = $cat->articles->take(4)
+                            $data = $cat->articles->take(3)
                         @endphp
-                        <div class=" w-full grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class=" w-full grid grid-cols-2 md:grid-cols-3 gap-4">
                             @include('components.guest.product')
                         </div>
                         <div class=" flex justify-center">

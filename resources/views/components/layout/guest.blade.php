@@ -39,7 +39,7 @@
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
         <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet" />
     </head>
-    <body class="font-sans antialiased"
+    <body class=" font-montserrat antialiased"
         x-data="{ loading: true }" 
         x-init="setTimeout(() => loading = false, 1000)"
         @beforeunload.window="loading = true"
