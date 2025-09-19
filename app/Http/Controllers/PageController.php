@@ -20,7 +20,7 @@ class PageController extends Controller
             return $request->route('page', 1); // default ke halaman 1
         });
         $data = ArticleShow::where('status', 'publish')
-            ->latest()->simplePaginate(6);
+            ->latest()->simplePaginate(8);
 
         $category = ArticleCategory::all();
 

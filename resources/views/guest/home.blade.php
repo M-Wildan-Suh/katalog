@@ -64,7 +64,7 @@
                             <p class=" text-2xl sm:text-4xl font-bold text-center">Pilihan Desain Terbaru</p>
                         </div>
                     </div>
-                    <div class=" w-full grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                    <div class=" w-full grid grid-cols-2 md:grid-cols-4 gap-4">
                         @include('components.guest.product')
                     </div>
                     <div class=" flex justify-center">

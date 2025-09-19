@@ -88,7 +88,7 @@
             }
         </style>
         @include('components.guest.navbar')
-        <div class=" {{$home ? '' : 'pt-20'}} min-h-screen">
+        <div class=" {{$home ? '' : 'pt-20'}} min-h-screen bg-[#F1F3F4]">
             {{$slot}}
         </div>
     </body>
