@@ -7,13 +7,13 @@
             </div>
         </a>
     </div>
-    <div class=" py-1 sm:py-2 px-1 sm:px-2 text-sm sm:text-base flex flex-grow flex-col sm:gap-1 justify-between">
+    <div class=" pt-3 pb-1 sm:py-2 px-1 sm:px-2 text-xs sm:text-sm flex flex-grow flex-col justify-between">
         <div class="">
             <a href="{{ route('business', ['slug' => $item->slug]) }}" aria-label="{{$item->judul}}">
                 <p class=" line-clamp-1 font-bold hover:text-byolink-2 duration-300">{{ $item->judul }}</p>
             </a>
         </div>
-        <div class=" pt-1 sm:pt-0 flex text-xs sm:text-sm text-neutral-600">
+        <div class=" flex text-neutral-600 text-[10px] sm:text-xs">
             @foreach ($item->articles->articlecategory->take(2) as $cat)
                 <a href="{{ route('category', ['category' => $cat->slug]) }}"
                    class="{{ $loop->iteration === 2 ? 'truncate' : '' }} hover:text-byolink-2 duration-300">
