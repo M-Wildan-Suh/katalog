@@ -1,13 +1,13 @@
-<div class=" w-full flex flex-col rounded-md overflow-hidden bg-white shadow-md shadow-black/20">
-    <div class=" relative">
+<div class=" w-full flex flex-col rounded-md overflow-hidden border bg-white shadow-md shadow-black/20">
+    <div class=" relative sm:pt-4 sm:px-4">
         <a href="{{ route('business', ['slug' => $item->slug]) }}" aria-label="{{$item->judul}}">
-            <div class=" w-full aspect-[3/2] bg-white overflow-hidden">
+            <div class=" w-full aspect-[5/4] bg-white overflow-hidden sm:rounded-md">
                 <img src="{{$item->banner ? asset('storage/images/article/banner/' . $item->banner) : asset('assets/images/placeholder.webp')}}"
                     class=" w-full h-full object-cover hover:scale-105 duration-500" alt="">
             </div>
         </a>
     </div>
-    <div class=" py-2 px-2 text-sm sm:text-base flex flex-grow flex-col gap-1 justify-between">
+    <div class=" pt-2 pb-2 sm:pb-4 px-2 sm:px-4 text-sm sm:text-base flex flex-grow flex-col gap-1 justify-between">
         <div class="">
             <a href="{{ route('business', ['slug' => $item->slug]) }}" aria-label="{{$item->judul}}">
                 <p class=" line-clamp-1 font-bold hover:text-byolink-2 duration-300">{{ $item->judul }}</p>
