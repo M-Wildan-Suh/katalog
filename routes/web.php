@@ -105,3 +105,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/{slug}', [PageController::class, 'business'])->name('business');
+Route::get('/{i}/{i}', function () { return redirect()->route('not.found'); });
+Route::get('/{i}/{i}/{i}', function () { return redirect()->route('not.found'); });
+Route::get('/{i}/{i}/{i}/{i}', function () { return redirect()->route('not.found'); });
