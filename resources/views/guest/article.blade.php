@@ -61,6 +61,8 @@
                                                 hideLoader();
                                             } else {
                                                 observer.disconnect(); // stop observer kalau sudah habis
+                                                loading = false;
+                                                hideLoader();
                                             }
                                         }, 500);
                                     })
