@@ -96,7 +96,7 @@ class PageController extends Controller
                         });
                 })
                 ->latest()
-                ->sinplePaginate(12);
+                ->simplePaginate(12);
 
             $title = 'Pencarian : ' . $request->search;
         } else {
@@ -158,6 +158,10 @@ class PageController extends Controller
             ->with('articles.articleCategory')
             ->first();
 
+        if (!$data) {
+            return redirect()->route('not.found');
+        }
+
         $categoryIds = $data->articles->articlecategory->pluck('id');
         $totalCategories = $categoryIds->count();
 
@@ -173,10 +177,6 @@ class PageController extends Controller
             ->orderByDesc('match_count')
             ->take(2)
             ->get();
-
-        if (!$data) {
-            return redirect()->route('not.found');
-        }
 
         $data->view = $data->view + 1;
 

@@ -60,7 +60,9 @@
                                                 loading = false;
                                                 hideLoader();
                                             } else {
-                                                observer.disconnect(); // stop observer kalau sudah habis
+                                                observer.disconnect();
+                                                loading = false;
+                                                hideLoader();
                                             }
                                         }, 500);
                                     })
