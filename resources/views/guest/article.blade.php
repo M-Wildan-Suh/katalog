@@ -5,7 +5,7 @@
                 <div class=" w-full space-y-6 sm:space-y-8">
                     <div class="w-full flex justify-between items-center">
                         <div style='font-family: "Montserrat", Sans-serif;' class=" w-full flex flex-col items-center sm:gap-4">
-                            <p class=" text-base sm:text-xl font-bold text-center">Template</p>
+                            {{-- <p class=" text-base sm:text-xl font-bold text-center">Template</p> --}}
                             <p class=" text-xl sm:text-3xl font-bold text-center">{{$title}}</p>
                         </div>
                     </div>
