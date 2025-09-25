@@ -10,7 +10,7 @@
                             <p class=" text-xl sm:text-3xl font-bold text-white">Catalog</p>
                             {{-- <img src="{{asset('assets/images/logo.png')}}" alt=""> --}}
                         </div>
-                        <p class=" text-xs sm:text-sm">Pilih saja desain yang kamu suka, atau serahkan saja pada kami dan akan kami sesuaikan dengan bisnis usaha Anda.</p>
+                        <p class=" text-xs sm:text-sm">Berbagai pilihan desain modern terima beres. Biar kami yang menentukan dari pilihan desain berikut ini.</p>
                     </div>
                     <div class=" text-xs sm:text-sm space-y-4">
                         <div class=" flex flex-row gap-2">

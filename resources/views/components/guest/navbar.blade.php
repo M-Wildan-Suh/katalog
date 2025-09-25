@@ -4,12 +4,12 @@
         x-data="{ scrolled: {{ $home ? 'false' : 'true' }} }" 
         x-init="window.addEventListener('scroll', () => {
                 if ({{ $home ? 'true' : 'false' }}) {
-                    scrolled = window.scrollY > 100;
+                    scrolled = window.scrollY > 50;
                 }
             })"
-        :class="scrolled ? 'bg-white' : (open ? 'bg-white' : 'bg-transparent')"
+        :class="scrolled ? 'bg-white shadow-md shadow-black/20' : (open ? 'bg-white shadow-md shadow-black/20' : 'bg-transparent')"
         class=" fixed top-0 left-0 grid grid-col-3 w-full px-4 md:px-8 py-4 z-40 duration-500">
-        <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-10 justify-between">
+        <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-10 justify-between relative">
             <a href="{{ route('home') }}" class=" flex w-52">
                 <div class=" h-10 sm:h-12 flex items-center overflow-hidden">
                     {{-- <p class=" text-3xl sm:text-4xl font-bold">Bizlink</p> --}}
@@ -21,15 +21,20 @@
                 class=" hidden md:flex flex-row gap-6 items-center text-neutral-600">
                 <x-guest.nav-button route="{{ route('home') }}"
                     active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
-                <div class=" group relative">
+                <div class=" flex group">
                     <x-guest.nav-button route="{{ route('allcategory') }}"
                     active="{{ request()->routeIs('allcategory', 'allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Tipe Desain</x-guest.nav-button>
-                    <div class=" hidden group-hover:block absolute top-full left-0 bg-white min-w-40 py-2 rounded-md shadow-md shadow-black/20 text-sm">
-                        <div class=" max-h-36 overflow-auto flex flex-col gap-1">
-                            <a href="{{route('allarticle')}}" class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Desain Terbaru</a>
-                            @foreach ($category as $item)
+                    <div class=" w-full absolute max-w-[1080px] hidden group-hover:block top-[calc(100%-8px)] left-0 pt-6 z-30">
+                        <div 
+                            :class="scrolled ? ' rounded-b-md' : 'rounded-md'"
+                            class=" w-full absolute bg-white min-w-40 py-2 shadow-md shadow-black/20 text-sm">
+                            <div class=" w-full grid grid-cols-5 gap-1">
+                                <a href="{{route('allarticle')}}" class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Desain Terbaru</a>
+                                @foreach ($category->take(18) as $item)
                                 <a href="{{route('category', ['category' => $item->slug])}}" class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">{{$item->category}}</a>
-                            @endforeach
+                                @endforeach
+                                <a href="{{ route('allcategory') }}" class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Lihat Semua Tipe</a>
+                            </div>
                         </div>
                     </div>
                 </div>

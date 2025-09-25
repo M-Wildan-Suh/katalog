@@ -103,7 +103,7 @@ class PageController extends Controller
             $data = ArticleShow::where('status', 'publish')
                 ->latest()->simplePaginate(12);
 
-            $title = 'Desain Terbaru';
+            $title = 'Desain Terbaru Kami';
         }
 
         $data->transform(function ($data) {
