@@ -30,7 +30,6 @@
 
                         document.addEventListener("DOMContentLoaded", () => {
                             const loader = document.getElementById("loader");
-
                             const search = "{!! request('search') ? '&search=' . urlencode(request('search')) : '' !!}";
 
                             function loadMoreData() {
@@ -53,9 +52,9 @@
                                                 loading = false;
                                                 hideLoader();
                                             } else {
-                                                observer.disconnect();
-                                                loading = false;
+                                                // cukup sembunyikan loader, jangan disconnect observer
                                                 hideLoader();
+                                                // kalau mau bener-bener stop, cek last_page dari Laravel dan baru disconnect
                                             }
                                         }, 500);
                                     })

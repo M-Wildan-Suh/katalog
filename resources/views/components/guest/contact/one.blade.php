@@ -13,7 +13,7 @@
                 <p>Penjelasan</p>
             </button>
             @if ($data->whatsapp)
-                <a href="https://wa.me/{{ $data->no_tlp }}?text={{ urlencode('Halo saya dapat info dari ' . url()->current()) }}"
+                <a href="https://wa.me/{{ $data->no_tlp }}?text={{ urlencode('Halo saya Tertarik dengan Template simple ini ' . url()->current()) }}"
                     class=" w-full" target="__blank">
                     <button
                         class=" bg-byolink-2
