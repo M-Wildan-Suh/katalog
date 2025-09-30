@@ -1,4 +1,4 @@
-<x-layout.guest title="Catalog" :category="$category" :home="true">
+<x-layout.guest title="Catalog - Beranda" :category="$category" :home="true">
     <div class=" w-full min-h-[calc(100vh-370px)]">
         <div class="w-full sm:h-screen px-4 sm:px-6 relative overflow-hidden">
             <div

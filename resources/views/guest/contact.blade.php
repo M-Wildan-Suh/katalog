@@ -1,4 +1,4 @@
-<x-layout.guest title="Catalog - Page not Found" :category="$category">
+<x-layout.guest title="Catalog - Kontak" :category="$category">
     <div class=" w-full bg-[#F1F3F4] min-h-[calc(100vh-370px)] px-4 sm:px-6">
         <div class=" py-12 sm:py-16 w-full max-w-[1080px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class=" w-full aspect-square order-2 md:order-1">
