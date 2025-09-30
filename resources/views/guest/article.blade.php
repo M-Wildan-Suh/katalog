@@ -14,7 +14,7 @@
                         @include('components.guest.product')
                     </div>
                     <div id="loader" class=" w-full flex justify-center">
-                        <div class=" animate-spin w-12 h-12 text-byolink-1">
+                        <div id="animation" class=" animate-spin w-12 h-12 text-byolink-1">
                             <svg fill="none" class=" w-full h-full" viewBox="0 0 48 48"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -30,6 +30,7 @@
 
                         document.addEventListener("DOMContentLoaded", () => {
                             const loader = document.getElementById("loader");
+                            const animation = document.getElementById("animation");
                             const search = "{!! request('search') ? '&search=' . urlencode(request('search')) : '' !!}";
 
                             function loadMoreData() {
@@ -78,11 +79,11 @@
                         });
 
                         function showLoader() {
-                            document.getElementById("loader").classList.remove("hidden");
+                            document.getElementById("animation").classList.remove("hidden");
                         }
 
                         function hideLoader() {
-                            document.getElementById("loader").classList.add("hidden");
+                            document.getElementById("animation").classList.add("hidden");
                         }
                     </script>
                 </div>
