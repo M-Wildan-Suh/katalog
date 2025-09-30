@@ -43,6 +43,12 @@
                 </div>
                 <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Phone Number</p>
             </x-admin.navbutton>
+            <x-admin.navbutton route="category.index" :active="['category.index', 'category.create', 'category.show']">
+                <div class="min-w-5 h-5 mx-0.5">
+                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4z"/></svg>
+                </div>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Kategori</p>
+            </x-admin.navbutton>
             <x-admin.navbutton route="article.index" :active="['article.index', 'article.create', 'article.show', 'articel-show.create', 'article-show.create', 'article-show.show', 'article.spintax', 'article.unique', 'article.filter', 'article.spintax.filter', 'article.unique.filter']">
                 <div class="min-w-6 h-6">
                     <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M8 28h8v-8H8v8zm0 10h8v-8H8v8zm0-20h8v-8H8v8zm10 10h24v-8H18v8zm0 10h24v-8H18v8zm0-28v8h24v-8H18z" fill="currentColor" class="fill-000000"></path><path d="M0 0h48v48H0z" fill="none"></path></svg>

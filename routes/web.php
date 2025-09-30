@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleBannerController;
+use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleGalleryController;
 use App\Http\Controllers\ArticleGeneratedController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SourceCodeController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\UserController;
+use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +60,8 @@ Route::middleware('daily_schedule')->group(function () {
 
     Route::get('/kategori', [PageController::class, 'category'])->name('allcategory');
 
+    Route::get('/Kontak', [PageController::class, 'contact'])->name('contact');
+
     Route::get('/page-not-found', [PageController::class, 'notFound'])->name('not.found');
 });
 
@@ -84,6 +88,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/article-unique', [ArticleController::class, 'indexunique'])->name('article.unique');
     Route::get('/admin/article-unique/status/{status}/category/{filtercat}', [ArticleController::class, 'indexunique'])->name('article.unique.filter');
 
+    Route::resource('/admin/category', ArticleCategoryController::class);
+    Route::delete('/admin/category/destroy/all', [ArticleCategoryController::class, 'destroyAll'])->name('category.destroy.all');
+
     Route::resource('/admin/article-banner', ArticleBannerController::class);
     Route::resource('/admin/article-gallery', ArticleGalleryController::class);
     Route::resource('/admin/source-code', SourceCodeController::class);
@@ -105,6 +112,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/{slug}', [PageController::class, 'business'])->name('business');
-Route::get('/{i}/{i}', function () { return redirect()->route('not.found'); });
-Route::get('/{i}/{i}/{i}', function () { return redirect()->route('not.found'); });
-Route::get('/{i}/{i}/{i}/{i}', function () { return redirect()->route('not.found'); });
+Route::get('/{a}/{i}', function () { return redirect()->route('not.found'); });
+Route::get('/{a}/{i}/{u}', function () { return redirect()->route('not.found'); });
+Route::get('/{a}/{i}/{e}/{o}', function () { return redirect()->route('not.found'); });

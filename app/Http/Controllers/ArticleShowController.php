@@ -462,6 +462,9 @@ class ArticleShowController extends Controller
         
             // Sinkronkan tag ke dalam pivot table
             $newarticle->articletag()->sync($tagIds);
+        } else {
+            // Kalau request kosong, detach semua relasi category
+            $newarticle->articletag()->sync([]);
         }
 
         // Category
@@ -485,6 +488,9 @@ class ArticleShowController extends Controller
         
             // Sinkronkan tag ke dalam pivot table
             $newarticle->articlecategory()->sync($categoryIds);
+        } else {
+            // Kalau request kosong, detach semua relasi category
+            $newarticle->articlecategory()->sync([]);
         }
 
         if ($request->no_tlp) {

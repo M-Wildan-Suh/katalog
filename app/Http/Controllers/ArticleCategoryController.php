@@ -3,16 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\ArticleCategory;
+use App\Models\ArticleShow;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ArticleCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->search) {
+            $data = ArticleCategory::where('url', 'like', '%' . $request->search . '%')->simplePaginate(20);
+        } else {
+            $data = ArticleCategory::simplePaginate(20);
+        }
+
+        $data->transform(function ($data) {
+            $data->uniquecount = $data->articles->where('article_type', 'unique')->count();
+            return $data;
+        });
+
+        if ($request->ajax()) {
+            return view('admin.category.row', compact('data'))->render();
+        }
+
+        return view('admin.category.index', compact('data'));
     }
 
     /**
@@ -28,7 +46,7 @@ class ArticleCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -50,16 +68,40 @@ class ArticleCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ArticleCategory $articleCategory)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'category' => [
+                'required',
+                Rule::unique('article_categories')->ignore($id),
+            ],
+        ]);
+
+        $articleCategory = ArticleCategory::find($id);
+
+        $articleCategory->category = $request->category;
+
+        $articleCategory->save();
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ArticleCategory $articleCategory)
+    public function destroy($id)
     {
-        //
+        $articleCategory = ArticleCategory::find($id);
+
+        $articleCategory->delete();
+
+        return redirect()->back();
+    }
+    
+    public function destroyAll()
+    {
+        ArticleCategory::doesntHave('articles')->delete();
+
+        return redirect()->back()->with('success', 'Category tanpa artikel berhasil dihapus');
     }
 }
