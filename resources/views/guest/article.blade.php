@@ -44,19 +44,21 @@
                                     })
                                     .then(response => response.text())
                                     .then(html => {
-                                        setTimeout(() => {
-                                            if (html.trim() !== "") {
-                                                document.getElementById("desain").insertAdjacentHTML("beforeend", html);
+                                        if (html.trim() !== "") {
+                                            const desain = document.getElementById("desain");
+                                            desain.insertAdjacentHTML("beforeend", html);
 
-                                                page++;
-                                                loading = false;
-                                                hideLoader();
-                                            } else {
-                                                // cukup sembunyikan loader, jangan disconnect observer
-                                                hideLoader();
-                                                // kalau mau bener-bener stop, cek last_page dari Laravel dan baru disconnect
-                                            }
-                                        }, 500);
+                                            // pastikan loader tetap di bawah grid
+                                            desain.parentNode.appendChild(loader);
+
+                                            page++;
+                                            loading = false;
+                                            hideLoader();
+                                        } else {
+                                            observer.disconnect(); // stop kalau sudah habis
+                                            hideLoader();
+                                            loading = false;
+                                        }
                                     })
                                     .catch(() => {
                                         loading = false;
