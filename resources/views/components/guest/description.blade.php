@@ -1,4 +1,4 @@
-@props(['data' => null, 'template' => null])
+@props(['data' => null])
 <div class=" w-full max-w-[600px] mx-auto">
     <div class=" w-full rounded-md bg-white text-black shadow-md py-4 space-y-2 sm:space-y-4">
         <div class="pt-4 px-4 space-y-4">

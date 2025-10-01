@@ -60,6 +60,8 @@ Route::middleware('daily_schedule')->group(function () {
 
     Route::get('/kategori', [PageController::class, 'category'])->name('allcategory');
 
+    // Route::get('/price-list', [PageController::class, 'priceList'])->name('price.list');
+
     Route::get('/Kontak', [PageController::class, 'contact'])->name('contact');
 
     Route::get('/page-not-found', [PageController::class, 'notFound'])->name('not.found');
