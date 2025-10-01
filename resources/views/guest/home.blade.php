@@ -37,8 +37,8 @@
                 </div>
             </div>
         </div>
-        <div class=" w-full pt-16 sm:pt-32 space-y-20 sm:space-y-18">
-            <div class=" w-full px-4 py-16 sm:px-6 bg-[#F1F3F4]">
+        <div class=" w-full py-16 sm:py-32 space-y-20 sm:space-y-18 bg-[#F1F3F4]">
+            <div class=" w-full px-4 sm:px-6">
                 <div class=" w-full max-w-[1080px] mx-auto">
                     <div class=" w-full space-y-6 sm:space-y-8">
                         <div class="w-full flex justify-between items-center">
