@@ -39,8 +39,8 @@
                         </div>
                     </div>
                 </div>
-                {{-- <x-guest.nav-button route="{{ route('price.list') }}"
-                    active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button> --}}
+                <x-guest.nav-button route="{{ route('price.list') }}"
+                    active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button>
                 <x-guest.nav-button route="{{ route('contact') }}"
                     active="{{ request()->routeIs('contact') }}">Kontak</x-guest.nav-button>
                 {{-- @if (Route::has('login'))

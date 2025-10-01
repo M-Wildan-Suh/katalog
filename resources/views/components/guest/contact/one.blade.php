@@ -2,7 +2,7 @@
     <div class=" w-full max-w-[600px] mx-auto">
         <div class=" w-full py-2 grid grid-cols-2 gap-2 sm:gap-4 text-sm sm:text-base">
             <button @click="video = !video"
-                class=" bg-byolink-2
+                class=" bg-[#0057B7]
              w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 text-white rounded-full hover:scale-95 duration-300">
                 <div class=" w-4 sm:w-5 aspect-square">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
@@ -16,7 +16,7 @@
                 <a href="https://wa.me/{{ $data->no_tlp }}?text={{ urlencode('Halo saya Tertarik dengan Template simple ini ' . url()->current()) }}"
                     class=" w-full" target="__blank">
                     <button
-                        class=" bg-byolink-2
+                        class=" bg-gradient-to-tl from-green-700 to-green-500
                      w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 text-white rounded-full hover:scale-95 duration-300">
                         <div class=" w-4 sm:w-5 aspect-square">
                             <svg viewBox="0 0 56.693 56.693" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"

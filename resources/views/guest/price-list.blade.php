@@ -1,6 +1,6 @@
 <x-layout.guest title="Catalog - Kontak" :category="$category">
     <div class=" w-full bg-[#F1F3F4] min-h-[calc(100vh-370px)] px-4 sm:px-6">
-        <div class=" w-full pt-16 sm:pt-32 space-y-20 sm:space-y-18">
+        <div class=" w-full py-16 sm:py-32 space-y-20 sm:space-y-18">
             <div class=" w-full px-4 sm:px-6">
                 <div class=" w-full max-w-[1080px] mx-auto">
                     <div class=" space-y-6 sm:space-y-8">
@@ -17,7 +17,7 @@
                         <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             @foreach ($plans as $plan)
                                 <div
-                                    class="w-full border hover:shadow-md hover:shadow-black/20 duration-300 flex flex-col justify-between rounded-md px-4 py-8 gap-4">
+                                    class="w-full border hover:shadow-md bg-white hover:shadow-black/20 duration-300 flex flex-col justify-between rounded-md px-4 py-8 gap-4">
                                     <div class="space-y-4 sm:space-y-6">
                                         <p class="text-xl font-bold">{{ $plan['title'] }}</p>
                                         <p class="text-2xl font-bold text-byolink-2">{{ $plan['price'] }}</p>

@@ -50,54 +50,6 @@ class PageController extends Controller
             return $data;
         });
 
-        $plans = [
-            [
-                'title' => 'Pemula',
-                'price' => 'Rp 850k',
-                'features' => [
-                    'Domain my.id',
-                    'Tanpa Akses Hosting',
-                    'Free Support 1 Tahun',
-                    '1 Halaman',    
-                ],
-            ],
-            [
-                'title' => 'Medium',
-                'price' => 'Rp 1 JT',
-                'features' => [
-                    'Domain .com',
-                    'Tanpa Akses Hosting',
-                    'Email Privat: 1',
-                    'Free Support 1 Tahun',
-                    '1 Halaman',
-                ],
-            ],
-            [
-                'title' => 'Bisnis',
-                'price' => 'Rp 1,4 JT',
-                'features' => [
-                    'Domain .com',
-                    'Hosting 5 GB',
-                    'Email Privat: 2',
-                    'Free Support 1 Tahun',
-                    '5 Halaman',
-                ],
-            ],
-            [
-                'title' => 'Bisnis Plus',
-                'price' => 'Rp 1,9 JT',
-                'features' => [
-                    'Domain .com',
-                    'Hosting 8 GB',
-                    'Iklan Google: 7 Hari',
-                    'Email Privat: 5',
-                    'Free Support 1 Tahun',
-                    '5 Halaman',
-                    'Artikel: 20 Artikel/Produk Relevan',
-                ],
-            ],
-        ];
-
         $hp = PhoneNumber::first()->no_tlp;
 
         $trend = ArticleShow::orderBy('view', 'desc')
@@ -105,7 +57,7 @@ class PageController extends Controller
             ->take(6)->get();
 
         $data->withPath("/desain/page");
-        return view('guest.home', compact('data', 'trend', 'category', 'plans', 'hp'));
+        return view('guest.home', compact('data', 'trend', 'category', 'hp'));
     }
 
     public function article(Request $request, $username = null, $category = null, $tag = null)
@@ -264,6 +216,60 @@ class PageController extends Controller
         $hp = PhoneNumber::first()->no_tlp;
 
         return view('guest.contact', compact('category', 'hp'));
+    }
+    
+    public function priceList()
+    {
+        $category = ArticleCategory::all();
+
+        $hp = PhoneNumber::first()->no_tlp;
+
+        $plans = [
+            [
+                'title' => 'Pemula',
+                'price' => 'Rp 890k',
+                'features' => [
+                    'Domain my.id',
+                    'Free Support 1 Tahun',
+                    '1 Halaman',    
+                ],
+            ],
+            [
+                'title' => 'Medium',
+                'price' => 'Rp 1.1 JT',
+                'features' => [
+                    'Domain .com',
+                    'Email Privat: 1',
+                    'Free Support 1 Tahun',
+                    '1 Halaman',
+                ],
+            ],
+            [
+                'title' => 'Bisnis',
+                'price' => 'Rp 1.6 JT',
+                'features' => [
+                    'Domain .com',
+                    'Hosting 5 GB',
+                    'Email Privat: 2',
+                    'Free Support 1 Tahun',
+                    '5 Halaman',
+                ],
+            ],
+            [
+                'title' => 'Bisnis Plus',
+                'price' => 'Rp 2.2 JT',
+                'features' => [
+                    'Domain .com',
+                    'Hosting 8 GB',
+                    'Email Privat: 5',
+                    'Free Support 1 Tahun',
+                    '5 Halaman',
+                    'Artikel: 20 Artikel/Produk Relevan',
+                ],
+            ],
+        ];
+
+        return view('guest.price-list', compact('category', 'hp', 'plans'));
     }
 
     public function notFound()

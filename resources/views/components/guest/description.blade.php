@@ -28,10 +28,12 @@
         </div>
         <div class=" w-full px-4">
             <div class=" text-black text-sm sm:text-base p-4 flex flex-col rounded-md bg-[#E1E1E2] gap-2">
-                <p class=" text-lg sm:text-xl"><b>Benefit :</b></p>
+                <p class=" text-lg sm:text-xl"><b>Kenapa Pilih Website Simpel ?</b></p>
                 <div class="">
-                    <p>- Website terima beres</p>
-                    <p>- Bisa request warna yg diinginkan</p>
+                    <p>- Website Terima Beres</p>
+                    <p>- Bisa Request Warna</p>
+                    <p>- Website Cepat Jadi</p>
+                    <p>- Website Hemat Biaya</p>
                 </div>
             </div>
         </div>

@@ -5,9 +5,12 @@
                 <div class=" w-full space-y-6 sm:space-y-8">
                     <div class="w-full flex justify-between items-center">
                         <div style='font-family: "Montserrat", Sans-serif;'
-                            class=" w-full flex flex-col items-center sm:gap-4">
+                            class=" w-full flex flex-col items-center gap-2 sm:gap-4">
                             {{-- <p class=" text-base sm:text-xl font-bold text-center">Template</p> --}}
                             <p class=" text-xl sm:text-3xl font-bold text-center">{{ $title }}</p>
+                            <p class=" text-center text-sm sm:text-base">
+                                Berbagai pilihan template website siap simpel untuk beragam jenis usaha. Mulai dari bisnis, jasa, toko online, hingga perusahaan. Pilih template favorit Anda, layout dan sebagainya diserahkan ke tim profesional kami.
+                            </p>
                         </div>
                     </div>
                     <div id="desain" class=" w-full grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">

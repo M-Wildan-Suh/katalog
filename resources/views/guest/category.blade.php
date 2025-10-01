@@ -7,6 +7,9 @@
                         <div style='font-family: "Montserrat", Sans-serif;' class=" w-full flex flex-col items-center sm:gap-4">
                             {{-- <p class=" text-base sm:text-xl font-bold text-center">List</p> --}}
                             <p class=" text-xl sm:text-3xl font-bold text-center">Kategori Web Tipe Simpel</p>
+                            <p class=" text-center text-sm sm:text-base">
+                                Berbagai kategori desain profesional untuk kebutuhan website bisnis, toko online, hingga jasa. 
+                            </p>
                         </div>
                     </div>
                     <div class=" w-full rounded-md overflow-hidden grid grid-cols-2 sm:grid-cols-4 gap-4">
