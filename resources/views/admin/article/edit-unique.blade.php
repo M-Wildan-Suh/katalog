@@ -179,14 +179,7 @@
         </div>
     </x-slot:template>
 
-    <script>
-        // Saat halaman edit dibuka setelah update
-        // ganti riwayat terakhir agar tombol back tidak kembali ke edit sebelumnya
-        history.replaceState(null, null, location.href);
-
-        // push halaman list ke history, sehingga back akan ke list
-        history.pushState(null, null, "{{ route('articles.index') }}");
-    </script>
+    
 
     @include('components.admin.component.success')
     @include('components.admin.component.validationerror')
