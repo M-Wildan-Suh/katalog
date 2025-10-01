@@ -102,6 +102,8 @@
             active="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Tipe Simple</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('allcategory') }}"
             active="{{ request()->routeIs('allcategory') }}">Kategori</x-guest.nav-button>
+        <x-guest.nav-button route="{{ route('price.list') }}"
+            active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('contact') }}"
             active="{{ request()->routeIs('contact') }}">Kontak</x-guest.nav-button>
         <form action="{{ route('allarticle') }}" method="get">

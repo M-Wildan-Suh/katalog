@@ -70,9 +70,6 @@
                                 class=" w-full flex flex-col gap-2 sm:gap-4 items-center">
                                 {{-- <p class=" text-base sm:text-xl font-bold text-center">Template</p> --}}
                                 <p class=" text-2xl sm:text-4xl font-bold text-center">Desain Terbaru Kami</p>
-                                <p class="text-center text-sm sm:text-base">
-                                    Berbagai pilihan template website siap simpel untuk beragam jenis usaha. Mulai dari bisnis, jasa, toko online, hingga perusahaan. Pilih template favorit Anda, layout dan sebagainya diserahkan ke tim profesional kami.
-                                </p>
                             </div>
                         </div>
                         <div class=" w-full grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
