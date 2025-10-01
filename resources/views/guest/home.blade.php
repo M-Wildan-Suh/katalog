@@ -21,8 +21,7 @@
                         <p class=" text-byolink-2">Solusi Website Simpel</p>
                         <p>Tanpa Harus Pusing Mikirin Konten & Desain</p>
                     </div>
-                    <p class=" text-left text-sm sm:text-base text-neutral-600">Cukup pilih desain dan kirim data
-                        usahamu, sisanya kami yang akan siapkan websitenya.</p>
+                    <p class=" text-left text-sm sm:text-base text-neutral-600">Tinggal pilih desain favoritmu,, sisanya biar kami yang urus.</p>
                     <div class=" flex">
                         <a href="{{ route('allarticle') }}" class="flex">
                             <button
