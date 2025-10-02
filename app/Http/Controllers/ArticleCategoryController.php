@@ -7,6 +7,7 @@ use App\Models\ArticleShow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class ArticleCategoryController extends Controller
 {
@@ -46,7 +47,18 @@ class ArticleCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validated = $request->validate([
+            'category' => 'required|unique:'.ArticleCategory::class,
+        ]);
+
+        $articleCategory = new ArticleCategory();
+
+        $articleCategory->category = $request->category;
+        $articleCategory->slug = Str::slug($articleCategory->category);
+
+        $articleCategory->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +92,7 @@ class ArticleCategoryController extends Controller
         $articleCategory = ArticleCategory::find($id);
 
         $articleCategory->category = $request->category;
+        $articleCategory->slug = Str::slug($articleCategory->category);
 
         $articleCategory->save();
 

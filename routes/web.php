@@ -10,12 +10,14 @@ use App\Http\Controllers\ArticleShowController;
 use App\Http\Controllers\ArticleShowGalleryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneNumberController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SourceCodeController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\UserController;
 use App\Models\ArticleCategory;
+use App\Models\portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +66,8 @@ Route::middleware('daily_schedule')->group(function () {
 
     Route::get('/Kontak', [PageController::class, 'contact'])->name('contact');
 
+    Route::get('/portofolio', [PageController::class, 'portfolio'])->name('guestportfolio');
+
     Route::get('/page-not-found', [PageController::class, 'notFound'])->name('not.found');
 });
 
@@ -92,6 +96,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/admin/category', ArticleCategoryController::class);
     Route::delete('/admin/category/destroy/all', [ArticleCategoryController::class, 'destroyAll'])->name('category.destroy.all');
+
+    Route::resource('/admin/portfolio', PortfolioController::class);
 
     Route::resource('/admin/article-banner', ArticleBannerController::class);
     Route::resource('/admin/article-gallery', ArticleGalleryController::class);

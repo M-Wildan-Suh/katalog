@@ -6,6 +6,7 @@ use App\Models\ArticleCategory;
 use App\Models\ArticleShow;
 use App\Models\ArticleTag;
 use App\Models\PhoneNumber;
+use App\Models\Portfolio;
 use App\Models\Template;
 use App\Models\User;
 use Carbon\Carbon;
@@ -270,6 +271,21 @@ class PageController extends Controller
         ];
 
         return view('guest.price-list', compact('category', 'hp', 'plans'));
+    }
+
+    public function portfolio(Request $request)
+    {
+        $data = Portfolio::latest()->simplePaginate(12);
+
+        if ($request->ajax()) {
+            return view('components.guest.portfolio', compact('data'))->render();
+        }
+        
+        $category = ArticleCategory::all();
+        
+        $hp = PhoneNumber::first()->no_tlp;
+
+        return view('guest.portfolio', compact('category', 'hp', 'data'));
     }
 
     public function notFound()

@@ -9,8 +9,8 @@
             })"
         :class="scrolled ? 'bg-white shadow-md shadow-black/20' : (open ? 'bg-white shadow-md shadow-black/20' : 'bg-transparent')"
         class=" fixed top-0 left-0 grid grid-col-3 w-full px-4 md:px-8 py-4 z-40 duration-500">
-        <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-10 justify-between relative">
-            <a href="{{ route('home') }}" class=" flex w-52">
+        <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-6 justify-between relative">
+            <a href="{{ route('home') }}" class=" flex justify-start min-w-10 sm:min-w-12 lg:w-52">
                 <div class=" h-10 sm:h-12 flex items-center overflow-hidden">
                     {{-- <p class=" text-3xl sm:text-4xl font-bold">Bizlink</p> --}}
                     <img src="{{ asset('assets/images/logo-jbiz.png') }}" class=" w-full h-full object-contain"
@@ -18,7 +18,7 @@
                 </div>
             </a>
             <div
-                class=" hidden md:flex flex-row gap-6 items-center text-neutral-600">
+                class=" hidden md:flex flex-row gap-4 items-center text-neutral-600">
                 <x-guest.nav-button route="{{ route('home') }}"
                     active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
                 <x-guest.nav-button route="{{ route('allarticle') }}"
@@ -41,6 +41,8 @@
                 </div>
                 <x-guest.nav-button route="{{ route('price.list') }}"
                     active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button>
+                <x-guest.nav-button route="{{ route('guestportfolio') }}"
+                    active="{{ request()->routeIs('guestportfolio') }}">Portofolio</x-guest.nav-button>
                 <x-guest.nav-button route="{{ route('contact') }}"
                     active="{{ request()->routeIs('contact') }}">Kontak</x-guest.nav-button>
                 {{-- @if (Route::has('login'))
@@ -104,6 +106,8 @@
             active="{{ request()->routeIs('allcategory') }}">Kategori</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('price.list') }}"
             active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button>
+        <x-guest.nav-button route="{{ route('guestportfolio') }}"
+            active="{{ request()->routeIs('guestportfolio') }}">Portofolio</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('contact') }}"
             active="{{ request()->routeIs('contact') }}">Kontak</x-guest.nav-button>
         <form action="{{ route('allarticle') }}" method="get">

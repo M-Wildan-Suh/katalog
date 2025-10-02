@@ -49,6 +49,12 @@
                 </div>
                 <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Kategori</p>
             </x-admin.navbutton>
+            <x-admin.navbutton route="portfolio.index" :active="['portfolio.index', 'portfolio.create', 'portfolio.show']">
+                <div class="min-w-5 h-5 mx-0.5">
+                    <svg class=" w-full h-full" version="1.1" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="currentColor" id="Core" transform="translate(-87.000000, -171.000000)"><g id="drive-form" transform="translate(87.000000, 171.000000)"><path d="M16,0 L2,0 C0.9,0 0,0.9 0,2 L0,16 C0,17.1 0.9,18 2,18 L16,18 C17.1,18 18,17.1 18,16 L18,2 C18,0.9 17.1,0 16,0 L16,0 Z M6,14 L4,14 L4,12 L6,12 L6,14 L6,14 Z M6,10 L4,10 L4,8 L6,8 L6,10 L6,10 Z M6,6 L4,6 L4,4 L6,4 L6,6 L6,6 Z M14,14 L7,14 L7,12 L14,12 L14,14 L14,14 Z M14,10 L7,10 L7,8 L14,8 L14,10 L14,10 Z M14,6 L7,6 L7,4 L14,4 L14,6 L14,6 Z" id="Shape"/></g></g></g></svg>
+                </div>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Portofolio</p>
+            </x-admin.navbutton>
             <x-admin.navbutton route="article.index" :active="['article.index', 'article.create', 'article.show', 'articel-show.create', 'article-show.create', 'article-show.show', 'article.spintax', 'article.unique', 'article.filter', 'article.spintax.filter', 'article.unique.filter']">
                 <div class="min-w-6 h-6">
                     <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M8 28h8v-8H8v8zm0 10h8v-8H8v8zm0-20h8v-8H8v8zm10 10h24v-8H18v8zm0 10h24v-8H18v8zm0-28v8h24v-8H18z" fill="currentColor" class="fill-000000"></path><path d="M0 0h48v48H0z" fill="none"></path></svg>
