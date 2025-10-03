@@ -48,7 +48,7 @@
                 <div class=" w-full max-w-[1080px] mx-auto">
                     <div class=" w-full grid grid-cols-1 sm:grid-cols-2 text-center sm:text-left gap-10">
                         <div class=" w-full order-2 sm:order-1">
-                            <img src="https://img.freepik.com/free-vector/ui-ux-designers-isometric-composition-with-small-people-creating-custom-design-web-site-3d-vector-illustration_1284-68939.jpg?semt=ais_hybrid&w=740&q=80"
+                            <img src="{{asset('/assets/images/secimage.jpg')}}"
                                 class=" object-contain" alt="">
                         </div>
                         <div class=" flex flex-col justify-center gap-6 order-1 sm:order-2">

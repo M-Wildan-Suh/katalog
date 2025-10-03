@@ -13,7 +13,7 @@
                             </p> --}}
                         </div>
                     </div>
-                    <div id="desain" class=" w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                    <div id="desain" class=" w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                         @include('components.guest.portfolio')
                     </div>
                     <div id="loader" class=" w-full flex justify-center">
