@@ -134,6 +134,7 @@
                 }
             }
         </script>
+          
         <x-admin.component.linkinput title="Video (Link Youtube/Tiktok) (opsional)" placeholder="Masukkan link..." :value="old('link')" name="link" link="Url" />
     </x-slot:additional>
     <x-slot:template>

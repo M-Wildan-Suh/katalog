@@ -1,48 +1,50 @@
 {{-- Navigation --}}
 <div class="" x-data="{ open: false, article: false }">
-    <div x-data="{ scrolled: {{ $home ? 'false' : 'true' }} }" x-init="window.addEventListener('scroll', () => {
-        if ({{ $home ? 'true' : 'false' }}) {
-            scrolled = window.scrollY > 100;
-        }
-    })"
-        :class="scrolled ? 'bg-white' : (open ? 'bg-white' : 'bg-transparent')"
+    <div
+        x-data="{ scrolled: {{ $home ? 'false' : 'true' }} }" 
+        x-init="window.addEventListener('scroll', () => {
+                if ({{ $home ? 'true' : 'false' }}) {
+                    scrolled = window.scrollY > 50;
+                }
+            })"
+        :class="scrolled ? 'bg-white shadow-md shadow-black/20' : (open ? 'bg-white shadow-md shadow-black/20' : 'bg-transparent')"
         class=" fixed top-0 left-0 grid grid-col-3 w-full px-4 md:px-8 py-4 z-40 duration-500">
-        <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-10 justify-between relative">
-            <a href="{{ route('home') }}" class=" flex w-52">
+        <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-6 justify-between relative">
+            <a href="{{ route('home') }}" class=" flex justify-start min-w-10 sm:min-w-12 lg:w-52">
                 <div class=" h-10 sm:h-12 flex items-center overflow-hidden">
                     {{-- <p class=" text-3xl sm:text-4xl font-bold">Bizlink</p> --}}
                     <img src="{{ asset('assets/images/logo-jbiz.png') }}" class=" w-full h-full object-contain"
                         alt="">
                 </div>
             </a>
-            <div class=" hidden md:flex flex-row gap-6 items-center text-neutral-600">
+            <div
+                class=" hidden md:flex flex-row gap-4 items-center text-neutral-600">
                 <x-guest.nav-button route="{{ route('home') }}"
                     active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
+                <x-guest.nav-button route="{{ route('allarticle') }}"
+                    active="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Tipe Simple</x-guest.nav-button>
                 <div class=" flex group">
                     <x-guest.nav-button route="{{ route('allcategory') }}"
-                        active="{{ request()->routeIs('allcategory', 'allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Tipe
-                        Desain</x-guest.nav-button>
-                    <div
-                        class=" w-full absolute max-w-[1080px] hidden group-hover:block top-[calc(100%-8px)] left-0 pt-6 z-30">
-                        <div :class="scrolled ? ' rounded-b-md' : 'rounded-md'"
+                    active="{{ request()->routeIs('allcategory') }}">Kategori</x-guest.nav-button>
+                    <div class=" w-full absolute max-w-[1080px] hidden group-hover:block top-[calc(100%-8px)] left-0 pt-6 z-30">
+                        <div 
+                            :class="scrolled ? ' rounded-b-md' : 'rounded-md'"
                             class=" w-full absolute bg-white min-w-40 py-2 shadow-md shadow-black/20 text-sm">
                             <div class=" w-full grid grid-cols-5 gap-1">
-                                <a href="{{ route('allarticle') }}"
-                                    class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Desain
-                                    Terbaru</a>
-                                @foreach ($category->take(18) as $item)
-                                    <a href="{{ route('category', ['category' => $item->slug]) }}"
-                                        class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">{{ $item->category }}</a>
+                                @foreach ($category->take(19) as $item)
+                                <a href="{{route('category', ['category' => $item->slug])}}" class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">{{$item->category}}</a>
                                 @endforeach
-                                <a href="{{ route('allcategory') }}"
-                                    class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Lihat Semua
-                                    Tipe</a>
+                                <a href="{{ route('allcategory') }}" class=" w-full  text-nowrap px-4 hover:bg-neutral-100 duration-300 py-1">Lihat Semua Tipe</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <x-guest.nav-button route="{{ request()->routeIs('business') ? route('home') : '' }}#kontak"
-                    active="">Kontak</x-guest.nav-button>
+                <x-guest.nav-button route="{{ route('price.list') }}"
+                    active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button>
+                <x-guest.nav-button route="{{ route('guestportfolio') }}"
+                    active="{{ request()->routeIs('guestportfolio') }}">Portofolio</x-guest.nav-button>
+                <x-guest.nav-button route="{{ route('contact') }}"
+                    active="{{ request()->routeIs('contact') }}">Kontak</x-guest.nav-button>
                 {{-- @if (Route::has('login'))
                     @auth
                         <form method="POST" class="" action="{{ route('logout') }}">
@@ -58,28 +60,15 @@
             </div>
             <div class=" hidden md:block">
                 <form action="{{ route('allarticle') }}" class="w-full flex justify-end" method="get">
-                    <div
-                        class=" flex items-center justify-between w-full max-w-52 h-10 group rounded-full border border-neutral-400">
-                        <button aria-label="Cari" class=" pl-4 rounded-l-full duration-300 h-10">
-                            <div class=" w-[18px] aspect-square overflow-hidden text-neutral-400">
-                                <svg id="Layer_1" style="enable-background:new 0 0 64 64;" version="1.1"
-                                    viewBox="0 0 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <g>
-                                        <g id="Icon-Search" transform="translate(30.000000, 230.000000)">
-                                            <path fill="currentColor"
-                                                d="M-2.3-182.9c-10.7,0-19.5-8.7-19.5-19.5c0-10.7,8.7-19.5,19.5-19.5s19.5,8.7,19.5,19.5     C17.1-191.6,8.4-182.9-2.3-182.9L-2.3-182.9z M-2.3-219c-9.2,0-16.7,7.5-16.7,16.7c0,9.2,7.5,16.7,16.7,16.7s16.7-7.5,16.7-16.7     C14.3-211.5,6.8-219-2.3-219L-2.3-219z"
-                                                id="Fill-1" />
-                                            <polyline fill="currentColor" id="Fill-2"
-                                                points="23.7,-174.2 10.1,-187.7 12.3,-189.9 25.8,-176.3 23.7,-174.2    " />
-                                        </g>
-                                    </g>
-                                </svg>
+                    <div class=" flex items-center justify-between w-full max-w-52 h-10 group rounded-full border border-neutral-600">
+                        <button aria-label="Cari"
+                            class=" pl-4 rounded-l-full duration-300 h-10">
+                            <div class=" w-[18px] aspect-square overflow-hidden text-neutral-600">
+                                <svg id="Layer_1" style="enable-background:new 0 0 64 64;" version="1.1" viewBox="0 0 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g id="Icon-Search" transform="translate(30.000000, 230.000000)"><path fill="currentColor" d="M-2.3-182.9c-10.7,0-19.5-8.7-19.5-19.5c0-10.7,8.7-19.5,19.5-19.5s19.5,8.7,19.5,19.5     C17.1-191.6,8.4-182.9-2.3-182.9L-2.3-182.9z M-2.3-219c-9.2,0-16.7,7.5-16.7,16.7c0,9.2,7.5,16.7,16.7,16.7s16.7-7.5,16.7-16.7     C14.3-211.5,6.8-219-2.3-219L-2.3-219z" id="Fill-1"/><polyline fill="currentColor" id="Fill-2" points="23.7,-174.2 10.1,-187.7 12.3,-189.9 25.8,-176.3 23.7,-174.2    "/></g></g></svg>
                             </div>
                         </button>
                         <input type="text" name="search" value="{{ request('search') }}"
-                            :class="scrolled ? 'text-neutral-200' : 'text-black'"
-                            class=" bg-transparent min-w-0 sm:flex-grow h-10 text-sm px-4 border-0 border-transparent focus:ring-0"
+                            class=" bg-transparent text-black min-w-0 sm:flex-grow h-10 text-sm px-4 border-0 border-transparent focus:ring-0"
                             placeholder="Cari Tipe Desain....">
                         {{-- <button aria-label="Cari"
                             class=" px-4 sm:px-6 bg-byolink-2 hover:bg-black rounded-r-full text-white duration-300 h-10">
@@ -111,15 +100,21 @@
             </div>
         </div>
     </div>
-    <div x-data="{ scrolled: true }" :class="{ ' top-[70px] sm:top-20': open, '-translate-y-full top-0': !open }"
-        class=" fixed flex md:hidden flex-col bg-white w-full left-0 justify-center gap-4 font-semibold text-neutral-400 pt-2 px-4 pb-4 duration-300 z-30">
+    <div x-data="{ scrolled: true }"
+        :class="{ ' top-[70px] sm:top-20': open, '-translate-y-full top-0': !open }"
+        class=" fixed flex md:hidden flex-col bg-white w-full left-0 justify-center gap-4 font-semibold text-neutral-600 pt-2 px-4 pb-4 duration-300 z-30">
         <x-guest.nav-button route="{{ route('home') }}"
             active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
+        <x-guest.nav-button route="{{ route('allarticle') }}"
+            active="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Tipe Simple</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('allcategory') }}"
-            active="{{ request()->routeIs('allcategory', 'allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Tipe
-            Desain</x-guest.nav-button>
-        <x-guest.nav-button route="{{ request()->routeIs('business') ? route('home') : '' }}#kontak"
-            active="">Kontak</x-guest.nav-button>
+            active="{{ request()->routeIs('allcategory') }}">Kategori</x-guest.nav-button>
+        <x-guest.nav-button route="{{ route('price.list') }}"
+            active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button>
+        <x-guest.nav-button route="{{ route('guestportfolio') }}"
+            active="{{ request()->routeIs('guestportfolio') }}">Portofolio</x-guest.nav-button>
+        <x-guest.nav-button route="{{ route('contact') }}"
+            active="{{ request()->routeIs('contact') }}">Kontak</x-guest.nav-button>
         <form action="{{ route('allarticle') }}" method="get">
             <div class=" flex items-center justify-between h-10">
                 <input type="text" name="search" value="{{ request('search') }}"

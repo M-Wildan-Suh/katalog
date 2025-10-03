@@ -179,6 +179,17 @@
         </div>
     </x-slot:template>
 
+    <script>
+        // Buat satu state kosong
+        history.pushState(null, null, location.href);
+
+        // Dengarkan event back/forward
+        window.onpopstate = function () {
+            // kalau user tekan back → arahkan ke halaman list
+            window.location.href = "{{ route('article.index') }}";
+        };
+    </script>
+
     @include('components.admin.component.success')
     @include('components.admin.component.validationerror')
 </x-admin.article.form>

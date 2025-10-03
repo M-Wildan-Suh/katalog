@@ -21,11 +21,11 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />  
+        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />   
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wdth,wght@75..100,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
@@ -36,8 +36,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
 
         <!-- Styles -->
-        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-        <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet" />
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet" /> --}}
     </head>
     <body class="font-montserrat antialiased"
         x-data="{ loading: true }" 
@@ -88,11 +88,11 @@
             }
         </style>
         @include('components.guest.navbar')
-        <div class=" {{$home ? '' : 'pt-20'}} min-h-screen bg-[#F1F3F4]">
+        <div class=" {{$home ? '' : 'pt-20'}} min-h-screen">
             {{$slot}}
         </div>
     </body>
-    <script src="{{ asset('build/assets/app.js') }}"></script>
+    {{-- <script src="{{ asset('build/assets/app.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

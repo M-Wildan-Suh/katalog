@@ -6,6 +6,7 @@ use App\Models\ArticleCategory;
 use App\Models\ArticleShow;
 use App\Models\ArticleTag;
 use App\Models\PhoneNumber;
+use App\Models\Portfolio;
 use App\Models\Template;
 use App\Models\User;
 use Carbon\Carbon;
@@ -50,12 +51,14 @@ class PageController extends Controller
             return $data;
         });
 
+        $hp = PhoneNumber::first()->no_tlp;
+
         $trend = ArticleShow::orderBy('view', 'desc')
             ->where('status', 'publish')
             ->take(6)->get();
 
         $data->withPath("/desain/page");
-        return view('guest.home', compact('data', 'trend', 'category'));
+        return view('guest.home', compact('data', 'trend', 'category', 'hp'));
     }
 
     public function article(Request $request, $username = null, $category = null, $tag = null)
@@ -102,7 +105,6 @@ class PageController extends Controller
         } else {
             $data = ArticleShow::where('status', 'publish')
                 ->latest()->simplePaginate(12);
-
             $title = 'Desain Terbaru Kami';
         }
 
@@ -117,9 +119,11 @@ class PageController extends Controller
             return view('components.guest.product', compact('data'))->render();
         }
 
+        $hp = PhoneNumber::first()->no_tlp;
+
         $category = ArticleCategory::all();
 
-        return view('guest.article', compact('data', 'title', 'category'));
+        return view('guest.article', compact('data', 'title', 'category', 'hp'));
     }
 
     public function category()
@@ -149,7 +153,9 @@ class PageController extends Controller
             return $cat;
         });
 
-        return view('guest.category', compact('category', 'catsection'));
+        $hp = PhoneNumber::first()->no_tlp;
+
+        return view('guest.category', compact('category', 'catsection', 'hp'));
     }
 
     public function business($slug)
@@ -196,16 +202,98 @@ class PageController extends Controller
         $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
         // dd($data->articles);
 
+        $hp = PhoneNumber::first()->no_tlp;
+
         $category = ArticleCategory::all();
 
-        return view('guest.business', compact('data', 'related', 'template', 'category'));
+        return view('guest.business', compact('data', 'related', 'template', 'category', 'hp'));
+    }
+
+    public function contact()
+    {
+        $category = ArticleCategory::all();
+
+        $hp = PhoneNumber::first()->no_tlp;
+
+        return view('guest.contact', compact('category', 'hp'));
+    }
+    
+    public function priceList()
+    {
+        $category = ArticleCategory::all();
+
+        $hp = PhoneNumber::first()->no_tlp;
+
+        $plans = [
+            [
+                'title' => 'Pemula',
+                'price' => 'Rp 890k',
+                'features' => [
+                    'Domain my.id',
+                    'Free Support 1 Tahun',
+                    '1 Halaman',    
+                ],
+            ],
+            [
+                'title' => 'Medium',
+                'price' => 'Rp 1.1 JT',
+                'features' => [
+                    'Domain .com',
+                    'Email Privat: 1',
+                    'Free Support 1 Tahun',
+                    '1 Halaman',
+                ],
+            ],
+            [
+                'title' => 'Bisnis',
+                'price' => 'Rp 1.6 JT',
+                'features' => [
+                    'Domain .com',
+                    'Hosting 5 GB',
+                    'Email Privat: 2',
+                    'Free Support 1 Tahun',
+                    '5 Halaman',
+                ],
+            ],
+            [
+                'title' => 'Bisnis Plus',
+                'price' => 'Rp 2.2 JT',
+                'features' => [
+                    'Domain .com',
+                    'Hosting 8 GB',
+                    'Email Privat: 5',
+                    'Free Support 1 Tahun',
+                    '5 Halaman',
+                    'Artikel: 20 Artikel/Produk Relevan',
+                ],
+            ],
+        ];
+
+        return view('guest.price-list', compact('category', 'hp', 'plans'));
+    }
+
+    public function portfolio(Request $request)
+    {
+        $data = Portfolio::latest()->simplePaginate(12);
+
+        if ($request->ajax()) {
+            return view('components.guest.portfolio', compact('data'))->render();
+        }
+        
+        $category = ArticleCategory::all();
+        
+        $hp = PhoneNumber::first()->no_tlp;
+
+        return view('guest.portfolio', compact('category', 'hp', 'data'));
     }
 
     public function notFound()
     {
         $category = ArticleCategory::all();
 
-        return view('guest.pagenotfound', compact('category'));
+        $hp = PhoneNumber::first()->no_tlp;
+
+        return view('guest.pagenotfound', compact('category', 'hp'));
     }
 
     public function test()

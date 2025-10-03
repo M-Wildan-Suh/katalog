@@ -1,4 +1,4 @@
-<x-layout.guest title="WebMandiri - Tipe Simple" :category="$category">
+<x-layout.guest title="Catalog - Portofolio" :category="$category">
     <div class=" w-full min-h-[calc(100vh-370px)]">
         <div class=" w-full py-8 sm:py-12 px-4 sm:px-6 space-y-12 sm:space-y-24">
             <div class=" w-full max-w-[1080px] mx-auto">
@@ -7,14 +7,14 @@
                         <div style='font-family: "Montserrat", Sans-serif;'
                             class=" w-full flex flex-col items-center gap-2 sm:gap-4">
                             {{-- <p class=" text-base sm:text-xl font-bold text-center">Template</p> --}}
-                            <p class=" text-xl sm:text-3xl font-bold text-center">{{ $title }}</p>
-                            <p class=" text-center text-sm sm:text-base">
+                            <p class=" text-xl sm:text-3xl font-bold text-center">Portofolio</p>
+                            {{-- <p class=" text-center text-sm sm:text-base">
                                 Berbagai pilihan template website siap simpel untuk beragam jenis usaha. Mulai dari bisnis, jasa, toko online, hingga perusahaan. Pilih template favorit Anda, layout dan sebagainya diserahkan ke tim profesional kami.
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
-                    <div id="desain" class=" w-full grid grid-cols-2 md:grid-cols-4 gap-4">
-                        @include('components.guest.product')
+                    <div id="desain" class=" w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                        @include('components.guest.portfolio')
                     </div>
                     <div id="loader" class=" w-full flex justify-center">
                         <div id="animation" class=" animate-spin w-12 h-12 text-byolink-1">
@@ -34,14 +34,13 @@
                         document.addEventListener("DOMContentLoaded", () => {
                             const loader = document.getElementById("loader");
                             const animation = document.getElementById("animation");
-                            const search = "{!! request('search') ? '&search=' . urlencode(request('search')) : '' !!}";
 
                             function loadMoreData() {
                                 if (loading) return;
                                 loading = true;
                                 showLoader();
 
-                                fetch(`?page=${page}${search}`, {
+                                fetch(`?page=${page}`, {
                                         headers: {
                                             "X-Requested-With": "XMLHttpRequest"
                                         }
