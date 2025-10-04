@@ -1,4 +1,4 @@
-<x-layout.guest title="Catalog - Price List" :category="$category">
+<x-layout.guest title="WebMandiri - Price List" :category="$category">
     <div class=" w-full bg-[#F1F3F4] min-h-[calc(100vh-370px)] px-4 sm:px-6">
         <div class=" w-full py-16 sm:py-32 space-y-20 sm:space-y-18">
             <div class=" w-full px-4 sm:px-6">

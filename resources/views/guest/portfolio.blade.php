@@ -1,4 +1,4 @@
-<x-layout.guest title="Catalog - Portofolio" :category="$category">
+<x-layout.guest title="WebMandiri - Portofolio" :category="$category">
     <div class=" w-full min-h-[calc(100vh-370px)]">
         <div class=" w-full py-8 sm:py-12 px-4 sm:px-6 space-y-12 sm:space-y-24">
             <div class=" w-full max-w-[1080px] mx-auto">

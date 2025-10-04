@@ -1,4 +1,4 @@
-<x-layout.guest title="Catalog - Kontak" :category="$category">
+<x-layout.guest title="WebMandiri - Kontak" :category="$category">
     <div class=" w-full bg-[#F1F3F4] min-h-[calc(100vh-370px)] px-4 sm:px-6">
         <div class=" py-12 sm:py-16 w-full max-w-[1080px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class=" w-full aspect-square order-2 md:order-1">
@@ -13,8 +13,8 @@
                     <div class=" text-sm font-normal tracking-normal leading-7">
                         <p class=" sm:text-nowrap font-bold">Saatnya Punya Website Profesional Tanpa Ribet!</p>
                         <p class=" sm:text-nowrap">Yuk hubungi kami sekarang.</p>
-                        <p class="">Solusi website simpel tanpa harus pusing mikirin
-                            konten & desain.</p>
+                        {{-- <p class="">Solusi website simpel tanpa harus pusing mikirin
+                            konten & desain.</p> --}}
                     </div>
                 </div>
                 <div class=" w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -30,7 +30,7 @@
                         <div class=" flex flex-col">
                             <p>Telepon : +62 851-7331-5798</p>
                             <p>Whatsapp : +62 851-7331-5798</p>
-                            <p>Email : info@catalog.jasawebsite.biz</p>
+                            <p>Email : info@webmandiri.jasawebsite.biz</p>
                         </div>
                     </div>
                     <div class=" space-y-4">
