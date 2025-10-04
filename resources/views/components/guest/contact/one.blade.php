@@ -2,8 +2,8 @@
     <div class=" w-full max-w-[600px] mx-auto">
         <div class=" w-full py-2 grid grid-cols-2 gap-2 sm:gap-4 text-sm sm:text-base">
             <button @click="video = !video"
-                class=" bg-[#0057B7]
-             w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 text-white rounded-full hover:scale-95 duration-300">
+                class="
+             w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 bg-white/80 border border-neutral-600 text-neutral-600 hover:text-white hover:bg-byolink-1 font-semibold rounded-full hover:scale-95 duration-300">
                 <div class=" w-4 sm:w-5 aspect-square">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                         <path fill="currentColor"
@@ -16,8 +16,8 @@
                 <a href="https://wa.me/{{ $data->no_tlp }}?text={{ urlencode('Halo saya Tertarik dengan Template simple ini ' . url()->current()) }}"
                     class=" w-full" target="__blank">
                     <button
-                        class=" bg-gradient-to-tl from-green-700 to-green-500
-                     w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 text-white rounded-full hover:scale-95 duration-300">
+                        class="
+                     w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 bg-white/80 border border-neutral-600 text-neutral-600 hover:text-white hover:bg-byolink-1 font-semibold rounded-full hover:scale-95 duration-300">
                         <div class=" w-4 sm:w-5 aspect-square">
                             <svg viewBox="0 0 56.693 56.693" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                                 enable-background="new 0 0 56.693 56.693">
@@ -54,8 +54,10 @@
         </div>
         <div class=" flex justify-center px-4">
             <div class=" w-full aspect-video bg-black rounded-md overflow-hidden">
-                <iframe src="https://drive.google.com/file/d/19fe8sf9hPegNa5PSD89C_U-R0rLk-m3q/preview" class=" w-full h-full" allow="autoplay" allowfullscreen>
-                </iframe>
+                <video class="w-full h-full" controls>
+                    <source src="{{ asset('/assets/videos/37. web simple.mov') }}" type="video/mp4">
+                    Browser kamu tidak mendukung video tag.
+                </video>
             </div>
         </div>
     </div>

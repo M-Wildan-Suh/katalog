@@ -40,7 +40,7 @@
                                         </div>
                                         <x-admin.component.textinput title="Nama" placeholder="Masukkan Nama"
                                             :value="old('title')" name="title" />
-                                        <x-admin.component.linkinput title="Url Portofolio" placeholder="Masukkan link..." :value="old('url')" name="url" link="Url" />
+                                        {{-- <x-admin.component.linkinput tiftle="Url Portofolio" placeholder="Masukkan link..." :value="old('url')" name="url" link="Url" /> --}}
                                         <x-admin.component.submitbutton title="Tambah Portofolio" />
                                     </div>
                                 </form>
@@ -62,7 +62,7 @@
                     <tr class="h-10 bg-byolink-1 text-white divide-x-2 divide-white">
                         <th class=" px-2 py-1 rounded-tl-md w-10">No</th>
                         <th class=" px-1 sm:px-2 py-1">Nama</th>
-                        <th class=" px-1 sm:px-2 py-1">Url</th>
+                        {{-- <th class=" px-1 sm:px-2 py-1">Url</th> --}}
                         <th class=" px-1 sm:px-2 py-1 w-[90px] sm:w-[100px] rounded-tr-md">Opsi</th>
                     </tr>
                 </thead>
