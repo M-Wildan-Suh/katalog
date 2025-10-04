@@ -45,7 +45,6 @@ class PortfolioController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|max:255|unique:' . Portfolio::class,
-            'url' => 'required|max:255|',
         ]);
 
         // dd($request);
@@ -105,10 +104,6 @@ class PortfolioController extends Controller
                 'required',
                 'max:255',
                 Rule::unique('article_categories')->ignore($portfolio->id),
-            ],
-            'url' => [
-                'required',
-                'max:255',
             ],
         ]);
 
