@@ -22,7 +22,7 @@
                 <x-guest.nav-button route="{{ route('home') }}"
                     active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
                 <x-guest.nav-button route="{{ route('allarticle') }}"
-                    active="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Tipe Simple</x-guest.nav-button>
+                    active="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Template</x-guest.nav-button>
                 <div class=" flex group">
                     <x-guest.nav-button route="{{ route('allcategory') }}"
                     active="{{ request()->routeIs('allcategory') }}">Kategori</x-guest.nav-button>
@@ -39,8 +39,8 @@
                         </div>
                     </div>
                 </div>
-                <x-guest.nav-button route="{{ route('price.list') }}"
-                    active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button>
+                {{-- <x-guest.nav-button route="{{ route('price.list') }}"
+                    active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button> --}}
                 <x-guest.nav-button route="{{ route('guestportfolio') }}"
                     active="{{ request()->routeIs('guestportfolio') }}">Portofolio</x-guest.nav-button>
                 <x-guest.nav-button route="{{ route('contact') }}"
@@ -106,11 +106,11 @@
         <x-guest.nav-button route="{{ route('home') }}"
             active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('allarticle') }}"
-            active="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Tipe Simple</x-guest.nav-button>
+            active="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Template</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('allcategory') }}"
             active="{{ request()->routeIs('allcategory') }}">Kategori</x-guest.nav-button>
-        <x-guest.nav-button route="{{ route('price.list') }}"
-            active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button>
+        {{-- <x-guest.nav-button route="{{ route('price.list') }}"
+            active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button> --}}
         <x-guest.nav-button route="{{ route('guestportfolio') }}"
             active="{{ request()->routeIs('guestportfolio') }}">Portofolio</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('contact') }}"

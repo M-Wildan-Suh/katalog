@@ -13,8 +13,7 @@
                     <div class=" text-sm font-normal tracking-normal leading-7">
                         <p class=" sm:text-nowrap font-bold">Saatnya Punya Website Profesional Tanpa Ribet!</p>
                         <p class=" sm:text-nowrap">Yuk hubungi kami sekarang.</p>
-                        {{-- <p class="">Solusi website simpel tanpa harus pusing mikirin
-                            konten & desain.</p> --}}
+                        {{-- <p class="">Bangun Website dengan WebMandiri</p> --}}
                     </div>
                 </div>
                 <div class=" w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">

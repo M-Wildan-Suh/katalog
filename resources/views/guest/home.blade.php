@@ -6,10 +6,10 @@
             <div class=" pt-32 pb-20 sm:pt-20 sm:pb-0 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full h-full max-w-[1080px] mx-auto relative">
                 <div class="flex flex-col justify-center gap-4">
                     <div style='font-family: "Montserrat", Sans-serif;' class=" w-full text-left text-3xl sm:text-5xl font-bold tracking-tight">
-                        <p class=" text-byolink-2">Solusi Website <span class=" text-nowrap">All-in-One</span></p>
-                        <p>Desain Modern, Hasil Optimal</p>
+                        <p class=" text-byolink-2">Bangun Website dengan WebMandiri</p>
+                        <p>Atur Sesuka Hati Sesuai Imajinasi.</p>
                     </div>
-                    <p class=" text-left text-sm sm:text-base text-neutral-600">Punya usaha tapi belum punya website? Tinggal pilih desain favoritmu, bisa di edit mandiri dipandu dengan video tutorial yang kami siapkan</p>
+                    <p class=" text-left text-sm sm:text-base text-neutral-600">Pilih desain favoritmu, dan edit sesuka hati, dipandu dengan video tutorial yang telah kami siapkan</p>
                     <div class=" flex">
                         <a href="{{route('allarticle')}}" class="flex">
                             <button class=" px-6 py-2 flex items-center gap-2 rounded-full text-nowrap text-sm sm:text-base font-semibold bg-byolink-2 text-white hover:bg-[#990c0b] duration-300">
@@ -36,10 +36,9 @@
                                 class=" object-contain" alt="">
                         </div>
                         <div class=" flex flex-col justify-center gap-6 order-1 sm:order-2">
-                            <p class="text-2xl sm:text-4xl font-bold capitalize">Ingin punya website, tapi tidak mau pusing mikirin desainnya?
-                            </p>
+                            <p class="text-2xl sm:text-4xl font-bold capitalize">Punya usaha tapi belum punya website?</p>
                             <div class=" flex flex-col gap-2 text-sm sm:text-base">
-                                <p>Nah, di web simple ini, anda tinggal pilih desain dari yang kami sediakan dan warna yang diinginkan, selebihnya tim kami yang atur tanpa harus repot mikirin detail desain atau layoutnya.</p>
+                                <p>Nah, di <b>WebMandiri</b>, anda tinggal pilih desain dari template yang kami sediakan. Selebihnya bisa diedit oleh anda sendiri, dipandu dengan video tutorial dari tim kami.</p>
                             </div>
                         </div>
                     </div>
@@ -52,7 +51,7 @@
                             <div style='font-family: "Montserrat", Sans-serif;'
                                 class=" w-full flex flex-col gap-2 sm:gap-4 items-center">
                                 {{-- <p class=" text-base sm:text-xl font-bold text-center">Template</p> --}}
-                                <p class=" text-2xl sm:text-4xl font-bold text-center">Desain Terbaru Kami</p>
+                                <p class=" text-2xl sm:text-4xl font-bold text-center">Template Kami</p>
                             </div>
                         </div>
                         <div class=" w-full grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">

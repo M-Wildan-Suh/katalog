@@ -9,7 +9,7 @@
                             {{-- <p class=" text-base sm:text-xl font-bold text-center">Template</p> --}}
                             <p class=" text-xl sm:text-3xl font-bold text-center">{{ $title }}</p>
                             <p class=" text-center text-sm sm:text-base">
-                                Berbagai pilihan template website siap simpel untuk beragam jenis usaha. Mulai dari bisnis, jasa, toko online, hingga perusahaan. Pilih template favorit Anda, layout dan sebagainya diserahkan ke tim profesional kami.
+                                Berbagai pilihan template website untuk beragam jenis usaha. Mulai dari bisnis, jasa, toko online, hingga perusahaan. Pilih template favorit Anda, dan edit sasuai keinginan anda.
                             </p>
                         </div>
                     </div>
