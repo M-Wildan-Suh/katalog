@@ -1,17 +1,33 @@
 <div class=" w-full sticky px-4 bottom-0 z-50 backdrop-blur">
     <div class=" w-full max-w-[600px] mx-auto">
         <div class=" w-full py-2 grid grid-cols-2 gap-2 sm:gap-4 text-sm sm:text-base">
-            <button @click="video = !video"
-                class=" border border-neutral-600 text-neutral-600 font-semibold hover:text-white hover:bg-byolink-1
-             w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 rounded-full hover:scale-95 duration-300">
-                <div class=" w-4 sm:w-5 aspect-square">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                        <path fill="currentColor"
-                            d="M128 128C92.7 128 64 156.7 64 192L64 448C64 483.3 92.7 512 128 512L384 512C419.3 512 448 483.3 448 448L448 192C448 156.7 419.3 128 384 128L128 128zM496 400L569.5 458.8C573.7 462.2 578.9 464 584.3 464C597.4 464 608 453.4 608 440.3L608 199.7C608 186.6 597.4 176 584.3 176C578.9 176 573.7 177.8 569.5 181.2L496 240L496 400z" />
-                    </svg>
+            <div x-data="{ showTooltip: false }" class="relative w-full flex justify-center">
+                <button
+                    @click="
+                        showTooltip = true;
+                        setTimeout(() => showTooltip = false, 2000);
+                    "
+                    class="border border-neutral-600 text-neutral-600 font-semibold hover:text-white hover:bg-byolink-1
+                    w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 rounded-full hover:scale-95 duration-300 relative"
+                >
+                    <div class="w-4 sm:w-5 aspect-square">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <path fill="currentColor"
+                                d="M128 128C92.7 128 64 156.7 64 192L64 448C64 483.3 92.7 512 128 512L384 512C419.3 512 448 483.3 448 448L448 192C448 156.7 419.3 128 384 128L128 128zM496 400L569.5 458.8C573.7 462.2 578.9 464 584.3 464C597.4 464 608 453.4 608 440.3L608 199.7C608 186.6 597.4 176 584.3 176C578.9 176 573.7 177.8 569.5 181.2L496 240L496 400z" />
+                        </svg>
+                    </div>
+                    <p>Penjelasan</p>
+                </button>
+            
+                <!-- Tooltip -->
+                <div
+                    x-show="showTooltip"
+                    x-transition
+                    class="absolute -top-10 bg-byolink-2 text-white text-sm px-3 py-1 rounded-full shadow-lg"
+                >
+                    Video belum tersedia
                 </div>
-                <p>Penjelasan</p>
-            </button>
+            </div>            
             @if ($data->whatsapp)
                 <a href="https://wa.me/{{ $data->no_tlp }}?text={{ urlencode('Halo saya Tertarik dengan Template Website ini ' . url()->current()) }}"
                     class=" w-full" target="__blank">
