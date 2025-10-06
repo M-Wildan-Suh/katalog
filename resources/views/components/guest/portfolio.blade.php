@@ -8,7 +8,7 @@
         </div>
         <div class=" pt-4 pb-2 sm:pb-4 px-2 sm:px-4 text-xs sm:text-sm flex flex-grow flex-col gap-4 justify-between">
             <div class="">
-                <p class=" line-clamp-1 font-semiboldgue text-center hover:text-byolink-2 duration-300">{{ $item->title }}</p>
+                <p class=" line-clamp-1 font-semiboldgue text-center duration-300">{{ $item->title }}</p>
             </div>
         </div>
     </div>
