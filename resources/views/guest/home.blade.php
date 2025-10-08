@@ -47,9 +47,13 @@
             <div class=" w-full px-4 sm:px-6">
                 <div class=" w-full max-w-[1080px] mx-auto">
                     <div class=" w-full grid grid-cols-1 sm:grid-cols-2 text-center sm:text-left gap-10">
-                        <div class=" w-full order-2 sm:order-1">
-                            <img src="{{asset('/assets/images/secimage.jpg')}}"
-                                class=" object-contain" alt="">
+                        <div class=" w-full flex justify-center aspect-square order-2 sm:order-1">
+                            <div style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);" class=" p-4 rounded-xl border border-[#7a7a7a] overflow-hidden">
+                                <video x-ref="video" class=" max-w-full max-h-full rounded-xl" controls autoplay>
+                                    <source src="{{ asset('/assets/videos/sectionvideo.mp4') }}" type="video/mp4">
+                                    Browser kamu tidak mendukung video tag.
+                                </video>
+                            </div>
                         </div>
                         <div class=" flex flex-col justify-center gap-6 order-1 sm:order-2">
                             <p class="text-2xl sm:text-4xl font-bold capitalize">Ingin punya website, tapi tidak mau pusing mikirin desainnya?

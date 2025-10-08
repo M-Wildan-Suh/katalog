@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class=" w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                        <div class=" w-full p-4 sm:p-6 bg-white rounded-md shadow-md shadow-black/20 flex flex-col justify-between gap-6">
+                        <div class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
                             <div class=" space-y-4">
                                 <p class=" text-lg sm:text-2xl font-bold">Simpel Pemula</p>
                                 <ul class="list-disc pl-6 text-sm sm:text-base space-y-1">
@@ -86,7 +86,7 @@
                                 <p class=" text-sm sm:text-base">*Website simple 1 halaman dengan domain .sites.id</p>
                             </div>
                         </div>
-                        <div class=" w-full p-4 sm:p-6 bg-white rounded-md shadow-md shadow-black/20 flex flex-col justify-between gap-6">
+                        <div class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
                             <div class=" space-y-4">
                                 <p class=" text-lg sm:text-2xl font-bold">Simpel Medium</p>
                                 <ul class="list-disc pl-6 text-sm sm:text-base space-y-1">
@@ -149,7 +149,7 @@
                                 <p class=" text-sm sm:text-base">*Website simple 1 halaman dengan domain .com</p>
                             </div>
                         </div>
-                        <div class=" w-full p-4 sm:p-6 bg-white rounded-md shadow-md shadow-black/20 flex flex-col justify-between gap-6">
+                        <div class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
                             <div class=" space-y-4">
                                 <p class=" text-lg sm:text-2xl font-bold">Simpel Bisnis</p>
                                 <ul class="list-disc pl-6 text-sm sm:text-base space-y-1">
@@ -205,7 +205,7 @@
                                 <p class=" text-sm sm:text-base">*Website simple 5 halaman dengan domain .com</p>
                             </div>
                         </div>
-                        <div class=" w-full p-4 sm:p-6 bg-white rounded-md shadow-md shadow-black/20 flex flex-col justify-between gap-6">
+                        <div class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
                             <div class=" space-y-4">
                                 <p class=" text-lg sm:text-2xl font-bold">Simpel Bisnis Plus</p>
                                 <ul class="list-disc pl-6 text-sm sm:text-base space-y-1">

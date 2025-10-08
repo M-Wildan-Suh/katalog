@@ -1,7 +1,7 @@
-<div class=" w-full flex flex-col rounded-md overflow-hidden border bg-white shadow-md shadow-black/20">
+<div style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);" class=" w-full flex flex-col rounded-xl overflow-hidden bg-white">
     <div class=" relative sm:pt-4 sm:px-4">
         <a href="{{ route('business', ['slug' => $item->slug]) }}" aria-label="{{$item->judul}}">
-            <div class=" w-full aspect-[5/4] bg-white overflow-hidden sm:rounded-md">
+            <div class=" w-full aspect-[5/4] bg-white overflow-hidden sm:rounded-xl">
                 <img src="{{$item->banner ? asset('storage/images/article/banner/' . $item->banner) : asset('assets/images/placeholder.webp')}}"
                     class=" w-full h-full object-cover hover:scale-105 duration-500" alt="">
             </div>
