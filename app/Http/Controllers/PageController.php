@@ -230,7 +230,7 @@ class PageController extends Controller
                 'title' => 'Pemula',
                 'price' => 'Rp 890k',
                 'features' => [
-                    'Domain my.id',
+                    'Domain my.id/sites.id',
                     'Free Support 1 Tahun',
                     '1 Halaman',    
                 ],

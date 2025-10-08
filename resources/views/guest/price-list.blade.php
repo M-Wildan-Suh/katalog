@@ -20,6 +20,7 @@
                                     class="w-full border hover:shadow-md bg-white hover:shadow-black/20 duration-300 flex flex-col justify-between rounded-md px-4 py-8 gap-4">
                                     <div class="space-y-4 sm:space-y-6">
                                         <p class="text-xl font-bold">{{ $plan['title'] }}</p>
+                                        <div class=" w-full aspect-video rounded-md bg-black overflow-hidden"></div>
                                         <p class="text-2xl font-bold text-byolink-2">{{ $plan['price'] }}</p>
                                         <div class="divide-y text-sm text-neutral-600">
                                             @foreach ($plan['features'] as $feature)
