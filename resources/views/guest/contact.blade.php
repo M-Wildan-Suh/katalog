@@ -1,6 +1,27 @@
 <x-layout.guest title="Catalog - Tentang Kami" :category="$category">
     <div class=" w-full bg-[#F1F3F4] min-h-[calc(100vh-370px)]">
         <div class="px-4 sm:px-6 py-16 sm:py-24 space-y-16 sm:space-y-24">
+            <div class=" w-full max-w-[1080px] mx-auto">
+                <div class=" w-full space-y-6 sm:space-y-8">
+                    <div class="w-full flex justify-between items-center">
+                        <div style='font-family: "Montserrat", Sans-serif;'
+                            class=" w-full flex flex-col items-center gap-2 sm:gap-4">
+                            {{-- <p class=" text-base sm:text-xl font-bold text-center">Template</p> --}}
+                            <p class=" text-xl sm:text-3xl font-bold text-center">Tentang Kami</p>
+                            {{-- <p class=" text-center text-sm sm:text-base">
+                                Berbagai pilihan template website siap simpel untuk beragam jenis usaha. Mulai dari bisnis, jasa, toko online, hingga perusahaan. Pilih template favorit Anda, layout dan sebagainya diserahkan ke tim profesional kami.
+                            </p> --}}
+                        </div>
+                    </div>
+                    <div class=" w-full grid grid-cols-1 sm:grid-cols-4">
+                        @foreach ($data as $item)
+                            <div style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);" class=" w-full aspect-[4/3] bg-black rounded-xl overflow-hidden">
+                                <img src="{{asset('/storage/images/gallery/'. $item->image)}}" class=" w-full h-full object-cover object-center hover:scale-105 duration-300" alt="">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
             <div class=" w-full max-w-[1080px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
                 <div class=" w-full aspect-square order-2 md:order-1 rounded-xl overflow-hidden">
                     <iframe loading="lazy" class=" w-full h-full"
@@ -31,7 +52,7 @@
                             <div class=" flex flex-col">
                                 <p>Telepon : +62 851-7331-5798</p>
                                 <p>Whatsapp : +62 851-7331-5798</p>
-                                <p>Email : info@catalog.jasawebsite.biz</p>
+                                {{-- <p>Email : info@catalog.jasawebsite.biz</p> --}}
                             </div>
                         </div>
                         <div class=" space-y-4">
@@ -83,27 +104,6 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class=" w-full max-w-[1080px] mx-auto">
-                <div class=" w-full space-y-6 sm:space-y-8">
-                    <div class="w-full flex justify-between items-center">
-                        <div style='font-family: "Montserrat", Sans-serif;'
-                            class=" w-full flex flex-col items-center gap-2 sm:gap-4">
-                            {{-- <p class=" text-base sm:text-xl font-bold text-center">Template</p> --}}
-                            <p class=" text-xl sm:text-3xl font-bold text-center">Gallery</p>
-                            {{-- <p class=" text-center text-sm sm:text-base">
-                                Berbagai pilihan template website siap simpel untuk beragam jenis usaha. Mulai dari bisnis, jasa, toko online, hingga perusahaan. Pilih template favorit Anda, layout dan sebagainya diserahkan ke tim profesional kami.
-                            </p> --}}
-                        </div>
-                    </div>
-                    <div class=" w-full grid grid-cols-1 sm:grid-cols-4">
-                        @foreach ($data as $item)
-                            <div style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);" class=" w-full aspect-[4/3] bg-black rounded-xl overflow-hidden">
-                                <img src="{{asset('/storage/images/gallery/'. $item->image)}}" class=" w-full h-full object-cover object-center hover:scale-105 duration-300" alt="">
-                            </div>
-                        @endforeach
                     </div>
                 </div>
             </div>

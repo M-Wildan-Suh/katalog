@@ -109,7 +109,7 @@
         <x-guest.nav-button route="{{ route('guestportfolio') }}"
             active="{{ request()->routeIs('guestportfolio') }}">Portofolio</x-guest.nav-button>
         <x-guest.nav-button route="{{ route('contact') }}"
-            active="{{ request()->routeIs('contact') }}">Kontak</x-guest.nav-button>
+            active="{{ request()->routeIs('contact') }}">Tentang Kami</x-guest.nav-button>
         <form action="{{ route('allarticle') }}" method="get">
             <div class=" flex items-center justify-between h-10">
                 <input type="text" name="search" value="{{ request('search') }}"

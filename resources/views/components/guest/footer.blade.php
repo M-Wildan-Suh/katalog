@@ -43,8 +43,10 @@
                     </div>
                     <div class=" text-white flex flex-col gap-2 pl-4">
                         <a href="{{route('home')}}" class=" list-item hover:underline duration-300">Beranda</a>
-                        <a href="{{route('allcategory')}}" class=" list-item hover:underline duration-300">Tipe Simpel</a>
-                        <a href="{{ request()->routeIs('business') ? route('home') : '' }}#kontak" class=" list-item hover:underline duration-300">Kontak</a>
+                        <a href="{{route('allcategory')}}" class=" list-item hover:underline duration-300">Desain</a>
+                        <a href="{{route('price.list')}}" class=" list-item hover:underline duration-300">Pirce List</a>
+                        <a href="{{route('guestportfolio')}}" class=" list-item hover:underline duration-300">Portofolio</a>
+                        <a href="{{route('contact')}}" class=" list-item hover:underline duration-300">Tentang Kami</a>
                     </div>
                 </div>
                 <div class=" text-xs sm:text-sm col-span-2 md:col-span-1 space-y-4">

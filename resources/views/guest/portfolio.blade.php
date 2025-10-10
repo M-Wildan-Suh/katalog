@@ -50,17 +50,19 @@
                                 </ul>
                             </div>
                             <div class=" space-y-4">
-                                <button
-                                    class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
-                                    <div class="w-4 aspect-square">
-                                        <svg class=" w-full h-full" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill="currentColor"
-                                                d="M16 2H8C4.691 2 2 4.691 2 8v13a1 1 0 0 0 1 1h13c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm-2 13H7v-2h7v2zm3-4H7V9h10v2z" />
-                                        </svg>
-                                    </div>
-                                    <p>Lihat Detail</p>
-                                </button>
+                                <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('/assets/images/price-list.png')}}" class="flex w-full">
+                                    <button
+                                        class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
+                                        <div class="w-4 aspect-square">
+                                            <svg class=" w-full h-full" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill="currentColor"
+                                                    d="M16 2H8C4.691 2 2 4.691 2 8v13a1 1 0 0 0 1 1h13c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm-2 13H7v-2h7v2zm3-4H7V9h10v2z" />
+                                            </svg>
+                                        </div>
+                                        <p>Lihat Detail</p>
+                                    </button>
+                                </a>
                                 <a class=" flex w-full"
                                     href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo Saya dapat info dari catalog.jasawebsite.biz, dan tertarik dengan Paket Tipe Simpel Pemula') }}"
                                     target="__blank">
@@ -113,17 +115,19 @@
                                 </ul>
                             </div>
                             <div class=" space-y-4">
-                                <button
-                                    class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
-                                    <div class="w-4 aspect-square">
-                                        <svg class=" w-full h-full" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill="currentColor"
-                                                d="M16 2H8C4.691 2 2 4.691 2 8v13a1 1 0 0 0 1 1h13c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm-2 13H7v-2h7v2zm3-4H7V9h10v2z" />
-                                        </svg>
-                                    </div>
-                                    <p>Lihat Detail</p>
-                                </button>
+                                <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('/assets/images/price-list.png')}}" class="flex w-full">
+                                    <button
+                                        class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
+                                        <div class="w-4 aspect-square">
+                                            <svg class=" w-full h-full" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill="currentColor"
+                                                    d="M16 2H8C4.691 2 2 4.691 2 8v13a1 1 0 0 0 1 1h13c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm-2 13H7v-2h7v2zm3-4H7V9h10v2z" />
+                                            </svg>
+                                        </div>
+                                        <p>Lihat Detail</p>
+                                    </button>
+                                </a>
                                 <a class=" flex w-full"
                                     href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo Saya dapat info dari catalog.jasawebsite.biz, dan tertarik dengan Paket Tipe Simpel Medium') }}"
                                     target="__blank">
@@ -169,17 +173,19 @@
                                 </ul>                                
                             </div>
                             <div class=" space-y-4">
-                                <button
-                                    class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
-                                    <div class="w-4 aspect-square">
-                                        <svg class=" w-full h-full" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill="currentColor"
-                                                d="M16 2H8C4.691 2 2 4.691 2 8v13a1 1 0 0 0 1 1h13c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm-2 13H7v-2h7v2zm3-4H7V9h10v2z" />
-                                        </svg>
-                                    </div>
-                                    <p>Lihat Detail</p>
-                                </button>
+                                <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('/assets/images/price-list.png')}}" class="flex w-full">
+                                    <button
+                                        class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
+                                        <div class="w-4 aspect-square">
+                                            <svg class=" w-full h-full" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill="currentColor"
+                                                    d="M16 2H8C4.691 2 2 4.691 2 8v13a1 1 0 0 0 1 1h13c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm-2 13H7v-2h7v2zm3-4H7V9h10v2z" />
+                                            </svg>
+                                        </div>
+                                        <p>Lihat Detail</p>
+                                    </button>
+                                </a>
                                 <a class=" flex w-full"
                                     href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo Saya dapat info dari catalog.jasawebsite.biz, dan tertarik dengan Paket Tipe Simpel Bisnis') }}"
                                     target="__blank">
@@ -218,17 +224,19 @@
                                 </ul>
                             </div>
                             <div class=" space-y-4">
-                                <button
-                                    class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
-                                    <div class="w-4 aspect-square">
-                                        <svg class=" w-full h-full" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill="currentColor"
-                                                d="M16 2H8C4.691 2 2 4.691 2 8v13a1 1 0 0 0 1 1h13c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm-2 13H7v-2h7v2zm3-4H7V9h10v2z" />
-                                        </svg>
-                                    </div>
-                                    <p>Lihat Detail</p>
-                                </button>
+                                <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('/assets/images/price-list.png')}}" class="flex w-full">
+                                    <button
+                                        class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
+                                        <div class="w-4 aspect-square">
+                                            <svg class=" w-full h-full" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill="currentColor"
+                                                    d="M16 2H8C4.691 2 2 4.691 2 8v13a1 1 0 0 0 1 1h13c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm-2 13H7v-2h7v2zm3-4H7V9h10v2z" />
+                                            </svg>
+                                        </div>
+                                        <p>Lihat Detail</p>
+                                    </button>
+                                </a>
                                 <a class=" flex w-full"
                                     href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo Saya dapat info dari catalog.jasawebsite.biz, dan tertarik dengan Paket Tipe Simpel Bisnis Plus') }}"
                                     target="__blank">
@@ -423,5 +431,10 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Fancybox.bind("[data-fancybox]", {});
+        });
+    </script>
     @include('components.guest.footer')
 </x-layout.guest>
