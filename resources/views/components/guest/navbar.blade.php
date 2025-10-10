@@ -44,7 +44,7 @@
                 <x-guest.nav-button route="{{ route('guestportfolio') }}"
                     active="{{ request()->routeIs('guestportfolio') }}">Portofolio</x-guest.nav-button>
                 <x-guest.nav-button route="{{ route('contact') }}"
-                    active="{{ request()->routeIs('contact') }}">Kontak</x-guest.nav-button>
+                    active="{{ request()->routeIs('contact') }}">Tentang Kami</x-guest.nav-button>
                 {{-- @if (Route::has('login'))
                     @auth
                         <form method="POST" class="" action="{{ route('logout') }}">
@@ -69,7 +69,7 @@
                         </button>
                         <input type="text" name="search" value="{{ request('search') }}"
                             class=" bg-transparent text-black min-w-0 sm:flex-grow h-10 text-sm px-4 border-0 border-transparent focus:ring-0"
-                            placeholder="Cari Tipe Desain....">
+                            placeholder="Cari Desain....">
                         {{-- <button aria-label="Cari"
                             class=" px-4 sm:px-6 bg-byolink-2 hover:bg-black rounded-r-full text-white duration-300 h-10">
                             <div class=" w-[18px] aspect-square overflow-hidden">

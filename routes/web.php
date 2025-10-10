@@ -14,6 +14,7 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SourceCodeController;
+use App\Http\Controllers\TeamGalleryController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\UserController;
 use App\Models\ArticleCategory;
@@ -64,7 +65,7 @@ Route::middleware('daily_schedule')->group(function () {
 
     Route::get('/price-list', [PageController::class, 'priceList'])->name('price.list');
 
-    Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
+    Route::get('/tentang-kami', [PageController::class, 'contact'])->name('contact');
 
     Route::get('/portofolio', [PageController::class, 'portfolio'])->name('guestportfolio');
 
@@ -98,6 +99,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/category/destroy/all', [ArticleCategoryController::class, 'destroyAll'])->name('category.destroy.all');
 
     Route::resource('/admin/portfolio', PortfolioController::class);
+
+    Route::resource('/admin/gallery', TeamGalleryController::class);
 
     Route::resource('/admin/article-banner', ArticleBannerController::class);
     Route::resource('/admin/article-gallery', ArticleGalleryController::class);

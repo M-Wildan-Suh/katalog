@@ -7,6 +7,7 @@ use App\Models\ArticleShow;
 use App\Models\ArticleTag;
 use App\Models\PhoneNumber;
 use App\Models\Portfolio;
+use App\Models\TeamGallery;
 use App\Models\Template;
 use App\Models\User;
 use Carbon\Carbon;
@@ -212,11 +213,13 @@ class PageController extends Controller
 
     public function contact()
     {
+        $data = TeamGallery::all();
+
         $category = ArticleCategory::all();
 
         $hp = PhoneNumber::first()->no_tlp;
 
-        return view('guest.contact', compact('category', 'hp'));
+        return view('guest.contact', compact('category', 'hp', 'data'));
     }
     
     public function priceList()

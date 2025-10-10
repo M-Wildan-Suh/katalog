@@ -61,6 +61,12 @@
                 </div>
                 <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Katalog</p>
             </x-admin.navbutton>
+            <x-admin.navbutton route="gallery.index" :active="['gallery.index', 'gallery.create', 'gallery.show']">
+                <div class="min-w-5 h-5 mx-0.5">
+                    <svg id="Icons" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><defs></defs><path fill="currentColor" d="M19,1H5A4,4,0,0,0,1,5V19a4,4,0,0,0,4,4H19a4,4,0,0,0,4-4V5A4,4,0,0,0,19,1ZM7,5A2,2,0,1,1,5,7,2,2,0,0,1,7,5Zm12.707,9.707a1,1,0,0,1-1.414,0l-2.244-2.244-3.065,3.5-.007.011-.006,0L9.753,19.659a1,1,0,0,1-1.506-1.318L10.9,15.312,9,13.414,5.707,16.707a1,1,0,0,1-1.414-1.414l4-4a1,1,0,0,1,1.414,0l2.51,2.511,3.03-3.463a1.006,1.006,0,0,1,.72-.341.956.956,0,0,1,.74.293l3,3A1,1,0,0,1,19.707,14.707Z"/></svg>
+                </div>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Gallery</p>
+            </x-admin.navbutton>
         </div>
     </div>
     <div :class="open ? 'lg:max-w-[calc(100vw-288px)]' : ''" class="flex flex-col w-full flex-grow sm:max-w-[calc(100vw-80px)]">
