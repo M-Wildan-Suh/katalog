@@ -163,7 +163,7 @@
                     <p>Telephone</p>
                 </button>
             </a>
-            <a href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo saya Tertarik dengan Paket yang anda sediakan di catalog.jasawebsite.biz' }}"
+            <a href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo saya Tertarik dengan Paket yang anda sediakan di catalog.jasawebsite.biz') }}"
                 class=" w-full" target="__blank">
                 <button
                     class="
