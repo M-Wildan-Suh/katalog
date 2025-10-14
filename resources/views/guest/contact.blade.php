@@ -13,7 +13,7 @@
                             </p> --}}
                         </div>
                     </div>
-                    <div class=" w-full grid grid-cols-1 sm:grid-cols-4">
+                    <div class=" w-full grid grid-cols-1 sm:grid-cols-4 gap-4">
                         @foreach ($data as $item)
                             <div style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);" class=" w-full aspect-[4/3] bg-black rounded-xl overflow-hidden">
                                 <img src="{{asset('/storage/images/gallery/'. $item->image)}}" class=" w-full h-full object-cover object-center hover:scale-105 duration-300" alt="">
