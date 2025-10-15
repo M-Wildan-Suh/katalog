@@ -134,7 +134,7 @@
         </div>
         <div class=" text-center text-white pt-6">
             <p class="text-xs">
-                © 2025 bizlink.sites.id | Developed by
+                © 2025 catalog.jasawebsite.biz | Developed by
                 <span class="hover:underline">
                     <a href="https://jasawebsite.biz" target="_blank">
                         Jasawebsitebiz
