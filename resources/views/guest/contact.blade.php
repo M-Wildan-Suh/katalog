@@ -55,8 +55,8 @@
                                 <p class=" text-lg font-semibold uppercase">Contact Us</p>
                             </div>
                             <div class=" flex flex-col">
-                                <p>Telepon : +62 851-7331-5798</p>
-                                <p>Whatsapp : +62 851-7331-5798</p>
+                                <p>Telepon : {{ '+62 ' . substr($hp, 3, 3) . '-' . substr($hp, 6, 4) . '-' . substr($hp, 10) }}</p>
+                                <p>Whatsapp : {{ '+62 ' . substr($hp, 3, 3) . '-' . substr($hp, 6, 4) . '-' . substr($hp, 10) }}</p>
                                 {{-- <p>Email : info@catalog.jasawebsite.biz</p> --}}
                             </div>
                         </div>
