@@ -58,6 +58,7 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 height: auto !important;
+                color: inherit !important;
             }
 
             .article strong,
