@@ -67,8 +67,9 @@
                     </div>
                     <div class=" text-white flex flex-col gap-2 pl-4">
                         <a href="{{ route('home') }}" class=" list-item hover:underline duration-300">Beranda</a>
-                        <a href="{{ route('allcategory') }}" class=" list-item hover:underline duration-300">Desain</a>
-                        <a href="{{ route('price.list') }}" class=" list-item hover:underline duration-300">Pirce
+                        <a href="{{ route('allarticle') }}" class=" list-item hover:underline duration-300">Desain</a>
+                        <a href="{{ route('allcategory') }}" class=" list-item hover:underline duration-300">Kategori</a>
+                        <a href="{{ route('price.list') }}" class=" list-item hover:underline duration-300">Price
                             List</a>
                         <a href="{{ route('guestportfolio') }}"
                             class=" list-item hover:underline duration-300">Portofolio</a>
