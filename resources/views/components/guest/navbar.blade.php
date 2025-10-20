@@ -23,9 +23,9 @@
                     active="{{ request()->routeIs('home') }}">Beranda</x-guest.nav-button>
                 <x-guest.nav-button route="{{ route('allarticle') }}"
                     active="{{ request()->routeIs('allarticle', 'pageallarticle', 'author', 'pageauthor', 'category', 'pagecategory', 'tag', 'pagetag') }}">Desain</x-guest.nav-button>
-                <div class=" flex group">
-                    <x-guest.nav-button route="{{ route('allcategory') }}"
+                <x-guest.nav-button route="{{ route('allcategory') }}"
                     active="{{ request()->routeIs('allcategory') }}">Kategori</x-guest.nav-button>
+                {{-- <div class=" flex group">
                     <div class=" w-full absolute max-w-[1080px] hidden group-hover:block top-[calc(100%-8px)] left-0 pt-6 z-30">
                         <div 
                             :class="scrolled ? ' rounded-b-md' : 'rounded-md'"
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <x-guest.nav-button route="{{ route('price.list') }}"
                     active="{{ request()->routeIs('price.list') }}">Price List</x-guest.nav-button>
                 <x-guest.nav-button route="{{ route('guestportfolio') }}"

@@ -232,6 +232,7 @@ class PageController extends Controller
             [
                 'title' => 'Pemula',
                 'price' => 'Rp 890k',
+                'video' => 'simpelpemula.mp4',
                 'features' => [
                     'Domain my.id/sites.id',
                     'Free Support 1 Tahun',
@@ -241,6 +242,7 @@ class PageController extends Controller
             [
                 'title' => 'Medium',
                 'price' => 'Rp 1.1 JT',
+                'video' => 'simpelmedium.mp4',
                 'features' => [
                     'Domain .com',
                     'Email Privat: 1',
@@ -251,6 +253,7 @@ class PageController extends Controller
             [
                 'title' => 'Bisnis',
                 'price' => 'Rp 1.6 JT',
+                'video' => null,
                 'features' => [
                     'Domain .com',
                     'Hosting 5 GB',
@@ -262,6 +265,7 @@ class PageController extends Controller
             [
                 'title' => 'Bisnis Plus',
                 'price' => 'Rp 2.2 JT',
+                'video' => null,
                 'features' => [
                     'Domain .com',
                     'Hosting 8 GB',

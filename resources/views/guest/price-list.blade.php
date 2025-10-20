@@ -8,9 +8,11 @@
                             <div style='font-family: "Montserrat", Sans-serif;'
                                 class=" w-full flex flex-col sm:gap-2 items-center">
                                 <p class=" text-2xl sm:text-4xl font-bold text-center">Paket Tipe Simpel</p>
-                                <p class=" text-center text-sm sm:text-base"> 
-                                    <span class=" sm:text-nowrap">Paket terima beres tanpa harus pusing memikirkan cara edit konten dan materi website.</span> 
-                                    <span class=" sm:text-nowrap">Untuk design web diserahkan kepada web designer kami.</span>
+                                <p class=" text-center text-sm sm:text-base">
+                                    <span class=" sm:text-nowrap">Paket terima beres tanpa harus pusing memikirkan cara
+                                        edit konten dan materi website.</span>
+                                    <span class=" sm:text-nowrap">Untuk design web diserahkan kepada
+                                        web designer kami.</span>
                                 </p>
                             </div>
                         </div>
@@ -20,7 +22,6 @@
                                     class="w-full border hover:shadow-md bg-white hover:shadow-black/20 duration-300 flex flex-col justify-between rounded-md px-4 py-8 gap-4">
                                     <div class="space-y-4 sm:space-y-6">
                                         <p class="text-xl font-bold">{{ $plan['title'] }}</p>
-                                        {{-- <div class=" w-full aspect-video rounded-md bg-black overflow-hidden"></div> --}}
                                         <p class="text-2xl font-bold text-byolink-2">{{ $plan['price'] }}</p>
                                         <div class="divide-y text-sm text-neutral-600">
                                             @foreach ($plan['features'] as $feature)
@@ -39,10 +40,53 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                    <div class="w-full flex flex-col items-center gap-2 font-medium">
-                                        <p class="text-sm text-byolink-2">Klik Sekarang & Dapatkan</p>
+                                    <div class="w-full flex flex-col items-center gap-4 font-medium">
+                                        <div x-data="{ dropdown: false }" class=" w-full space-y-2">
+                                            <button @click="dropdown = !dropdown"
+                                                class=" w-full flex items-center gap-2 justify-center text-sm text-byolink-2">
+                                                <p class="">Penjelasan Paket</p>
+                                                <div :class="dropdown ? ' rotate-180' : ''" class=" w-4 h-4 duration-300">
+                                                    <svg class=" w-full h-full feather feather-chevron-down" fill="none"
+                                                        stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <polyline points="6 9 12 15 18 9" />
+                                                    </svg>
+                                                </div>
+                                            </button>
+                                            @if ($plan['video'])
+                                                <div x-show="dropdown"
+                                                    x-effect="
+                                                        if (dropdown) {
+                                                            $nextTick(() => {
+                                                                const video = $el.querySelector('video');
+                                                                if (video) video.play();
+                                                            });
+                                                        } else {
+                                                            const video = $el.querySelector('video');
+                                                            if (video) {
+                                                                video.pause();
+                                                                video.currentTime = 0;
+                                                            }
+                                                        }
+                                                    "
+                                                    class=" w-full aspect-[9/16] rounded-md bg-black overflow-hidden">
+                                                    <video class="w-full h-full" controls>
+                                                        <source
+                                                            src="{{ asset('/assets/videos/pricelist/' . $plan['video']) }}"
+                                                            type="video/mp4">
+                                                        Browser kamu tidak mendukung video tag.
+                                                    </video>
+                                                </div>
+                                            @else
+                                                <div x-show="dropdown" class=" text-sm text-center text-neutral-600">
+                                                    Video belum tersedia</div>
+                                            @endif
+                                        </div>
 
-                                        <a class=" flex w-full" href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo Saya dapat info dari catalog.jasawebsite.biz, dan tertarik dengan Paket Tipe Simpel ' . $plan['title']) }}" target="__blank">
+                                        <a class=" flex w-full"
+                                            href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo Saya dapat info dari catalog.jasawebsite.biz, dan tertarik dengan Paket Tipe Simpel ' . $plan['title']) }}"
+                                            target="__blank">
                                             <button
                                                 class="bg-byolink-2 w-full flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 text-white rounded-full hover:scale-95 duration-300">
                                                 <div class="w-4 aspect-square">
@@ -59,13 +103,28 @@
                                                             class="fill-000000"></path>
                                                     </svg>
                                                 </div>
-                                                <p>Hubungi Kami</p>
+                                                <p>Konsultasi Sekarang</p>
                                             </button>
                                         </a>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const videos = document.querySelectorAll('video');
+
+                                videos.forEach(video => {
+                                    video.addEventListener('play', function() {
+                                        videos.forEach(other => {
+                                            if (other !== video) {
+                                                other.pause();
+                                            }
+                                        });
+                                    });
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
