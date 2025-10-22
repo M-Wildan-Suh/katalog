@@ -17,8 +17,6 @@ use App\Http\Controllers\SourceCodeController;
 use App\Http\Controllers\TeamGalleryController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\UserController;
-use App\Models\ArticleCategory;
-use App\Models\portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -101,6 +99,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admin/portfolio', PortfolioController::class);
 
     Route::resource('/admin/gallery', TeamGalleryController::class);
+    Route::post('/admin/gallery/destroy-all', [TeamGalleryController::class, 'destroyAll'])->name('gallery.destroy.all');
 
     Route::resource('/admin/article-banner', ArticleBannerController::class);
     Route::resource('/admin/article-gallery', ArticleGalleryController::class);
