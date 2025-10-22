@@ -138,7 +138,7 @@
                 © 2025 catalog.jasawebsite.biz | Developed by
                 <span class="hover:underline">
                     <a href="https://jasawebsite.biz" target="_blank">
-                        Jasawebsitebiz
+                        JasaWebsite.biz
                     </a>
                 </span>
             </p>
