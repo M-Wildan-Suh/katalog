@@ -43,16 +43,59 @@
                                     <div class="w-full flex flex-col items-center gap-4 font-medium">
                                         <div x-data="{ dropdown: false }" class=" w-full space-y-2">
                                             <button @click="dropdown = !dropdown"
-                                                class=" w-full flex items-center gap-2 justify-center text-sm text-byolink-2">
-                                                <p class="">Penjelasan Paket</p>
-                                                <div :class="dropdown ? ' rotate-180' : ''" class=" w-4 h-4 duration-300">
-                                                    <svg class=" w-full h-full feather feather-chevron-down" fill="none"
-                                                        stroke="currentColor" stroke-linecap="round"
+                                                class=" w-full flex items-center gap-2 justify-center text-sm text-neutral-600">
+                                                <div class=" flex">
+                                                    <div class=" w-4 h-4 -rotate-90 duration-300">
+                                                        <svg class=" w-full h-full feather feather-chevron-down"
+                                                            fill="none" stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <polyline points="6 9 12 15 18 9" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class=" w-4 h-4 -rotate-90 duration-300">
+                                                        <svg class=" w-full h-full feather feather-chevron-down"
+                                                            fill="none" stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <polyline points="6 9 12 15 18 9" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class=" w-4 aspect-square">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                                        <path fill="currentColor"
+                                                            d="M128 128C92.7 128 64 156.7 64 192L64 448C64 483.3 92.7 512 128 512L384 512C419.3 512 448 483.3 448 448L448 192C448 156.7 419.3 128 384 128L128 128zM496 400L569.5 458.8C573.7 462.2 578.9 464 584.3 464C597.4 464 608 453.4 608 440.3L608 199.7C608 186.6 597.4 176 584.3 176C578.9 176 573.7 177.8 569.5 181.2L496 240L496 400z" />
+                                                    </svg>
+                                                </div>
+                                                <p class=" text-nowrap">Video Penjelasan</p>
+                                                <div class=" flex">
+                                                    <div class=" w-4 h-4 rotate-90 duration-300">
+                                                        <svg class=" w-full h-full feather feather-chevron-down"
+                                                            fill="none" stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <polyline points="6 9 12 15 18 9" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class=" w-4 h-4 rotate-90 duration-300">
+                                                        <svg class=" w-full h-full feather feather-chevron-down"
+                                                            fill="none" stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <polyline points="6 9 12 15 18 9" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                {{-- <div :class="dropdown ? ' rotate-180' : ''"
+                                                    class=" w-4 h-4 duration-300">
+                                                    <svg class=" w-full h-full feather feather-chevron-down"
+                                                        fill="none" stroke="currentColor" stroke-linecap="round"
                                                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <polyline points="6 9 12 15 18 9" />
                                                     </svg>
-                                                </div>
+                                                </div> --}}
                                             </button>
                                             @if ($plan['video'])
                                                 <div x-show="dropdown"
@@ -88,7 +131,7 @@
                                             href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo Saya dapat info dari catalog.jasawebsite.biz, dan tertarik dengan Paket Tipe Simpel ' . $plan['title']) }}"
                                             target="__blank">
                                             <button
-                                                class="bg-byolink-2 w-full flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 text-white rounded-full hover:scale-95 duration-300">
+                                                class="w-full py-1 sm:py-1.5 gap-1 flex items-center justify-center rounded-full text-xs sm:text-sm font-semibold border border-neutral-600 text-neutral-600 hover:text-white hover:bg-byolink-1 duration-300">
                                                 <div class="w-4 aspect-square">
                                                     <svg viewBox="0 0 56.693 56.693" xml:space="preserve"
                                                         xmlns="http://www.w3.org/2000/svg"
