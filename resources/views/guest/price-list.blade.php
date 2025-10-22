@@ -43,7 +43,7 @@
                                     <div class="w-full flex flex-col items-center gap-4 font-medium">
                                         <div x-data="{ dropdown: false }" class=" w-full space-y-2">
                                             <button @click="dropdown = !dropdown"
-                                                class=" w-full flex items-center gap-2 justify-center text-sm text-neutral-600">
+                                                class=" w-full flex items-center gap-2 justify-center text-sm text-byolink-2">
                                                 <div class=" flex">
                                                     <div class=" w-4 h-4 -rotate-90 duration-300">
                                                         <svg class=" w-full h-full feather feather-chevron-down"
@@ -53,7 +53,7 @@
                                                             <polyline points="6 9 12 15 18 9" />
                                                         </svg>
                                                     </div>
-                                                    <div class=" w-4 h-4 -rotate-90 duration-300">
+                                                    <div class=" w-4 h-4 -rotate-90 duration-300 -ml-2">
                                                         <svg class=" w-full h-full feather feather-chevron-down"
                                                             fill="none" stroke="currentColor" stroke-linecap="round"
                                                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -70,7 +70,7 @@
                                                 </div>
                                                 <p class=" text-nowrap">Video Penjelasan</p>
                                                 <div class=" flex">
-                                                    <div class=" w-4 h-4 rotate-90 duration-300">
+                                                    <div class=" w-4 h-4 rotate-90 duration-300 -mr-2">
                                                         <svg class=" w-full h-full feather feather-chevron-down"
                                                             fill="none" stroke="currentColor" stroke-linecap="round"
                                                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
