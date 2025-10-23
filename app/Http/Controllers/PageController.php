@@ -301,7 +301,7 @@ class PageController extends Controller
 
         $hp = PhoneNumber::first()->no_tlp;
 
-        return view('guest.pagenotfound', compact('category', 'hp'), 404);
+        return response()->view('guest.pagenotfound', compact('category', 'hp'), 404);
     }
 
     public function test()
