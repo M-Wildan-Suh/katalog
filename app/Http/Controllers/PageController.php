@@ -221,7 +221,7 @@ class PageController extends Controller
 
         return view('guest.contact', compact('category', 'hp', 'data'));
     }
-    
+
     public function priceList()
     {
         $category = ArticleCategory::all();
@@ -234,9 +234,18 @@ class PageController extends Controller
                 'price' => 'Rp 890k',
                 'video' => 'simpelpemula.mp4',
                 'features' => [
-                    'Domain my.id/sites.id',
-                    'Free Support 1 Tahun',
-                    '1 Halaman',    
+                    [
+                        'title' => 'Domain my.id/sites.id',
+                        'video' => null,
+                    ],
+                    [
+                        'title' => 'Free Support 1 Tahun',
+                        'video' => 'support.mp4',
+                    ],
+                    [
+                        'title' => '1 Halaman',
+                        'video' => null,
+                    ],
                 ],
             ],
             [
@@ -244,38 +253,84 @@ class PageController extends Controller
                 'price' => 'Rp 1.1 JT',
                 'video' => 'simpelmedium.mp4',
                 'features' => [
-                    'Domain .com',
-                    'Email Privat: 1',
-                    'Free Support 1 Tahun',
-                    '1 Halaman',
+                    [
+                        'title' => 'Domain .com',
+                        'video' => null,
+                    ],
+                    [
+                        'title' => 'Email Privat: 1',
+                        'video' => 'email.mp4',
+                    ],
+                    [
+                        'title' => 'Free Support 1 Tahun',
+                        'video' => 'support.mp4',
+                    ],
+                    [
+                        'title' => '1 Halaman',
+                        'video' => null,
+                    ],
                 ],
             ],
             [
                 'title' => 'Bisnis',
                 'price' => 'Rp 1.6 JT',
-                'video' => null,
+                'video' => 'simpelbisnis.mp4',
                 'features' => [
-                    'Domain .com',
-                    'Hosting 5 GB',
-                    'Email Privat: 2',
-                    'Free Support 1 Tahun',
-                    '5 Halaman',
+                    [
+                        'title' => 'Domain .com',
+                        'video' => null,
+                    ],
+                    [
+                        'title' => 'Hosting 5 GB',
+                        'video' => null,
+                    ],
+                    [
+                        'title' => 'Email Privat: 2',
+                        'video' => 'email.mp4',
+                    ],
+                    [
+                        'title' => 'Free Support 1 Tahun',
+                        'video' => 'support.mp4',
+                    ],
+                    [
+                        'title' => '5 Halaman',
+                        'video' => null,
+                    ],
                 ],
             ],
             [
                 'title' => 'Bisnis Plus',
                 'price' => 'Rp 2.2 JT',
-                'video' => null,
+                'video' => 'simpelbisnisplus.mp4',
                 'features' => [
-                    'Domain .com',
-                    'Hosting 8 GB',
-                    'Email Privat: 5',
-                    'Free Support 1 Tahun',
-                    '5 Halaman',
-                    'Artikel: 20 Artikel/Produk Relevan',
+                    [
+                        'title' => 'Domain .com',
+                        'video' => null,
+                    ],
+                    [
+                        'title' => 'Hosting 8 GB',
+                        'video' => null,
+                    ],
+                    [
+                        'title' => 'Email Privat: 5',
+                        'video' => 'email.mp4',
+                    ],
+                    [
+                        'title' => 'Free Support 1 Tahun',
+                        'video' => 'support.mp4',
+                    ],
+                    [
+                        'title' => '5 Halaman',
+                        'video' => null,
+                    ],
+                    [
+                        'title' => 'Artikel: 20 Artikel/Produk Relevan',
+                        'video' => null,
+                    ],
                 ],
             ],
         ];
+
 
         return view('guest.price-list', compact('category', 'hp', 'plans'));
     }
@@ -287,9 +342,9 @@ class PageController extends Controller
         if ($request->ajax()) {
             return view('components.guest.portfolio', compact('data'))->render();
         }
-        
+
         $category = ArticleCategory::all();
-        
+
         $hp = PhoneNumber::first()->no_tlp;
 
         return view('guest.portfolio', compact('category', 'hp', 'data'));
