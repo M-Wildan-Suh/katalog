@@ -52,12 +52,14 @@
                                                                 </svg>
                                                             </button>
                                                             <div x-show="video"
-                                                                class="fixed inset-0 p-4 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                                                                <div
-                                                                    class="w-full max-w-[520px] bg-white pb-4 rounded-md flex flex-col gap-4 relative overflow-hidden">
-                                                                    <button @click=" $refs.videoplayer.pause(); $refs.videoplayer.currentTime = 0; video = false; "
-                                                                        class=" absolute top-6 right-6 w-6 h-6 text-white hover:text-black duration-300">
-                                                                        <svg viewBox="0 0 512 512" xml:space="preserve"
+                                                                class="fixed inset-0 px-12 py-20 bg-black/70 flex justify-center items-center z-50">
+                                                                <div @click.outside="$refs.videoplayer.pause(); $refs.videoplayer.currentTime = 0; video = false;"
+                                                                    class="aspect-[9/16] max-h-full rounded-md flex flex-col gap-4 relative">
+                                                                    <button
+                                                                        @click=" $refs.videoplayer.pause(); $refs.videoplayer.currentTime = 0; video = false; "
+                                                                        class=" absolute top-0 -right-12 p-3 text-white hover:bg-white/10 duration-300">
+                                                                        <svg class="w-6 h-6" viewBox="0 0 512 512"
+                                                                            xml:space="preserve"
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             enable-background="new 0 0 512 512">
                                                                             <path
@@ -66,21 +68,13 @@
                                                                             </path>
                                                                         </svg>
                                                                     </button>
-                                                                    <div class=" pt-6 pb-3 pr-12 bg-byolink-2 text-white">
-                                                                        <h2 class=" px-4 text-xl font-bold">Video
-                                                                            Penjelasan {{$feature['title']}}</h2>
-                                                                    </div>
-                                                                    <div class=" flex justify-center px-4">
-                                                                        <div
-                                                                            class=" w-full aspect-video bg-black rounded-md overflow-hidden">
-                                                                            <video x-ref="videoplayer" class="w-full h-full" controls>
-                                                                                <source
-                                                                                    src="{{ asset('/assets/videos/pricelist/' . $feature['video']) }}"
-                                                                                    type="video/mp4">
-                                                                                Browser kamu tidak mendukung video tag.
-                                                                            </video>
-                                                                        </div>
-                                                                    </div>
+                                                                    <video x-ref="videoplayer"
+                                                                        class="w-full h-full rounded-md" controls>
+                                                                        <source
+                                                                            src="{{ asset('/assets/videos/pricelist/' . $feature['video']) }}"
+                                                                            type="video/mp4">
+                                                                        Browser kamu tidak mendukung video tag.
+                                                                    </video>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -130,8 +124,8 @@
                                                     <div class=" w-4 h-4 rotate-90 duration-300">
                                                         <svg class=" w-full h-full feather feather-chevron-down"
                                                             fill="none" stroke="currentColor" stroke-linecap="round"
-                                                            stroke-linejoin="round" stroke-width="2"
-                                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg">
                                                             <polyline points="6 9 12 15 18 9" />
                                                         </svg>
                                                     </div>

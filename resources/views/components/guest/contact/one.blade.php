@@ -39,26 +39,22 @@
     </div>
 </div>
 
-<div x-show="video" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-    <div class="w-full max-w-[520px] bg-white pb-4 rounded-md flex flex-col gap-4 relative overflow-hidden">
-        <button @click="video = false" class=" absolute top-6 right-6 w-6 h-6 text-white hover:text-black duration-300">
-            <svg viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+<div x-show="video" class="fixed inset-0 px-12 py-20 bg-black/70 flex justify-center items-center z-50">
+    <div @click.outside="$refs.videoplayer.pause(); $refs.videoplayer.currentTime = 0; video = false;"
+        class="aspect-[9/16] max-h-full rounded-md flex flex-col gap-4 relative">
+        <button @click=" $refs.videoplayer.pause(); $refs.videoplayer.currentTime = 0; video = false; "
+            class=" absolute top-0 -right-12 p-3 text-white hover:bg-white/10 duration-300">
+            <svg class="w-6 h-6" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                 enable-background="new 0 0 512 512">
                 <path
                     d="M437.5 386.6 306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z"
-                    fill="currentColor" class="fill-000000"></path>
+                    fill="currentColor" class="fill-000000">
+                </path>
             </svg>
         </button>
-        <div class=" pt-6 pb-3 bg-byolink-2 text-white">
-            <h2 class=" px-4 text-xl font-bold">Video Penjelasan Tipe Simple</h2>
-        </div>
-        <div class=" flex justify-center px-4">
-            <div class=" w-full aspect-video bg-black rounded-md overflow-hidden">
-                <video class="w-full h-full" controls>
-                    <source src="{{ asset('/assets/videos/37. web simple.mov') }}" type="video/mp4">
-                    Browser kamu tidak mendukung video tag.
-                </video>
-            </div>
-        </div>
+        <video x-ref="videoplayer" class="w-full h-full rounded-md" controls>
+            <source src="{{ asset('/assets/videos/37. web simple.mov') }}" type="video/mp4">
+            Browser kamu tidak mendukung video tag.
+        </video>
     </div>
 </div>

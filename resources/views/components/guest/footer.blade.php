@@ -145,7 +145,7 @@
         </div>
     </div>
 </div>
-<div class=" w-full sticky px-4 bottom-0 z-50 backdrop-blur">
+<div class=" w-full sticky px-4 bottom-0 z-30 backdrop-blur">
     <div class=" w-full max-w-[1080px] mx-auto">
         <div class=" w-full py-2 grid grid-cols-2 gap-2 sm:gap-4 text-sm sm:text-base">
             <a href="tel:{{$hp}}" class=" w-full" target="__blank">
