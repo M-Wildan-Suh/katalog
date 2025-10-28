@@ -8,6 +8,7 @@ use App\Http\Controllers\ArticleGalleryController;
 use App\Http\Controllers\ArticleGeneratedController;
 use App\Http\Controllers\ArticleShowController;
 use App\Http\Controllers\ArticleShowGalleryController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneNumberController;
 use App\Http\Controllers\PortfolioController;
@@ -76,6 +77,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
     Route::resource('/admin/user', UserController::class);
+
+    Route::resource('/admin/package', PackageController::class);
 
     Route::resource('/admin/template', TemplateController::class);
     Route::put('/admin/template/edit-image/{id}', [TemplateController::class, 'editimage'])->name('template.editimage');

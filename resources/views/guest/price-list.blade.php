@@ -21,11 +21,13 @@
                                 <div
                                     class="w-full border hover:shadow-md bg-white hover:shadow-black/20 duration-300 flex flex-col justify-between rounded-md px-4 py-8 gap-4">
                                     <div class="space-y-4 sm:space-y-6">
-                                        <p class="text-xl font-bold">{{ $plan['title'] }}</p>
-                                        <p class="text-2xl font-bold text-byolink-2">{{ $plan['price'] }}</p>
+                                        <p class="text-xl font-bold">{{ $plan->title }}</p>
+                                        <p class="text-2xl font-bold text-byolink-2">
+                                            {{ $plan->price >= 1000000 ? number_format($plan->price / 1000000, 1, '.', '.') . ' JT' : ($plan->price >= 1000 ? number_format($plan->price / 1000, 0, ',', '.') . ' K' : number_format($plan->price, 0, ',', '.')) }}
+                                        </p>
                                         <div class="divide-y text-sm text-neutral-600">
-                                            @foreach ($plan['features'] as $feature)
-                                                <div class=" flex justify-between items-center">
+                                            @foreach ($plan->packageitem as $feature)
+                                                <div x-data="{ video: false }" class=" flex justify-between items-center group">
                                                     <div class="flex items-center gap-2 py-2">
                                                         <div class="w-4 aspect-square text-byolink-2">
                                                             <svg viewBox="0 0 512 512"
@@ -37,44 +39,63 @@
                                                                 99.13 439.8 96 448 96C465.1 96 480 109.7 480 128z" />
                                                             </svg>
                                                         </div>
-                                                        <p>{{ $feature['title'] }}</p>
+                                                        <p class=" {{ $feature->video ? 'cursor-pointer group-hover:text-byolink-2 duration-300' : ''}}"
+                                                            @if ($feature->video) @click="video = true; $nextTick(() => { 
+                                                                const iframe = $refs.videoplayer; 
+                                                                iframe.src = iframe.dataset.src + '?autoplay=1'; 
+                                                            });" @endif>
+                                                            {{ $feature->title }}</p>
                                                     </div>
-                                                    @if ($feature['video'])
-                                                        <div x-data="{ video: false }">
+                                                    @if ($feature->video)
+                                                        <div>
+                                                            <!-- Tombol Play -->
                                                             <button
-                                                                @click="video = true; $nextTick(() => $refs.videoplayer.play());"
-                                                                class=" w-4 aspect-square">
-                                                                <svg class=" w-full h-full" viewBox="0 0 24 24"
-                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                @click="video = true; $nextTick(() => { 
+                                                                    const iframe = $refs.videoplayer;
+                                                                    iframe.src = iframe.dataset.src + '?autoplay=1';
+                                                                });"
+                                                                class="w-4 aspect-square group-hover:text-byolink-2 duration-300">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 640 640">
                                                                     <path fill="currentColor"
-                                                                        d="M19,14 L19,19 C19,20.1045695 18.1045695,21 17,21 L5,21 C3.8954305,21 3,20.1045695 3,19 L3,7 C3,5.8954305 3.8954305,5 5,5 L10,5 L10,7 L5,7 L5,19 L17,19 L17,14 L19,14 Z M18.9971001,6.41421356 L11.7042068,13.7071068 L10.2899933,12.2928932 L17.5828865,5 L12.9971001,5 L12.9971001,3 L20.9971001,3 L20.9971001,11 L18.9971001,11 L18.9971001,6.41421356 Z"
-                                                                        fill-rule="evenodd" />
+                                                                        d="M128 128C92.7 128 64 156.7 64 192L64 448C64 483.3 92.7 512 128 512L384 512C419.3 512 448 483.3 448 448L448 192C448 156.7 419.3 128 384 128L128 128zM496 400L569.5 458.8C573.7 462.2 578.9 464 584.3 464C597.4 464 608 453.4 608 440.3L608 199.7C608 186.6 597.4 176 584.3 176C578.9 176 573.7 177.8 569.5 181.2L496 240L496 400z" />
                                                                 </svg>
                                                             </button>
-                                                            <div x-show="video"
+
+                                                            <!-- Modal Video -->
+                                                            <div x-show="video" x-transition.opacity
                                                                 class="fixed inset-0 px-12 py-20 bg-black/70 flex justify-center items-center z-50">
-                                                                <div @click.outside="$refs.videoplayer.pause(); $refs.videoplayer.currentTime = 0; video = false;"
+
+                                                                <div @click.outside="
+                                                                        const iframe = $refs.videoplayer;
+                                                                        iframe.src = iframe.dataset.src; 
+                                                                        video = false;
+                                                                    "
                                                                     class="aspect-[9/16] max-h-full rounded-md flex flex-col gap-4 relative">
+
+                                                                    <!-- Tombol Tutup -->
                                                                     <button
-                                                                        @click=" $refs.videoplayer.pause(); $refs.videoplayer.currentTime = 0; video = false; "
-                                                                        class=" absolute top-0 -right-12 p-3 text-white hover:bg-white/10 duration-300">
+                                                                        @click="
+                                                                            const iframe = $refs.videoplayer;
+                                                                            iframe.src = iframe.dataset.src;
+                                                                            video = false;
+                                                                        "
+                                                                        class="absolute top-0 -right-12 p-3 text-white hover:bg-white/10 duration-300">
                                                                         <svg class="w-6 h-6" viewBox="0 0 512 512"
-                                                                            xml:space="preserve"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            enable-background="new 0 0 512 512">
-                                                                            <path
-                                                                                d="M437.5 386.6 306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z"
-                                                                                fill="currentColor" class="fill-000000">
-                                                                            </path>
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path fill="currentColor"
+                                                                                d="M437.5 386.6 306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z" />
                                                                         </svg>
                                                                     </button>
-                                                                    <video x-ref="videoplayer"
-                                                                        class="w-full h-full rounded-md" controls>
-                                                                        <source
-                                                                            src="{{ asset('/assets/videos/pricelist/' . $feature['video']) }}"
-                                                                            type="video/mp4">
-                                                                        Browser kamu tidak mendukung video tag.
-                                                                    </video>
+
+                                                                    <!-- Embed YouTube -->
+                                                                    <iframe x-ref="videoplayer"
+                                                                        class="w-full h-full rounded-md" src=""
+                                                                        data-src="{{ $feature->video }}"
+                                                                        title="YouTube video player" frameborder="0"
+                                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                        allowfullscreen>
+                                                                    </iframe>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -86,7 +107,7 @@
                                     <div class="w-full flex flex-col items-center gap-4 font-medium">
                                         <div x-data="{ dropdown: false }" class=" w-full space-y-2">
                                             <button @click="dropdown = !dropdown"
-                                                class=" w-full flex items-center gap-2 justify-center text-sm text-byolink-2">
+                                                class=" w-full flex items-center gap-1 justify-center text-sm text-byolink-2">
                                                 <div class=" flex">
                                                     <div class=" w-4 h-4 -rotate-90 duration-300">
                                                         <svg class=" w-full h-full feather feather-chevron-down"
@@ -130,39 +151,32 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                {{-- <div :class="dropdown ? ' rotate-180' : ''"
-                                                    class=" w-4 h-4 duration-300">
-                                                    <svg class=" w-full h-full feather feather-chevron-down"
-                                                        fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <polyline points="6 9 12 15 18 9" />
-                                                    </svg>
-                                                </div> --}}
                                             </button>
-                                            @if ($plan['video'])
+                                            @if ($plan->video)
                                                 <div x-show="dropdown"
                                                     x-effect="
                                                         if (dropdown) {
                                                             $nextTick(() => {
-                                                                const video = $el.querySelector('video');
-                                                                if (video) video.play();
+                                                                const iframe = $el.querySelector('iframe');
+                                                                if (iframe) {
+                                                                    // tambahkan autoplay pada URL saat dibuka
+                                                                    iframe.src = iframe.dataset.src + '?autoplay=1';
+                                                                }
                                                             });
                                                         } else {
-                                                            const video = $el.querySelector('video');
-                                                            if (video) {
-                                                                video.pause();
-                                                                video.currentTime = 0;
+                                                            const iframe = $el.querySelector('iframe');
+                                                            if (iframe) {
+                                                                // hentikan video dengan reload ulang URL embed tanpa autoplay
+                                                                iframe.src = iframe.dataset.src;
                                                             }
                                                         }
                                                     "
-                                                    class=" w-full aspect-[9/16] rounded-md bg-black overflow-hidden">
-                                                    <video class="w-full h-full" controls>
-                                                        <source
-                                                            src="{{ asset('/assets/videos/pricelist/' . $plan['video']) }}"
-                                                            type="video/mp4">
-                                                        Browser kamu tidak mendukung video tag.
-                                                    </video>
+                                                    class="w-full aspect-[9/16] rounded-md bg-black overflow-hidden">
+                                                    <iframe class="w-full h-full"
+                                                        :src="dropdown ? '{{ $plan['video'] }}?autoplay=1' :
+                                                            '{{ $plan['video'] }}'"
+                                                        data-src="{{ $plan['video'] }}" frameborder="0"
+                                                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                                 </div>
                                             @else
                                                 <div x-show="dropdown" class=" text-sm text-center text-neutral-600">

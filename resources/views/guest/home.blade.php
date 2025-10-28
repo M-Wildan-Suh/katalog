@@ -50,7 +50,7 @@
                         <div class=" w-full flex justify-center aspect-square order-2 sm:order-1">
                             <div style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);" class=" p-4 rounded-xl border border-[#7a7a7a] overflow-hidden">
                                 <video x-ref="video" class=" max-w-full max-h-full rounded-xl" controls autoplay>
-                                    <source src="{{ asset('/assets/videos/sectionvideo.mp4') }}" type="video/mp4">
+                                    <source src="{{ asset('/assets/videos/websimpel.mp4') }}" type="video/mp4">
                                     Browser kamu tidak mendukung video tag.
                                 </video>
                             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ArticleCategory;
 use App\Models\ArticleShow;
 use App\Models\ArticleTag;
+use App\Models\Package;
 use App\Models\PhoneNumber;
 use App\Models\Portfolio;
 use App\Models\TeamGallery;
@@ -228,108 +229,26 @@ class PageController extends Controller
 
         $hp = PhoneNumber::first()->no_tlp;
 
-        $plans = [
-            [
-                'title' => 'Pemula',
-                'price' => 'Rp 890k',
-                'video' => 'simpelpemula.mp4',
-                'features' => [
-                    [
-                        'title' => 'Domain my.id/sites.id',
-                        'video' => null,
-                    ],
-                    [
-                        'title' => 'Free Support 1 Tahun',
-                        'video' => 'support.mp4',
-                    ],
-                    [
-                        'title' => '1 Halaman',
-                        'video' => null,
-                    ],
-                ],
-            ],
-            [
-                'title' => 'Medium',
-                'price' => 'Rp 1.1 JT',
-                'video' => 'simpelmedium.mp4',
-                'features' => [
-                    [
-                        'title' => 'Domain .com',
-                        'video' => null,
-                    ],
-                    [
-                        'title' => 'Email Privat: 1',
-                        'video' => 'email.mp4',
-                    ],
-                    [
-                        'title' => 'Free Support 1 Tahun',
-                        'video' => 'support.mp4',
-                    ],
-                    [
-                        'title' => '1 Halaman',
-                        'video' => null,
-                    ],
-                ],
-            ],
-            [
-                'title' => 'Bisnis',
-                'price' => 'Rp 1.6 JT',
-                'video' => 'simpelbisnis.mp4',
-                'features' => [
-                    [
-                        'title' => 'Domain .com',
-                        'video' => null,
-                    ],
-                    [
-                        'title' => 'Hosting 5 GB',
-                        'video' => null,
-                    ],
-                    [
-                        'title' => 'Email Privat: 2',
-                        'video' => 'email.mp4',
-                    ],
-                    [
-                        'title' => 'Free Support 1 Tahun',
-                        'video' => 'support.mp4',
-                    ],
-                    [
-                        'title' => '5 Halaman',
-                        'video' => null,
-                    ],
-                ],
-            ],
-            [
-                'title' => 'Bisnis Plus',
-                'price' => 'Rp 2.2 JT',
-                'video' => 'simpelbisnisplus.mp4',
-                'features' => [
-                    [
-                        'title' => 'Domain .com',
-                        'video' => null,
-                    ],
-                    [
-                        'title' => 'Hosting 8 GB',
-                        'video' => null,
-                    ],
-                    [
-                        'title' => 'Email Privat: 5',
-                        'video' => 'email.mp4',
-                    ],
-                    [
-                        'title' => 'Free Support 1 Tahun',
-                        'video' => 'support.mp4',
-                    ],
-                    [
-                        'title' => '5 Halaman',
-                        'video' => null,
-                    ],
-                    [
-                        'title' => 'Artikel: 20 Artikel/Produk Relevan',
-                        'video' => null,
-                    ],
-                ],
-            ],
-        ];
+        $plans = Package::with('packageitem')->get();
+
+        $plans = $plans->map(function ($package) {
+            // ubah video package (akses array-style biar aman dari warning)
+            if (!empty($package['video'])) {
+                $package['video'] = convertToEmbed($package['video']);
+            }
+
+            // ubah video di setiap packageitem
+            if ($package->relationLoaded('packageitem')) {
+                $package->packageitem->transform(function ($item) {
+                    if (!empty($item['video'])) {
+                        $item['video'] = convertToEmbed($item['video']);
+                    }
+                    return $item;
+                });
+            }
+
+            return $package;
+        });
 
 
         return view('guest.price-list', compact('category', 'hp', 'plans'));
@@ -379,5 +298,29 @@ class PageController extends Controller
             'message' => 'Ditemukan judul yang duplikat.',
             'data' => $duplikatJudul
         ]);
+    }
+}
+
+if (!function_exists('convertToEmbed')) {
+    function convertToEmbed($url)
+    {
+        if (empty($url)) return null;
+
+        // Format: https://youtu.be/{id}
+        if (preg_match('/youtu\.be\/([^\?]+)/', $url, $matches)) {
+            $id = $matches[1];
+        }
+        // Format: https://www.youtube.com/watch?v={id}
+        elseif (preg_match('/v=([^\&]+)/', $url, $matches)) {
+            $id = $matches[1];
+        }
+        // Format: https://youtube.com/shorts/{id}
+        elseif (preg_match('/shorts\/([^\?]+)/', $url, $matches)) {
+            $id = $matches[1];
+        } else {
+            return $url; // bukan link YouTube yang dikenal
+        }
+
+        return "https://www.youtube.com/embed/" . $id;
     }
 }

@@ -5,7 +5,8 @@
             <div class="aspect-square h-full">
                 <img src="{{ asset('assets/images/logo-jbiz.png') }}" alt="">
             </div>
-            <p class="font-bold text-2xl duration-300 pb-1" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Bizlink
+            <p class="font-bold text-2xl duration-300 pb-1" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">
+                Bizlink
             </p>
         </div>
         <div class="pl-4 space-y-4">
@@ -22,11 +23,15 @@
             </x-admin.navbutton>
             <x-admin.navbutton route="user.index" :active="['user.index', 'user.create', 'user.show']">
                 <div class="min-w-5 h-5 mx-0.5">
-                    <svg fill="none" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M1.5 0A1.5 1.5 0 0 0 0 1.5v12A1.5 1.5 0 0 0 1.5 15h12a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 13.5 0h-12Zm5 9A3.5 3.5 0 0 0 3 12.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1A3.5 3.5 0 0 0 8.5 9h-2ZM5 5.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Z" fill="currentColor" fill-rule="evenodd" class="fill-000000"></path></svg>
+                    <svg fill="none" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="M1.5 0A1.5 1.5 0 0 0 0 1.5v12A1.5 1.5 0 0 0 1.5 15h12a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 13.5 0h-12Zm5 9A3.5 3.5 0 0 0 3 12.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1A3.5 3.5 0 0 0 8.5 9h-2ZM5 5.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Z"
+                            fill="currentColor" fill-rule="evenodd" class="fill-000000"></path>
+                    </svg>
                 </div>
                 <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">User</p>
             </x-admin.navbutton>
-            <x-admin.navbutton route="template.index" :active="['template.index', 'template.create', 'template.show']">
+            {{-- <x-admin.navbutton route="template.index" :active="['template.index', 'template.create', 'template.show']">
                 <div class="min-w-6 h-6">
                     <svg viewBox="-265 388.9 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                         enable-background="new -265 388.9 64 64">
@@ -36,40 +41,84 @@
                     </svg>
                 </div>
                 <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Template</p>
-            </x-admin.navbutton>
+            </x-admin.navbutton> --}}
+            <div x-data="{ dropdown: {{ request()->routeIs(['portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']) ? 'true' : 'false'}} }" class=" w-full">
+                <x-admin.navbutton :dropdown="true" :active="['portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']">
+                    <div class="min-w-6 h-6">
+                        <svg viewBox="-265 388.9 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                            enable-background="new -265 388.9 64 64">
+                            <path
+                                d="M-210.6 410.9h-44.8c-.9 0-1.6-.7-1.6-1.6v-9.2c0-.9.7-1.6 1.6-1.6h44.8c.9 0 1.6.7 1.6 1.6v9.2c0 .9-.7 1.6-1.6 1.6zM-210.6 443.3h-11.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h11.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6zM-229.6 443.3h-25.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h25.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6z"
+                                fill="currentColor" class="fill-000000"></path>
+                        </svg>
+                    </div>
+                    <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">CMS
+                    </p>
+                </x-admin.navbutton>
+                <div x-show="dropdown" class=" w-full rounded-bl-md overflow-hidden bg-byolink-1/10">
+                    <a href="{{route('package.index')}}"
+                        class="{{ request()->routeIs(['package.index', 'package.create', 'package.show']) ? 'border-byolink-1 bg-byolink-1/60 text-white border-r-4' : 'text-neutral-500 hover:border-black hover:text-black hover:bg-neutral-100 hover:border-r-4' }} w-full flex flex-row gap-2 items-center px-3 py-2  font-semibold duration-300">
+                        Package
+                    </a>
+                    <a href="{{route('portfolio.index')}}"
+                        class="{{ request()->routeIs(['portfolio.index']) ? 'border-byolink-1 bg-byolink-1/60 text-white border-r-4' : 'text-neutral-500 hover:border-black hover:text-black hover:bg-neutral-100 hover:border-r-4' }} w-full flex flex-row gap-2 items-center px-3 py-2  font-semibold duration-300">
+                        Portofolio
+                    </a>
+                    <a href="{{route('gallery.index')}}"
+                        class="{{ request()->routeIs(['gallery.index']) ? 'border-byolink-1 bg-byolink-1/60 text-white border-r-4' : 'text-neutral-500 hover:border-black hover:text-black hover:bg-neutral-100 hover:border-r-4' }} w-full flex flex-row gap-2 items-center px-3 py-2  font-semibold duration-300">
+                        Gallery
+                    </a>
+                </div>
+            </div>
             <x-admin.navbutton route="phone-number.index" :active="['phone-number.index', 'phone-number.create', 'phone-number.show']">
                 <div class="min-w-5 h-5 mx-0.5">
-                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.7-64-64-64zm-32.4 289.5-11.62 50.39c-1.633 7.125-7.9 12.11-15.24 12.11-126.1 0-228.7-102.6-228.7-228.8 0-7.328 4.984-13.59 12.11-15.22l50.38-11.63c7.344-1.703 14.88 2.109 17.93 9.062l23.27 54.28a15.642 15.642 0 0 1-4.492 18.22L168.3 232c16.99 34.61 45.14 62.75 79.77 79.75l22.02-26.91c4.344-5.391 11.85-7.25 18.24-4.484l54.24 23.25c6.93 2.994 10.73 10.594 9.03 17.894z" fill="currentColor" class="fill-000000"></path></svg>
+                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.7-64-64-64zm-32.4 289.5-11.62 50.39c-1.633 7.125-7.9 12.11-15.24 12.11-126.1 0-228.7-102.6-228.7-228.8 0-7.328 4.984-13.59 12.11-15.22l50.38-11.63c7.344-1.703 14.88 2.109 17.93 9.062l23.27 54.28a15.642 15.642 0 0 1-4.492 18.22L168.3 232c16.99 34.61 45.14 62.75 79.77 79.75l22.02-26.91c4.344-5.391 11.85-7.25 18.24-4.484l54.24 23.25c6.93 2.994 10.73 10.594 9.03 17.894z"
+                            fill="currentColor" class="fill-000000"></path>
+                    </svg>
                 </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Phone Number</p>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Phone
+                    Number</p>
             </x-admin.navbutton>
             <x-admin.navbutton route="category.index" :active="['category.index', 'category.create', 'category.show']">
                 <div class="min-w-5 h-5 mx-0.5">
-                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4z"/></svg>
+                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor"
+                            d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4z" />
+                    </svg>
                 </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Kategori</p>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Kategori
+                </p>
             </x-admin.navbutton>
-            <x-admin.navbutton route="portfolio.index" :active="['portfolio.index', 'portfolio.create', 'portfolio.show']">
-                <div class="min-w-5 h-5 mx-0.5">
-                    <svg class=" w-full h-full" version="1.1" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="currentColor" id="Core" transform="translate(-87.000000, -171.000000)"><g id="drive-form" transform="translate(87.000000, 171.000000)"><path d="M16,0 L2,0 C0.9,0 0,0.9 0,2 L0,16 C0,17.1 0.9,18 2,18 L16,18 C17.1,18 18,17.1 18,16 L18,2 C18,0.9 17.1,0 16,0 L16,0 Z M6,14 L4,14 L4,12 L6,12 L6,14 L6,14 Z M6,10 L4,10 L4,8 L6,8 L6,10 L6,10 Z M6,6 L4,6 L4,4 L6,4 L6,6 L6,6 Z M14,14 L7,14 L7,12 L14,12 L14,14 L14,14 Z M14,10 L7,10 L7,8 L14,8 L14,10 L14,10 Z M14,6 L7,6 L7,4 L14,4 L14,6 L14,6 Z" id="Shape"/></g></g></g></svg>
-                </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Portofolio</p>
-            </x-admin.navbutton>
-            <x-admin.navbutton route="article.index" :active="['article.index', 'article.create', 'article.show', 'articel-show.create', 'article-show.create', 'article-show.show', 'article.spintax', 'article.unique', 'article.filter', 'article.spintax.filter', 'article.unique.filter']">
+            <x-admin.navbutton route="article.index" :active="[
+                'article.index',
+                'article.create',
+                'article.show',
+                'articel-show.create',
+                'article-show.create',
+                'article-show.show',
+                'article.spintax',
+                'article.unique',
+                'article.filter',
+                'article.spintax.filter',
+                'article.unique.filter',
+            ]">
                 <div class="min-w-6 h-6">
-                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M8 28h8v-8H8v8zm0 10h8v-8H8v8zm0-20h8v-8H8v8zm10 10h24v-8H18v8zm0 10h24v-8H18v8zm0-28v8h24v-8H18z" fill="currentColor" class="fill-000000"></path><path d="M0 0h48v48H0z" fill="none"></path></svg>
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8 28h8v-8H8v8zm0 10h8v-8H8v8zm0-20h8v-8H8v8zm10 10h24v-8H18v8zm0 10h24v-8H18v8zm0-28v8h24v-8H18z"
+                            fill="currentColor" class="fill-000000"></path>
+                        <path d="M0 0h48v48H0z" fill="none"></path>
+                    </svg>
                 </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Katalog</p>
-            </x-admin.navbutton>
-            <x-admin.navbutton route="gallery.index" :active="['gallery.index', 'gallery.create', 'gallery.show']">
-                <div class="min-w-5 h-5 mx-0.5">
-                    <svg id="Icons" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><defs></defs><path fill="currentColor" d="M19,1H5A4,4,0,0,0,1,5V19a4,4,0,0,0,4,4H19a4,4,0,0,0,4-4V5A4,4,0,0,0,19,1ZM7,5A2,2,0,1,1,5,7,2,2,0,0,1,7,5Zm12.707,9.707a1,1,0,0,1-1.414,0l-2.244-2.244-3.065,3.5-.007.011-.006,0L9.753,19.659a1,1,0,0,1-1.506-1.318L10.9,15.312,9,13.414,5.707,16.707a1,1,0,0,1-1.414-1.414l4-4a1,1,0,0,1,1.414,0l2.51,2.511,3.03-3.463a1.006,1.006,0,0,1,.72-.341.956.956,0,0,1,.74.293l3,3A1,1,0,0,1,19.707,14.707Z"/></svg>
-                </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Gallery</p>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Katalog
+                </p>
             </x-admin.navbutton>
         </div>
     </div>
-    <div :class="open ? 'lg:max-w-[calc(100vw-288px)]' : ''" class="flex flex-col w-full flex-grow sm:max-w-[calc(100vw-80px)]">
+    <div :class="open ? 'lg:max-w-[calc(100vw-288px)]' : ''"
+        class="flex flex-col w-full flex-grow sm:max-w-[calc(100vw-80px)]">
         <div class=" hidden sm:flex w-full bg-white py-6 pl-12 pr-12 lg:pr-32 duration-300 sticky top-0 z-30">
             <div class="w-full mx-auto flex justify-between">
                 <div class="flex gap-4 items-center">
@@ -89,8 +138,8 @@
                         <div class="w-4 h-4">
                             <svg :class="{ 'rotate-90': open, 'rotate-0': !open }"
                                 class="transition-transform feather feather-chevron-right" fill="none"
-                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <polyline points="9 18 15 12 9 6" />
                             </svg>
                         </div>
@@ -105,7 +154,8 @@
                         x-transition:leave-start="transform opacity-100 scale-100"
                         x-transition:leave-end="transform opacity-0 scale-95"
                         class="absolute top-full right-0 mt-2 py-2 w-48 bg-white border rounded shadow-lg text-sm z-40">
-                        <a href="{{route('profile.edit')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Profile</a>
+                        <a href="{{ route('profile.edit') }}"
+                            class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Profile</a>
                         <form method="POST" class=" w-full" action="{{ route('logout') }}">
                             @csrf
                             <button
@@ -117,7 +167,8 @@
         </div>
         <div class=" w-full">
             <div class=" sm:pl-12 sm:pr-12 lg:pr-32 duration-300 pt-8 sm:pb-8 px-4 sm:hidden">
-                <div class=" w-full px-6 py-3 bg-white rounded-md shadow-md shadow-black/20 text-xl font-bold">{{$head ?? ''}}</div>
+                <div class=" w-full px-6 py-3 bg-white rounded-md shadow-md shadow-black/20 text-xl font-bold">
+                    {{ $head ?? '' }}</div>
             </div>
             {{ $slot }}
             @include('components.admin.mobile-navbar')
