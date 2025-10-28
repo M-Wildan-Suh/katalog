@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="fixed w-[calc(100vw-32px)] left-1/2 -translate-x-1/2 bg-white shadow-md shadow-black/20 bottom-[44px] rounded-t-md z-10 transition-all duration-300 overflow-hidden border border-neutral-300"
-        :class="isOpen ? ' h-64 pb-7' : 'h-0'">
+        :class="isOpen ? ' h-48 pb-7' : 'h-0'">
         <div class=" grid grid-cols-2 p-4 gap-4 text-sm">
             <x-admin.mobile-navbutton route="home" :active="'home'">
                 <x-slot:svg>
@@ -68,17 +68,24 @@
                 </x-slot:svg>
                 User
             </x-admin.mobile-navbutton>
-            <x-admin.mobile-navbutton route="template.index" :active="['template.index', 'template.create', 'template.show']">
-                <x-slot:svg>
-                    <svg viewBox="-265 388.9 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                        enable-background="new -265 388.9 64 64">
-                        <path
-                            d="M-210.6 410.9h-44.8c-.9 0-1.6-.7-1.6-1.6v-9.2c0-.9.7-1.6 1.6-1.6h44.8c.9 0 1.6.7 1.6 1.6v9.2c0 .9-.7 1.6-1.6 1.6zM-210.6 443.3h-11.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h11.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6zM-229.6 443.3h-25.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h25.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6z"
-                            fill="currentColor" class="fill-000000"></path>
-                    </svg>
-                </x-slot:svg>
-                Template
-            </x-admin.mobile-navbutton>
+            <div x-data="{ dropdown: false }" class=" relative">
+                <x-admin.mobile-navbutton :active="['portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']" :dropdown="true">
+                    <x-slot:svg>
+                        <svg viewBox="-265 388.9 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                            enable-background="new -265 388.9 64 64">
+                            <path
+                                d="M-210.6 410.9h-44.8c-.9 0-1.6-.7-1.6-1.6v-9.2c0-.9.7-1.6 1.6-1.6h44.8c.9 0 1.6.7 1.6 1.6v9.2c0 .9-.7 1.6-1.6 1.6zM-210.6 443.3h-11.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h11.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6zM-229.6 443.3h-25.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h25.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6z"
+                                fill="currentColor" class="fill-000000"></path>
+                        </svg>
+                    </x-slot:svg>
+                    CMS
+                </x-admin.mobile-navbutton>
+                <div x-show="dropdown" class=" bg-white rounded-md flex flex-col absolute top-1/2 -translate-y-1/2 left-full ml-2 py-2 z-20 border">
+                    <a href="{{route('package.index')}}" class=" w-full px-4">Package</a>
+                    <a href="{{route('portfolio.index')}}" class=" w-full px-4">Portofolio</a>
+                    <a href="{{route('gallery.index')}}" class=" w-full px-4">Gallery</a>
+                </div>
+            </div>
             <x-admin.mobile-navbutton route="phone-number.index" :active="['phone-number.index', 'phone-number.create', 'phone-number.show']">
                 <x-slot:svg>
                     <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
@@ -97,27 +104,6 @@
                     </svg>
                 </x-slot:svg>
                 Kategori
-            </x-admin.mobile-navbutton>
-            <x-admin.mobile-navbutton route="portfolio.index" :active="['portfolio.index', 'portfolio.create', 'portfolio.show']">
-                <x-slot:svg>
-                    <svg height="18px" version="1.1" viewBox="0 0 18 18" width="18px"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title />
-                        <desc />
-                        <defs />
-                        <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
-                            <g fill="currentColor" id="Core" transform="translate(-87.000000, -171.000000)">
-                                <g id="drive-form" transform="translate(87.000000, 171.000000)">
-                                    <path
-                                        d="M16,0 L2,0 C0.9,0 0,0.9 0,2 L0,16 C0,17.1 0.9,18 2,18 L16,18 C17.1,18 18,17.1 18,16 L18,2 C18,0.9 17.1,0 16,0 L16,0 Z M6,14 L4,14 L4,12 L6,12 L6,14 L6,14 Z M6,10 L4,10 L4,8 L6,8 L6,10 L6,10 Z M6,6 L4,6 L4,4 L6,4 L6,6 L6,6 Z M14,14 L7,14 L7,12 L14,12 L14,14 L14,14 Z M14,10 L7,10 L7,8 L14,8 L14,10 L14,10 Z M14,6 L7,6 L7,4 L14,4 L14,6 L14,6 Z"
-                                        id="Shape" />
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
-                </x-slot:svg>
-                Portofolio
             </x-admin.mobile-navbutton>
             <x-admin.mobile-navbutton route="article.index" :active="[
                 'article.index',
@@ -141,20 +127,6 @@
                     </svg>
                 </x-slot:svg>
                 Katalog
-            </x-admin.mobile-navbutton>
-            <x-admin.mobile-navbutton route="gallery.index" :active="[
-                'gallery.index',
-                'gallery.create',
-                'gallery.show',
-            ]">
-                <x-slot:svg>
-                    <svg id="Icons" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <defs></defs>
-                        <path fill="currentColor"
-                            d="M19,1H5A4,4,0,0,0,1,5V19a4,4,0,0,0,4,4H19a4,4,0,0,0,4-4V5A4,4,0,0,0,19,1ZM7,5A2,2,0,1,1,5,7,2,2,0,0,1,7,5Zm12.707,9.707a1,1,0,0,1-1.414,0l-2.244-2.244-3.065,3.5-.007.011-.006,0L9.753,19.659a1,1,0,0,1-1.506-1.318L10.9,15.312,9,13.414,5.707,16.707a1,1,0,0,1-1.414-1.414l4-4a1,1,0,0,1,1.414,0l2.51,2.511,3.03-3.463a1.006,1.006,0,0,1,.72-.341.956.956,0,0,1,.74.293l3,3A1,1,0,0,1,19.707,14.707Z" />
-                    </svg>
-                </x-slot:svg>
-                Gallery
             </x-admin.mobile-navbutton>
         </div>
     </div>

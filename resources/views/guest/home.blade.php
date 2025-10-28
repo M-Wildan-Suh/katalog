@@ -21,7 +21,8 @@
                         <p class=" text-byolink-2">Solusi Website Simpel</p>
                         <p>Tanpa Harus Pusing Mikirin Konten & Desain</p>
                     </div>
-                    <p class=" text-left text-sm sm:text-base text-neutral-600">Tinggal pilih desain favoritmu, sisanya biar kami yang urus.</p>
+                    <p class=" text-left text-sm sm:text-base text-neutral-600">Tinggal pilih desain favoritmu, sisanya
+                        biar kami yang urus.</p>
                     <div class=" flex">
                         <a href="{{ route('allarticle') }}" class="flex">
                             <button
@@ -48,18 +49,24 @@
                 <div class=" w-full max-w-[1080px] mx-auto">
                     <div class=" w-full grid grid-cols-1 sm:grid-cols-2 text-center sm:text-left gap-10">
                         <div class=" w-full flex justify-center aspect-square order-2 sm:order-1">
-                            <div style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);" class=" p-4 rounded-xl border border-[#7a7a7a] overflow-hidden">
-                                <video x-ref="video" class=" max-w-full max-h-full rounded-xl" controls autoplay>
-                                    <source src="{{ asset('/assets/videos/websimpel.mp4') }}" type="video/mp4">
-                                    Browser kamu tidak mendukung video tag.
-                                </video>
+                            <div style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);"
+                                class=" p-4 rounded-xl aspect-[10/17] border border-[#7a7a7a] overflow-hidden">
+                                <iframe class="w-full h-full rounded-xl"
+                                    src="https://www.youtube.com/embed/s56EdkNygNI?autoplay=1"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
                             </div>
                         </div>
                         <div class=" flex flex-col justify-center gap-6 order-1 sm:order-2">
-                            <p class="text-2xl sm:text-4xl font-bold capitalize">Ingin punya website, tapi tidak mau pusing mikirin desainnya?
+                            <p class="text-2xl sm:text-4xl font-bold capitalize">Ingin punya website, tapi tidak mau
+                                pusing mikirin desainnya?
                             </p>
                             <div class=" flex flex-col gap-2 text-sm sm:text-base">
-                                <p>Nah, di web simple ini, anda tinggal pilih desain dari yang kami sediakan dan warna yang diinginkan, selebihnya tim kami yang atur tanpa harus repot mikirin detail desain atau layoutnya.</p>
+                                <p>Nah, di web simple ini, anda tinggal pilih desain dari yang kami sediakan dan warna
+                                    yang diinginkan, selebihnya tim kami yang atur tanpa harus repot mikirin detail
+                                    desain atau layoutnya.</p>
                             </div>
                         </div>
                     </div>
