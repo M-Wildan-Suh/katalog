@@ -4,7 +4,7 @@
             <div
                 class=" absolute inset-0 bg-[radial-gradient(at_right_bottom,rgba(255,0,0,0.5)_0%,rgb(233,229,255)_64%)] mix-blend-multiply">
             </div>
-            <div style="background-image: url({{ asset('/assets/images/bg-banner.jpg') }})"
+            <div style="background-image: url({{ asset('/assets/images/bg-banner.webp') }})"
                 class=" absolute inset-0 opacity-40 bg-center bg-cover"></div>
             <div
                 class=" pt-32 pb-20 sm:pt-20 sm:pb-0 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full h-full max-w-[1080px] mx-auto relative">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class=" w-full flex justify-center items-center">
-                    <img src="{{ asset('/assets/images/banner.png') }}"
+                    <img src="{{ asset('/assets/images/banner.webp') }}"
                         class=" w-full h-full object-contain object-center" alt="">
                 </div>
             </div>
