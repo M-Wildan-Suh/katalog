@@ -148,10 +148,9 @@
 <div class=" w-full sticky px-4 bottom-0 z-30 backdrop-blur">
     <div class=" w-full max-w-[1080px] mx-auto">
         <div class=" w-full py-2 grid grid-cols-2 gap-2 sm:gap-4 text-sm sm:text-base">
-            <a href="tel:{{$hp}}" class=" w-full" target="__blank">
-                <button
-                    class="
-                 w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 bg-byolink-2 text-white font-semibold rounded-full hover:scale-95 duration-300">
+            <a href="tel:{{$leadcall->no_tlp}}" class=" w-full" target="__blank">
+                <button style="background-color: {{$leadcall->tlp_color}}"
+                    class="w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 text-white font-semibold rounded-full hover:scale-95 duration-300">
                     <div class=" w-4 sm:w-5 aspect-square">
                         <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
                             <path fill="none" d="M0 0h256v256H0z"></path>
@@ -161,14 +160,13 @@
                                 stroke-width="16" class="stroke-000000"></path>
                         </svg>
                     </div>
-                    <p>Telephone</p>
+                    <p>{{$leadcall->tlp_button_text}}</p>
                 </button>
             </a>
-            <a href="https://wa.me/{{ $hp }}?text={{ urlencode('Halo saya Tertarik dengan Paket yang anda sediakan di catalog.jasawebsite.biz') }}"
+            <a href="https://wa.me/{{ $leadcall->no_wa }}?text={{ urlencode('Halo saya Tertarik dengan Paket yang anda sediakan di catalog.jasawebsite.biz') }}"
                 class=" w-full" target="__blank">
-                <button
-                    class="
-                 w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 bg-byolink-2 text-white font-semibold rounded-full hover:scale-95 duration-300">
+                <button style="background-color: {{$leadcall->wa_color}}"
+                    class="w-full flex items-center justify-center gap-1 sm:gap-1.5 py-2 text-white font-semibold rounded-full hover:scale-95 duration-300">
                     <div class=" w-4 sm:w-5 aspect-square">
                         <svg viewBox="0 0 56.693 56.693" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                             enable-background="new 0 0 56.693 56.693">

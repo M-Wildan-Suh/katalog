@@ -1,11 +1,11 @@
 <x-app-layout head="Gallery" title="Admin - Gallery">
     <div class="sm:pl-12 sm:pr-12 lg:pr-32 duration-300 pt-8 pb-20 sm:pb-8 px-4 space-y-4">
-        <div x-data="{ order: [], edit: false, deletemodal: false, tooltip: false, count: {{ $data->count() }} }"
+        <div x-data="{ order: [], edit: false, deletemodal: false, tooltip: false }"
             class="w-full p-4 sm:p-8 bg-white rounded-md shadow-md shadow-black/20 flex flex-col gap-6">
             <div class="w-full flex gap-4 justify-between items-center">
                 <div class=" w-auto flex gap-2">
                     <div x-data="{ addmodal: false, alert: false }" class="flex relative">
-                        <button @click="count == 12 ? (alert = true, setTimeout(() => alert = false, 2000)) : (addmodal = true)"
+                        <button @click="addmodal = true"
                             class=" text-nowrap w-full text-center text-sm sm:text-base md:w-auto px-4 py-2 bg-byolink-1 text-white rounded-md font-semibold border border-byolink-1 hover:border-byolink-3 hover:bg-byolink-3 duration-300">
                             Tambah Gallery
                         </button>
@@ -34,8 +34,7 @@
                                     @csrf
                                     <div class="space-y-4 px-6 text-black">
                                         <div x-data="imageGallery()" class="flex flex-col gap-2">
-                                            <label class=" text-sm sm:text-base font-semibold" for="image">Galeri
-                                                (Max 12)</label>
+                                            <label class=" text-sm sm:text-base font-semibold" for="image">Galeri</label>
                                             <input type="file" class="hidden" id="image" name="image[]" multiple
                                                 @change="previewImages($event)" accept="image/*">
 
@@ -61,22 +60,20 @@
                                                 </template>
 
                                                 <!-- Tambahkan Gambar (Placeholder jika kurang dari 6 gambar) -->
-                                                <template x-if="images.length < max">
-                                                    <label for="image"
-                                                        class="w-full aspect-[4/3] border bg-neutral-100 border-byolink-1 rounded-md relative border-dashed overflow-hidden cursor-pointer">
-                                                        <div
-                                                            class="w-full text-byolink-1 h-full absolute top-0 left-0 flex justify-center items-center p-[25%] hover:bg-byolink-3 hover:text-white/50 duration-300">
-                                                            <svg viewBox="0 0 24 24" class="w-full h-full"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    d="m9 13 3-4 3 4.5V12h4V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h8v-4H5l3-4 1 2z"
-                                                                    fill="currentColor" class="fill-000000"></path>
-                                                                <path d="M19 14h-2v3h-3v2h3v3h2v-3h3v-2h-3z"
-                                                                    fill="currentColor" class="fill-000000"></path>
-                                                            </svg>
-                                                        </div>
-                                                    </label>
-                                                </template>
+                                                <label for="image"
+                                                    class="w-full aspect-[4/3] border bg-neutral-100 border-byolink-1 rounded-md relative border-dashed overflow-hidden cursor-pointer">
+                                                    <div
+                                                        class="w-full text-byolink-1 h-full absolute top-0 left-0 flex justify-center items-center p-[25%] hover:bg-byolink-3 hover:text-white/50 duration-300">
+                                                        <svg viewBox="0 0 24 24" class="w-full h-full"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="m9 13 3-4 3 4.5V12h4V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h8v-4H5l3-4 1 2z"
+                                                                fill="currentColor" class="fill-000000"></path>
+                                                            <path d="M19 14h-2v3h-3v2h3v3h2v-3h3v-2h-3z"
+                                                                fill="currentColor" class="fill-000000"></path>
+                                                        </svg>
+                                                    </div>
+                                                </label>
                                             </div>
                                         </div>
 
@@ -85,15 +82,17 @@
                                                 return {
                                                     images: [],
                                                     files: [],
-                                                    max: {{12 - $data->count()}},
 
                                                     previewImages(event) {
                                                         const input = event.target;
-                                                        const selected = Array.from(input.files).slice(0, this.max - this.files.length);
+                                                        const selected = Array.from(input.files);
 
                                                         selected.forEach(file => {
-                                                            const exists = this.files.some(f => f.name === file.name && f.size === file.size && f
-                                                                .lastModified === file.lastModified);
+                                                            const exists = this.files.some(f =>
+                                                                f.name === file.name &&
+                                                                f.size === file.size &&
+                                                                f.lastModified === file.lastModified
+                                                            );
                                                             if (exists) return;
 
                                                             this.files.push(file);
@@ -113,7 +112,6 @@
                                                         this.images.splice(index, 1);
                                                         this.files.splice(index, 1);
 
-                                                        // sync input.files
                                                         const input = document.getElementById('image');
                                                         const dt = new DataTransfer();
                                                         this.files.forEach(f => dt.items.add(f));

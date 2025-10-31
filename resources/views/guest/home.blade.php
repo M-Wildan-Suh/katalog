@@ -4,25 +4,18 @@
             <div
                 class=" absolute inset-0 bg-[radial-gradient(at_right_bottom,rgba(255,0,0,0.5)_0%,rgb(233,229,255)_64%)] mix-blend-multiply">
             </div>
-            <div style="background-image: url({{ asset('/assets/images/bg-banner.webp') }})"
+            <div style="background-image: url({{ asset('/storage/images/banner/'.$banner->overlay) }})"
                 class=" absolute inset-0 opacity-40 bg-center bg-cover"></div>
             <div
                 class=" pt-32 pb-20 sm:pt-20 sm:pb-0 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full h-full max-w-[1080px] mx-auto relative">
                 <div class="flex flex-col justify-center gap-4">
-                    {{-- <div style='font-family: "Montserrat", Sans-serif;'
-                        class=" w-full text-left text-2xl sm:text-[40px] sm:leading-10 font-bold tracking-tight">
-                        <p class=" text-byolink-2">Solusi Website Simpel</p>
-                        <p>Praktis Tanpa Ribet, Siap Pakai</p>
-                    </div>
-                    <p class=" text-left text-sm sm:text-base text-neutral-600">Cukup pilih desain dan kirim data
-                        usahamu, sisanya kami yang akan siapkan websitenya.</p> --}}
                     <div style='font-family: "Montserrat", Sans-serif;'
                         class=" w-full text-left text-2xl sm:text-[40px] sm:leading-10 font-bold tracking-tight">
-                        <p class=" text-byolink-2">Solusi Website Simpel</p>
-                        <p>Tanpa Harus Pusing Mikirin Konten & Desain</p>
+                        <p class=" text-byolink-2">{{$banner->title ?? 'Solusi Website Simpel'}}</p>
+                        <p>{{$banner->subtitle ?? 'Tanpa Harus Pusing Mikirin Konten & Desain'}}</p>
                     </div>
-                    <p class=" text-left text-sm sm:text-base text-neutral-600">Tinggal pilih desain favoritmu, sisanya
-                        biar kami yang urus.</p>
+                    <p class=" text-left text-sm sm:text-base text-neutral-600">{{$banner->description ?? 'Tinggal pilih desain favoritmu, sisanya
+                        biar kami yang urus.'}}</p>
                     <div class=" flex">
                         <a href="{{ route('allarticle') }}" class="flex">
                             <button
@@ -39,7 +32,7 @@
                     </div>
                 </div>
                 <div class=" w-full flex justify-center items-center">
-                    <img src="{{ asset('/assets/images/banner.webp') }}"
+                    <img src="{{ asset('/storage/images/banner/'. $banner->banner) }}"
                         class=" w-full h-full object-contain object-center" alt="">
                 </div>
             </div>

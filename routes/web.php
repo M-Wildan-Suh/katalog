@@ -8,6 +8,8 @@ use App\Http\Controllers\ArticleGalleryController;
 use App\Http\Controllers\ArticleGeneratedController;
 use App\Http\Controllers\ArticleShowController;
 use App\Http\Controllers\ArticleShowGalleryController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\LeadcallController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneNumberController;
@@ -78,6 +80,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/admin/user', UserController::class);
 
+    Route::resource('/admin/banner', BannerController::class);
+
     Route::resource('/admin/package', PackageController::class);
 
     Route::resource('/admin/template', TemplateController::class);
@@ -100,6 +104,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/category/destroy/all', [ArticleCategoryController::class, 'destroyAll'])->name('category.destroy.all');
 
     Route::resource('/admin/portfolio', PortfolioController::class);
+
+    Route::resource('/admin/leadcall', LeadcallController::class);
 
     Route::resource('/admin/gallery', TeamGalleryController::class);
     Route::post('/admin/gallery/destroy-all', [TeamGalleryController::class, 'destroyAll'])->name('gallery.destroy.all');

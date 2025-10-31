@@ -58,53 +58,6 @@
                 </x-slot:svg>
                 Home
             </x-admin.mobile-navbutton>
-            <x-admin.mobile-navbutton route="user.index" :active="['user.index', 'article.create', 'user.show']">
-                <x-slot:svg>
-                    <svg fill="none" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                        <path clip-rule="evenodd"
-                            d="M1.5 0A1.5 1.5 0 0 0 0 1.5v12A1.5 1.5 0 0 0 1.5 15h12a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 13.5 0h-12Zm5 9A3.5 3.5 0 0 0 3 12.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1A3.5 3.5 0 0 0 8.5 9h-2ZM5 5.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Z"
-                            fill="currentColor" fill-rule="evenodd" class="fill-000000"></path>
-                    </svg>
-                </x-slot:svg>
-                User
-            </x-admin.mobile-navbutton>
-            <div x-data="{ dropdown: false }" class=" relative">
-                <x-admin.mobile-navbutton :active="['portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']" :dropdown="true">
-                    <x-slot:svg>
-                        <svg viewBox="-265 388.9 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                            enable-background="new -265 388.9 64 64">
-                            <path
-                                d="M-210.6 410.9h-44.8c-.9 0-1.6-.7-1.6-1.6v-9.2c0-.9.7-1.6 1.6-1.6h44.8c.9 0 1.6.7 1.6 1.6v9.2c0 .9-.7 1.6-1.6 1.6zM-210.6 443.3h-11.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h11.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6zM-229.6 443.3h-25.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h25.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6z"
-                                fill="currentColor" class="fill-000000"></path>
-                        </svg>
-                    </x-slot:svg>
-                    CMS
-                </x-admin.mobile-navbutton>
-                <div x-show="dropdown" class=" bg-white rounded-md flex flex-col absolute top-1/2 -translate-y-1/2 left-full ml-2 py-2 z-20 border">
-                    <a href="{{route('package.index')}}" class=" w-full px-4">Package</a>
-                    <a href="{{route('portfolio.index')}}" class=" w-full px-4">Portofolio</a>
-                    <a href="{{route('gallery.index')}}" class=" w-full px-4">Gallery</a>
-                </div>
-            </div>
-            <x-admin.mobile-navbutton route="phone-number.index" :active="['phone-number.index', 'phone-number.create', 'phone-number.show']">
-                <x-slot:svg>
-                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.7-64-64-64zm-32.4 289.5-11.62 50.39c-1.633 7.125-7.9 12.11-15.24 12.11-126.1 0-228.7-102.6-228.7-228.8 0-7.328 4.984-13.59 12.11-15.22l50.38-11.63c7.344-1.703 14.88 2.109 17.93 9.062l23.27 54.28a15.642 15.642 0 0 1-4.492 18.22L168.3 232c16.99 34.61 45.14 62.75 79.77 79.75l22.02-26.91c4.344-5.391 11.85-7.25 18.24-4.484l54.24 23.25c6.93 2.994 10.73 10.594 9.03 17.894z"
-                            fill="currentColor" class="fill-000000"></path>
-                    </svg>
-                </x-slot:svg>
-                Phone
-            </x-admin.mobile-navbutton>
-            <x-admin.mobile-navbutton route="category.index" :active="['category.index', 'category.create', 'category.show']">
-                <x-slot:svg>
-                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="currentColor"
-                            d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4z" />
-                    </svg>
-                </x-slot:svg>
-                Kategori
-            </x-admin.mobile-navbutton>
             <x-admin.mobile-navbutton route="article.index" :active="[
                 'article.index',
                 'article.create',
@@ -127,6 +80,55 @@
                     </svg>
                 </x-slot:svg>
                 Katalog
+            </x-admin.mobile-navbutton>
+            <div x-data="{ dropdown: false }" class=" relative">
+                <x-admin.mobile-navbutton :active="['banner.index', 'leadcall.index', 'portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']" :dropdown="true">
+                    <x-slot:svg>
+                        <svg viewBox="-265 388.9 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                            enable-background="new -265 388.9 64 64">
+                            <path
+                                d="M-210.6 410.9h-44.8c-.9 0-1.6-.7-1.6-1.6v-9.2c0-.9.7-1.6 1.6-1.6h44.8c.9 0 1.6.7 1.6 1.6v9.2c0 .9-.7 1.6-1.6 1.6zM-210.6 443.3h-11.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h11.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6zM-229.6 443.3h-25.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h25.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6z"
+                                fill="currentColor" class="fill-000000"></path>
+                        </svg>
+                    </x-slot:svg>
+                    CMS
+                </x-admin.mobile-navbutton>
+                <div x-show="dropdown" class=" bg-white rounded-md flex flex-col absolute top-1/2 -translate-y-1/2 left-full ml-2 py-2 z-20 border">
+                    <a href="{{route('banner.index')}}" class=" w-full px-4">Banner</a>
+                    <a href="{{route('package.index')}}" class=" w-full px-4">Paket</a>
+                    <a href="{{route('portfolio.index')}}" class=" w-full px-4">Portofolio</a>
+                    <a href="{{route('gallery.index')}}" class=" w-full px-4">Galeri</a>
+                    <a href="{{route('leadcall.index')}}" class=" w-full px-4">Leadcall</a>
+                </div>
+            </div>
+            <x-admin.mobile-navbutton route="category.index" :active="['category.index', 'category.create', 'category.show']">
+                <x-slot:svg>
+                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor"
+                            d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4z" />
+                    </svg>
+                </x-slot:svg>
+                Kategori
+            </x-admin.mobile-navbutton>
+            <x-admin.mobile-navbutton route="phone-number.index" :active="['phone-number.index', 'phone-number.create', 'phone-number.show']">
+                <x-slot:svg>
+                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.7-64-64-64zm-32.4 289.5-11.62 50.39c-1.633 7.125-7.9 12.11-15.24 12.11-126.1 0-228.7-102.6-228.7-228.8 0-7.328 4.984-13.59 12.11-15.22l50.38-11.63c7.344-1.703 14.88 2.109 17.93 9.062l23.27 54.28a15.642 15.642 0 0 1-4.492 18.22L168.3 232c16.99 34.61 45.14 62.75 79.77 79.75l22.02-26.91c4.344-5.391 11.85-7.25 18.24-4.484l54.24 23.25c6.93 2.994 10.73 10.594 9.03 17.894z"
+                            fill="currentColor" class="fill-000000"></path>
+                    </svg>
+                </x-slot:svg>
+                Phone
+            </x-admin.mobile-navbutton>
+            <x-admin.mobile-navbutton route="user.index" :active="['user.index', 'article.create', 'user.show']">
+                <x-slot:svg>
+                    <svg fill="none" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="M1.5 0A1.5 1.5 0 0 0 0 1.5v12A1.5 1.5 0 0 0 1.5 15h12a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 13.5 0h-12Zm5 9A3.5 3.5 0 0 0 3 12.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1A3.5 3.5 0 0 0 8.5 9h-2ZM5 5.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Z"
+                            fill="currentColor" fill-rule="evenodd" class="fill-000000"></path>
+                    </svg>
+                </x-slot:svg>
+                User
             </x-admin.mobile-navbutton>
         </div>
     </div>

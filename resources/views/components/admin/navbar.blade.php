@@ -21,29 +21,8 @@
                 <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Dashboard
                 </p>
             </x-admin.navbutton>
-            <x-admin.navbutton route="user.index" :active="['user.index', 'user.create', 'user.show']">
-                <div class="min-w-5 h-5 mx-0.5">
-                    <svg fill="none" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                        <path clip-rule="evenodd"
-                            d="M1.5 0A1.5 1.5 0 0 0 0 1.5v12A1.5 1.5 0 0 0 1.5 15h12a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 13.5 0h-12Zm5 9A3.5 3.5 0 0 0 3 12.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1A3.5 3.5 0 0 0 8.5 9h-2ZM5 5.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Z"
-                            fill="currentColor" fill-rule="evenodd" class="fill-000000"></path>
-                    </svg>
-                </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">User</p>
-            </x-admin.navbutton>
-            {{-- <x-admin.navbutton route="template.index" :active="['template.index', 'template.create', 'template.show']">
-                <div class="min-w-6 h-6">
-                    <svg viewBox="-265 388.9 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                        enable-background="new -265 388.9 64 64">
-                        <path
-                            d="M-210.6 410.9h-44.8c-.9 0-1.6-.7-1.6-1.6v-9.2c0-.9.7-1.6 1.6-1.6h44.8c.9 0 1.6.7 1.6 1.6v9.2c0 .9-.7 1.6-1.6 1.6zM-210.6 443.3h-11.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h11.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6zM-229.6 443.3h-25.8c-.9 0-1.6-.7-1.6-1.6v-25.6c0-.9.7-1.6 1.6-1.6h25.8c.9 0 1.6.7 1.6 1.6v25.6c0 .9-.7 1.6-1.6 1.6z"
-                            fill="currentColor" class="fill-000000"></path>
-                    </svg>
-                </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Template</p>
-            </x-admin.navbutton> --}}
-            <div x-data="{ dropdown: {{ request()->routeIs(['portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']) ? 'true' : 'false'}} }" class=" w-full">
-                <x-admin.navbutton :dropdown="true" :active="['portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']">
+            <div x-data="{ dropdown: {{ request()->routeIs(['banner.index', 'leadcall.index', 'portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']) ? 'true' : 'false'}} }" class=" w-full">
+                <x-admin.navbutton :dropdown="true" :active="['banner.index', 'leadcall.index', 'portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']">
                     <div class="min-w-6 h-6">
                         <svg viewBox="-265 388.9 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                             enable-background="new -265 388.9 64 64">
@@ -56,9 +35,13 @@
                     </p>
                 </x-admin.navbutton>
                 <div x-show="dropdown" class=" w-full rounded-bl-md overflow-hidden bg-byolink-1/10">
+                    <a href="{{route('banner.index')}}"
+                        class="{{ request()->routeIs(['banner.index']) ? 'border-byolink-1 bg-byolink-1/60 text-white border-r-4' : 'text-neutral-500 hover:border-black hover:text-black hover:bg-neutral-100 hover:border-r-4' }} w-full flex flex-row gap-2 items-center px-3 py-2  font-semibold duration-300">
+                        Banner
+                    </a>
                     <a href="{{route('package.index')}}"
                         class="{{ request()->routeIs(['package.index', 'package.create', 'package.show']) ? 'border-byolink-1 bg-byolink-1/60 text-white border-r-4' : 'text-neutral-500 hover:border-black hover:text-black hover:bg-neutral-100 hover:border-r-4' }} w-full flex flex-row gap-2 items-center px-3 py-2  font-semibold duration-300">
-                        Package
+                        Paket
                     </a>
                     <a href="{{route('portfolio.index')}}"
                         class="{{ request()->routeIs(['portfolio.index']) ? 'border-byolink-1 bg-byolink-1/60 text-white border-r-4' : 'text-neutral-500 hover:border-black hover:text-black hover:bg-neutral-100 hover:border-r-4' }} w-full flex flex-row gap-2 items-center px-3 py-2  font-semibold duration-300">
@@ -66,31 +49,14 @@
                     </a>
                     <a href="{{route('gallery.index')}}"
                         class="{{ request()->routeIs(['gallery.index']) ? 'border-byolink-1 bg-byolink-1/60 text-white border-r-4' : 'text-neutral-500 hover:border-black hover:text-black hover:bg-neutral-100 hover:border-r-4' }} w-full flex flex-row gap-2 items-center px-3 py-2  font-semibold duration-300">
-                        Gallery
+                        Galeri
+                    </a>
+                    <a href="{{route('leadcall.index')}}"
+                        class="{{ request()->routeIs(['leadcall.index']) ? 'border-byolink-1 bg-byolink-1/60 text-white border-r-4' : 'text-neutral-500 hover:border-black hover:text-black hover:bg-neutral-100 hover:border-r-4' }} w-full flex flex-row gap-2 items-center px-3 py-2  font-semibold duration-300">
+                        Leadcall
                     </a>
                 </div>
             </div>
-            <x-admin.navbutton route="phone-number.index" :active="['phone-number.index', 'phone-number.create', 'phone-number.show']">
-                <div class="min-w-5 h-5 mx-0.5">
-                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.7-64-64-64zm-32.4 289.5-11.62 50.39c-1.633 7.125-7.9 12.11-15.24 12.11-126.1 0-228.7-102.6-228.7-228.8 0-7.328 4.984-13.59 12.11-15.22l50.38-11.63c7.344-1.703 14.88 2.109 17.93 9.062l23.27 54.28a15.642 15.642 0 0 1-4.492 18.22L168.3 232c16.99 34.61 45.14 62.75 79.77 79.75l22.02-26.91c4.344-5.391 11.85-7.25 18.24-4.484l54.24 23.25c6.93 2.994 10.73 10.594 9.03 17.894z"
-                            fill="currentColor" class="fill-000000"></path>
-                    </svg>
-                </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Phone
-                    Number</p>
-            </x-admin.navbutton>
-            <x-admin.navbutton route="category.index" :active="['category.index', 'category.create', 'category.show']">
-                <div class="min-w-5 h-5 mx-0.5">
-                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="currentColor"
-                            d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4z" />
-                    </svg>
-                </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Kategori
-                </p>
-            </x-admin.navbutton>
             <x-admin.navbutton route="article.index" :active="[
                 'article.index',
                 'article.create',
@@ -114,6 +80,36 @@
                 </div>
                 <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Katalog
                 </p>
+            </x-admin.navbutton>
+            <x-admin.navbutton route="category.index" :active="['category.index', 'category.create', 'category.show']">
+                <div class="min-w-5 h-5 mx-0.5">
+                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor"
+                            d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4z" />
+                    </svg>
+                </div>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Kategori
+                </p>
+            </x-admin.navbutton>
+            <x-admin.navbutton route="phone-number.index" :active="['phone-number.index', 'phone-number.create', 'phone-number.show']">
+                <div class="min-w-5 h-5 mx-0.5">
+                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.7-64-64-64zm-32.4 289.5-11.62 50.39c-1.633 7.125-7.9 12.11-15.24 12.11-126.1 0-228.7-102.6-228.7-228.8 0-7.328 4.984-13.59 12.11-15.22l50.38-11.63c7.344-1.703 14.88 2.109 17.93 9.062l23.27 54.28a15.642 15.642 0 0 1-4.492 18.22L168.3 232c16.99 34.61 45.14 62.75 79.77 79.75l22.02-26.91c4.344-5.391 11.85-7.25 18.24-4.484l54.24 23.25c6.93 2.994 10.73 10.594 9.03 17.894z"
+                            fill="currentColor" class="fill-000000"></path>
+                    </svg>
+                </div>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">No. Hp</p>
+            </x-admin.navbutton>
+            <x-admin.navbutton route="user.index" :active="['user.index', 'user.create', 'user.show']">
+                <div class="min-w-5 h-5 mx-0.5">
+                    <svg fill="none" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="M1.5 0A1.5 1.5 0 0 0 0 1.5v12A1.5 1.5 0 0 0 1.5 15h12a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 13.5 0h-12Zm5 9A3.5 3.5 0 0 0 3 12.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1A3.5 3.5 0 0 0 8.5 9h-2ZM5 5.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Z"
+                            fill="currentColor" fill-rule="evenodd" class="fill-000000"></path>
+                    </svg>
+                </div>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Pengguna</p>
             </x-admin.navbutton>
         </div>
     </div>

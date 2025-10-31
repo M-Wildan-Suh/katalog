@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ArticleCategory;
 use App\Models\ArticleShow;
 use App\Models\ArticleTag;
+use App\Models\Banner;
+use App\Models\Leadcall;
 use App\Models\Package;
 use App\Models\PhoneNumber;
 use App\Models\Portfolio;
@@ -55,12 +57,15 @@ class PageController extends Controller
 
         $hp = PhoneNumber::first()->no_tlp;
 
+        $leadcall = Leadcall::first();
+
         $trend = ArticleShow::orderBy('view', 'desc')
             ->where('status', 'publish')
             ->take(6)->get();
 
-        $data->withPath("/desain/page");
-        return view('guest.home', compact('data', 'trend', 'category', 'hp'));
+        $banner = Banner::first();
+
+        return view('guest.home', compact('data', 'banner', 'trend', 'category', 'hp', 'leadcall'));
     }
 
     public function article(Request $request, $username = null, $category = null, $tag = null)
@@ -124,9 +129,11 @@ class PageController extends Controller
 
         $hp = PhoneNumber::first()->no_tlp;
 
+        $leadcall = Leadcall::first();
+
         $category = ArticleCategory::all();
 
-        return view('guest.article', compact('data', 'title', 'category', 'hp'));
+        return view('guest.article', compact('data', 'title', 'category', 'hp', 'leadcall'));
     }
 
     public function category()
@@ -158,7 +165,9 @@ class PageController extends Controller
 
         $hp = PhoneNumber::first()->no_tlp;
 
-        return view('guest.category', compact('category', 'catsection', 'hp'));
+        $leadcall = Leadcall::first();
+
+        return view('guest.category', compact('category', 'catsection', 'hp', 'leadcall'));
     }
 
     public function business($slug)
@@ -207,9 +216,11 @@ class PageController extends Controller
 
         $hp = PhoneNumber::first()->no_tlp;
 
+        $leadcall = Leadcall::first();
+
         $category = ArticleCategory::all();
 
-        return view('guest.business', compact('data', 'related', 'template', 'category', 'hp'));
+        return view('guest.business', compact('data', 'related', 'template', 'category', 'hp', 'leadcall'));
     }
 
     public function contact()
@@ -220,7 +231,9 @@ class PageController extends Controller
 
         $hp = PhoneNumber::first()->no_tlp;
 
-        return view('guest.contact', compact('category', 'hp', 'data'));
+        $leadcall = Leadcall::first();
+
+        return view('guest.contact', compact('category', 'hp', 'leadcall', 'data'));
     }
 
     public function priceList()
@@ -228,6 +241,8 @@ class PageController extends Controller
         $category = ArticleCategory::all();
 
         $hp = PhoneNumber::first()->no_tlp;
+
+        $leadcall = Leadcall::first();
 
         $plans = Package::with('packageitem')->get();
 
@@ -251,7 +266,7 @@ class PageController extends Controller
         });
 
 
-        return view('guest.price-list', compact('category', 'hp', 'plans'));
+        return view('guest.price-list', compact('category', 'hp', 'leadcall', 'plans'));
     }
 
     public function portfolio(Request $request)
@@ -266,7 +281,9 @@ class PageController extends Controller
 
         $hp = PhoneNumber::first()->no_tlp;
 
-        return view('guest.portfolio', compact('category', 'hp', 'data'));
+        $leadcall = Leadcall::first();
+
+        return view('guest.portfolio', compact('category', 'hp', 'leadcall', 'data'));
     }
 
     public function notFound()
@@ -275,7 +292,9 @@ class PageController extends Controller
 
         $hp = PhoneNumber::first()->no_tlp;
 
-        return response()->view('guest.pagenotfound', compact('category', 'hp'), 404);
+        $leadcall = Leadcall::first();
+
+        return response()->view('guest.pagenotfound', compact('category', 'hp', 'leadcall'), 404);
     }
 
     public function test()
