@@ -13,17 +13,39 @@
                             </p> --}}
                         </div>
                     </div>
-                    <div class=" w-full grid grid-cols-2 sm:grid-cols-4 gap-4">
-                        @foreach ($data as $item)
-                            <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('/storage/images/gallery/'. $item->image)}}" style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);" class=" w-full aspect-[4/3] bg-black rounded-xl overflow-hidden">
-                                <img src="{{asset('/storage/images/gallery/'. $item->image)}}" class=" w-full h-full object-cover object-center hover:scale-105 duration-300" alt="">
+                    <div
+                        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 [grid-auto-rows:140px] sm:[grid-auto-rows:160px] lg:[grid-auto-rows:180px]">
+                        @foreach ($data as $index => $item)
+                            @php
+                                // === Pattern A ===
+                                $patternA = ['col-span-2 row-span-2', 'col-span-2', 'row-span-2', '', '', '', ''];
+
+                                // === Pattern B === (variasi lain)
+                                $patternB = ['row-span-2', '', 'col-span-2 row-span-2', ' row-span-2', '', '', ''];
+
+                                // Pilih pattern berdasarkan kelompok indeks
+                                // Misal setiap 7 item, pattern berganti
+                                $isPatternA = floor($index / 7) % 2 === 0;
+                                $pattern = $isPatternA ? $patternA : $patternB;
+
+                                // Ambil class dari pattern sesuai urutan
+                                $class = $pattern[$index % count($pattern)];
+                            @endphp
+
+                            <a data-fancybox="gallery" href="{{ asset('/storage/images/gallery/' . $item->image) }}"
+                                aria-label="Gallery item"
+                                class="relative block overflow-hidden rounded-xl bg-black {{ $class }}"
+                                style="box-shadow: 0 0 30px rgba(0,0,0,0.1);">
+                                <img src="{{ asset('/storage/images/gallery/' . $item->image) }}" alt=""
+                                    class="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105">
                             </a>
                         @endforeach
                     </div>
+
                 </div>
             </div>
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
+                document.addEventListener('DOMContentLoaded', function() {
                     Fancybox.bind("[data-fancybox]", {});
                 });
             </script>
@@ -47,7 +69,8 @@
                     <div class=" w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                         <div class=" space-y-4">
                             <p class=" text-lg font-semibold uppercase">Alamat</p>
-                            <p class=" text-sm leading-7">Komplek Sapta Taruna PU kujangsari blok B1 no 10, KOTA BANDUNG,
+                            <p class=" text-sm leading-7">Komplek Sapta Taruna PU kujangsari blok B1 no 10, KOTA
+                                BANDUNG,
                                 BANDUNG KIDUL, JAWA BARAT, ID, 40267</p>
                         </div>
                         <div class=" space-y-4">
@@ -55,8 +78,12 @@
                                 <p class=" text-lg font-semibold uppercase">Contact Us</p>
                             </div>
                             <div class=" flex flex-col">
-                                <p>Telepon : {{ '+62 ' . substr($hp, 3, 3) . '-' . substr($hp, 6, 4) . '-' . substr($hp, 10) }}</p>
-                                <p>Whatsapp : {{ '+62 ' . substr($hp, 3, 3) . '-' . substr($hp, 6, 4) . '-' . substr($hp, 10) }}</p>
+                                <p>Telepon :
+                                    {{ '+62 ' . substr($hp, 3, 3) . '-' . substr($hp, 6, 4) . '-' . substr($hp, 10) }}
+                                </p>
+                                <p>Whatsapp :
+                                    {{ '+62 ' . substr($hp, 3, 3) . '-' . substr($hp, 6, 4) . '-' . substr($hp, 10) }}
+                                </p>
                                 {{-- <p>Email : info@catalog.jasawebsite.biz</p> --}}
                             </div>
                         </div>
