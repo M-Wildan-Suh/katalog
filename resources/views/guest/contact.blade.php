@@ -21,7 +21,7 @@
                                 $patternA = ['col-span-2 row-span-2', 'col-span-2', 'row-span-2', '', '', '', ''];
 
                                 // === Pattern B === (variasi lain)
-                                $patternB = ['row-span-2', '', 'col-span-2 row-span-2', ' row-span-2', '', '', ''];
+                                $patternB = ['row-span-2', '', 'sm:col-span-2 row-span-2', 'sm:row-span-2', 'col-span-2 row-span-2 sm:col-span-1 sm:row-span-1', '', ''];
 
                                 // Pilih pattern berdasarkan kelompok indeks
                                 // Misal setiap 7 item, pattern berganti
