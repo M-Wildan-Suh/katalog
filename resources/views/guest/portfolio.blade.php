@@ -14,7 +14,8 @@
                         </div>
                     </div>
                     <div class=" w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                        <div class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
+                        <div
+                            class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
                             <div class=" space-y-4">
                                 <p class=" text-lg sm:text-2xl font-bold">Simpel Pemula</p>
                                 <ul class="list-disc pl-6 text-sm sm:text-base space-y-1">
@@ -50,7 +51,8 @@
                                 </ul>
                             </div>
                             <div class=" space-y-4">
-                                <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('/assets/images/price-list.png')}}" class="flex w-full">
+                                <a data-fancybox="gallery" aria-label="Gallery"
+                                    href="{{ asset('/assets/images/price-list.png') }}" class="flex w-full">
                                     <button
                                         class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
                                         <div class="w-4 aspect-square">
@@ -88,34 +90,58 @@
                                 <p class=" text-sm sm:text-base">*Website simple 1 halaman dengan domain .sites.id</p>
                             </div>
                         </div>
-                        <div class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
+                        <div
+                            class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
                             <div class=" space-y-4">
                                 <p class=" text-lg sm:text-2xl font-bold">Simpel Medium</p>
                                 <ul class="list-disc pl-6 text-sm sm:text-base space-y-1">
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://jualakibandung.com">jualakibandung.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://floraljoyyy.com">floraljoyyy.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://jasakolamkoi.com">jasakolamkoi.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://mentariteknikservice.com">mentariteknikservice.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://sedotwcserangbanten.com">sedotwcserangbanten.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://gesitrentalmobil.com">gesitrentalmobil.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://wisataadventure.com">wisataadventure.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://dokterflorist.com">dokterflorist.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://barokahgordenbandung.com">barokahgordenbandung.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://promotoyotabandungofficial.com">promotoyotabandungofficial.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://autoxpresstasik.com">autoxpresstasik.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://mealblend.spencersbdg.com">mealblend.spencersbdg.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://sanitexindonesia.com">sanitexindonesia.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://hondabandungstudio.com">hondabandungstudio.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://eldoradohybrid.com">eldoradohybrid.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://sultanjayarollingdoor.com">sultanjayarollingdoor.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://outboundbandungvacation.com">outboundbandungvacation.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://fansttourtravel.com">fansttourtravel.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://sinarkaryabaja.com">sinarkaryabaja.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://gianwatertech.com">gianwatertech.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://jualakibandung.com">jualakibandung.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://floraljoyyy.com">floraljoyyy.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://jasakolamkoi.com">jasakolamkoi.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://mentariteknikservice.com">mentariteknikservice.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://sedotwcserangbanten.com">sedotwcserangbanten.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://gesitrentalmobil.com">gesitrentalmobil.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://wisataadventure.com">wisataadventure.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://dokterflorist.com">dokterflorist.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://barokahgordenbandung.com">barokahgordenbandung.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://promotoyotabandungofficial.com">promotoyotabandungofficial.com</a>
+                                    </li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://autoxpresstasik.com">autoxpresstasik.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://mealblend.spencersbdg.com">mealblend.spencersbdg.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://sanitexindonesia.com">sanitexindonesia.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://hondabandungstudio.com">hondabandungstudio.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://eldoradohybrid.com">eldoradohybrid.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://sultanjayarollingdoor.com">sultanjayarollingdoor.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://outboundbandungvacation.com">outboundbandungvacation.com</a>
+                                    </li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://fansttourtravel.com">fansttourtravel.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://sinarkaryabaja.com">sinarkaryabaja.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://gianwatertech.com">gianwatertech.com</a></li>
                                 </ul>
                             </div>
                             <div class=" space-y-4">
-                                <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('/assets/images/price-list.png')}}" class="flex w-full">
+                                <a data-fancybox="gallery" aria-label="Gallery"
+                                    href="{{ asset('/assets/images/price-list.png') }}" class="flex w-full">
                                     <button
                                         class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
                                         <div class="w-4 aspect-square">
@@ -153,27 +179,42 @@
                                 <p class=" text-sm sm:text-base">*Website simple 1 halaman dengan domain .com</p>
                             </div>
                         </div>
-                        <div class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
+                        <div
+                            class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
                             <div class=" space-y-4">
                                 <p class=" text-lg sm:text-2xl font-bold">Simpel Bisnis</p>
                                 <ul class="list-disc pl-6 text-sm sm:text-base space-y-1">
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://mini-indonesian.com">mini-indonesian.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://damayantisofa.com">damayantisofa.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://pratamakreasindo.com">pratamakreasindo.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://akriliksign.com">akriliksign.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://murayengineering.com">murayengineering.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://bandungcanopy.com">bandungcanopy.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://terraadventurebandung.com">terraadventurebandung.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://captaineventprojects.com">captaineventprojects.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://masterpipakonstruksi.com">masterpipakonstruksi.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://anugrahjayaservice.com">anugrahjayaservice.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://anugrahhandpallet.com">anugrahhandpallet.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://bradakonveksi.com">bradakonveksi.com</a></li>
-                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://wartegnwputrabahari.com">wartegnwputrabahari.com</a></li>
-                                </ul>                                
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://mini-indonesian.com">mini-indonesian.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://damayantisofa.com">damayantisofa.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://pratamakreasindo.com">pratamakreasindo.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://akriliksign.com">akriliksign.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://murayengineering.com">murayengineering.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://bandungcanopy.com">bandungcanopy.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://terraadventurebandung.com">terraadventurebandung.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://captaineventprojects.com">captaineventprojects.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://masterpipakonstruksi.com">masterpipakonstruksi.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://anugrahjayaservice.com">anugrahjayaservice.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://anugrahhandpallet.com">anugrahhandpallet.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://bradakonveksi.com">bradakonveksi.com</a></li>
+                                    <li class=" text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://wartegnwputrabahari.com">wartegnwputrabahari.com</a></li>
+                                </ul>
                             </div>
                             <div class=" space-y-4">
-                                <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('/assets/images/price-list.png')}}" class="flex w-full">
+                                <a data-fancybox="gallery" aria-label="Gallery"
+                                    href="{{ asset('/assets/images/price-list.png') }}" class="flex w-full">
                                     <button
                                         class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
                                         <div class="w-4 aspect-square">
@@ -211,20 +252,29 @@
                                 <p class=" text-sm sm:text-base">*Website simple 5 halaman dengan domain .com</p>
                             </div>
                         </div>
-                        <div class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
+                        <div
+                            class=" w-full p-4 sm:p-6 bg-white rounded-xl shadow-md shadow-black/20 flex flex-col justify-between gap-6">
                             <div class=" space-y-4">
                                 <p class=" text-lg sm:text-2xl font-bold">Simpel Bisnis Plus</p>
                                 <ul class="list-disc pl-6 text-sm sm:text-base space-y-1">
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://tokokaranganbungabandung.com">tokokaranganbungabandung.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://souvenirpromosimurah.com">souvenirpromosimurah.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://cateringbandung.sites.id">cateringbandung.sites.id</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://pustakahukum.com">pustakahukum.com</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://snackbox.co.id">snackbox.co.id</a></li>
-                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a href="https://gojes.sites.id">gojes.sites.id</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://tokokaranganbungabandung.com">tokokaranganbungabandung.com</a>
+                                    </li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://souvenirpromosimurah.com">souvenirpromosimurah.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://cateringbandung.sites.id">cateringbandung.sites.id</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://pustakahukum.com">pustakahukum.com</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://snackbox.co.id">snackbox.co.id</a></li>
+                                    <li class="text-neutral-600 hover:text-byolink-2 font-bold duration-300"><a
+                                            href="https://gojes.sites.id">gojes.sites.id</a></li>
                                 </ul>
                             </div>
                             <div class=" space-y-4">
-                                <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('/assets/images/price-list.png')}}" class="flex w-full">
+                                <a data-fancybox="gallery" aria-label="Gallery"
+                                    href="{{ asset('/assets/images/price-list.png') }}" class="flex w-full">
                                     <button
                                         class="bg-byolink-2 flex font-semibold items-center justify-center text-sm gap-0.5 sm:gap-1.5 py-2 px-4 text-white rounded-full hover:scale-95 duration-300">
                                         <div class="w-4 aspect-square">
@@ -432,8 +482,20 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Fancybox.bind("[data-fancybox]", {});
+        document.addEventListener('DOMContentLoaded', function() {
+            Fancybox.bind("[data-fancybox]", {
+                Navigation: false,
+                Panzoom: { touch: false },
+                groupAll: false, // tidak mengelompokkan gambar menjadi satu galeri
+                dragToClose: false, // mencegah geser untuk menutup
+                Thumbs: false,
+                Carousel: {
+                    Navigation: false, // hilangkan tombol next/prev
+                    Panzoom: {
+                        touch: false, // nonaktifkan geser antar gambar
+                    },
+                },
+            });
         });
     </script>
     @include('components.guest.footer')
