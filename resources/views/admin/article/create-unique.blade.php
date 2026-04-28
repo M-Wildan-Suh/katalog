@@ -1,4 +1,4 @@
-<x-admin.article.form head="Create Article Unique" title="Admin - Create Article Unique" :form="route('article-show.store')" >
+<x-admin.article.form head="Create Catalog" title="Admin - Create Catalog" :form="route('article-show.store')" >
     <x-admin.component.textinput title="Judul" placeholder="Masukkan Judul" :value="old('judul')" name="judul" />
     <x-admin.component.numberinput title="Harga (opsional)" placeholder="Masukkan Harga" :value="old('price')" name="price" />
     <div class=" w-full grid grid-cols-1 sm:grid-cols-2 gap-4">

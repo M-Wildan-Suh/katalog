@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
@@ -30,10 +29,10 @@ class ArticleShowController extends Controller
     public function index(Request $request)
     {
         if ($request->search) {
-            $data = Article::where('article_type', 'unique')->where('judul', 'like', '%' . $request->search . '%')->paginate(10);
+            $data = Article::catalog()->where('judul', 'like', '%' . $request->search . '%')->paginate(10);
 
         } else {
-            $data = Article::where('article_type', 'unique')->with('articleshow')->paginate(10);
+            $data = Article::catalog()->with('articleshow')->paginate(10);
         }
         return view('admin.article.index' ,compact('data'));
     }
@@ -63,7 +62,7 @@ class ArticleShowController extends Controller
         // dd($request);
         try {
             $validated = $request->validate([
-                'judul' => 'required|max:255|unique:' . ArticleShow::class,
+                'judul' => 'required|max:255',
                 'category' => 'array',
                 'tag' => 'array',
                 'article' => 'required',
@@ -99,6 +98,8 @@ class ArticleShowController extends Controller
                 ->withErrors($e->validator);
         }
 
+        $this->ensureUniqueArticleShowSlug($request->judul, Article::TYPE_CATALOG);
+
         // Article
         $newarticle = new Article;
 
@@ -106,6 +107,7 @@ class ArticleShowController extends Controller
         $newarticle->judul = $request->judul;
         $newarticle->price = $request->price;
         $newarticle->article = $request->article;
+        $newarticle->article_type = Article::TYPE_CATALOG;
         $newarticle->link_domain = $request->domain;
 
         if ($request->status === "schedule") {
@@ -264,7 +266,7 @@ class ArticleShowController extends Controller
         $newarticleshow->article_id = $newarticle->id;
         $newarticleshow->banner = $newbanner->image ?? null;
         $newarticleshow->judul = $newarticle->judul;
-        $newarticleshow->slug = Str::slug($newarticleshow->judul);
+        $newarticleshow->slug = ArticleShow::buildSlug($newarticleshow->judul, $newarticle->article_type);
         $newarticleshow->article = $newarticle->article;
         $newarticleshow->template_id = $request->template_id;
         $newarticleshow->status = $request->status;
@@ -331,7 +333,6 @@ class ArticleShowController extends Controller
                 'judul' => [
                     'required',
                     'max:255',
-                    Rule::unique('article_shows')->ignore($articleShow->id),
                 ],
                 'category' => 'array',
                 'tag' => 'array',
@@ -367,9 +368,10 @@ class ArticleShowController extends Controller
                 ->back()
                 ->withErrors($e->validator);
         }
-        
+
         // dd($request);
         $newarticle = Article::find($articleShow->article_id);
+        $this->ensureUniqueArticleShowSlug($request->judul, $newarticle->article_type, $articleShow->id);
 
         $newarticle->judul = $request->judul;
         $newarticle->price = $request->price;
@@ -516,7 +518,7 @@ class ArticleShowController extends Controller
             $articleShow->banner = $banner->image;
         }
         $articleShow->judul = $newarticle->judul;
-        $articleShow->slug = Str::slug($articleShow->judul);
+        $articleShow->slug = ArticleShow::buildSlug($articleShow->judul, $newarticle->article_type);
         $articleShow->article = $newarticle->article;
         $articleShow->template_id = $request->template_id;
         $articleShow->telephone = $request->tlp;
@@ -543,5 +545,20 @@ class ArticleShowController extends Controller
         $articleShow->delete();
 
         return redirect()->back();
+    }
+
+    private function ensureUniqueArticleShowSlug(string $title, string $articleType, ?int $ignoreId = null): void
+    {
+        $slug = ArticleShow::buildSlug($title, $articleType);
+
+        $exists = ArticleShow::where('slug', $slug)
+            ->when($ignoreId, fn ($query) => $query->where('id', '!=', $ignoreId))
+            ->exists();
+
+        if ($exists) {
+            throw ValidationException::withMessages([
+                'judul' => 'Judul ini menghasilkan URL yang sudah dipakai.',
+            ]);
+        }
     }
 }

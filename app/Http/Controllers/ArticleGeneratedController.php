@@ -9,10 +9,8 @@ use App\Models\ArticleShowGallery;
 use App\Models\ArticleTag;
 use App\Models\PhoneNumber;
 use App\Models\Template;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class ArticleGeneratedController extends Controller
@@ -80,7 +78,6 @@ class ArticleGeneratedController extends Controller
             'judul' => [
                 'required',
                 'max:255',
-                Rule::unique('article_shows')->ignore($id),
             ],
             'article' => 'required',
         ]);
@@ -88,6 +85,7 @@ class ArticleGeneratedController extends Controller
         // dd($request);
 
         $articleShow = ArticleShow::find($id);
+        $this->ensureUniqueArticleShowSlug($request->judul, optional($articleShow->articles)->article_type, $articleShow->id);
         if ($request->banner) {
             $articleShow->banner = $request->banner;
         }
@@ -112,7 +110,7 @@ class ArticleGeneratedController extends Controller
         }
         
         $articleShow->judul = $request->judul;
-        $articleShow->slug = Str::slug($articleShow->judul);
+        $articleShow->slug = ArticleShow::buildSlug($articleShow->judul, optional($articleShow->articles)->article_type);
         $articleShow->article = $request->article;
         $articleShow->template_id = $request->template_id;
         $articleShow->telephone = $request->tlp;
@@ -148,5 +146,20 @@ class ArticleGeneratedController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    private function ensureUniqueArticleShowSlug(string $title, ?string $articleType, ?int $ignoreId = null): void
+    {
+        $slug = ArticleShow::buildSlug($title, $articleType);
+
+        $exists = ArticleShow::where('slug', $slug)
+            ->when($ignoreId, fn ($query) => $query->where('id', '!=', $ignoreId))
+            ->exists();
+
+        if ($exists) {
+            throw ValidationException::withMessages([
+                'judul' => 'Judul ini menghasilkan URL yang sudah dipakai.',
+            ]);
+        }
     }
 }

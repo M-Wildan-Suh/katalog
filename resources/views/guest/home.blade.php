@@ -4,18 +4,21 @@
             <div
                 class=" absolute inset-0 bg-[radial-gradient(at_right_bottom,rgba(255,0,0,0.5)_0%,rgb(233,229,255)_64%)] mix-blend-multiply">
             </div>
-            <div style="background-image: url({{ asset('/storage/images/banner/'.$banner->overlay) }})"
+            <div style="background-image: url({{ asset('/storage/images/banner/' . $banner->overlay) }})"
                 class=" absolute inset-0 opacity-40 bg-center bg-cover"></div>
             <div
                 class=" pt-32 pb-20 sm:pt-20 sm:pb-0 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full h-full max-w-[1080px] mx-auto relative">
                 <div class="flex flex-col justify-center gap-4">
                     <div style='font-family: "Montserrat", Sans-serif;'
                         class=" w-full text-left text-2xl sm:text-[40px] sm:leading-10 font-bold tracking-tight">
-                        <p class=" text-byolink-2">{{$banner->title ?? 'Solusi Website Simpel'}}</p>
-                        <p>{{$banner->subtitle ?? 'Tanpa Harus Pusing Mikirin Konten & Desain'}}</p>
+                        <p class=" text-byolink-2">{{ $banner->title ?? 'Solusi Website Simpel' }}</p>
+                        <p>{{ $banner->subtitle ?? 'Tanpa Harus Pusing Mikirin Konten & Desain' }}</p>
                     </div>
-                    <p class=" text-left text-sm sm:text-base text-neutral-600">{{$banner->description ?? 'Tinggal pilih desain favoritmu, sisanya
-                        biar kami yang urus.'}}</p>
+                    <p class=" text-left text-sm sm:text-base text-neutral-600">
+                        {{ $banner->description ??
+                            'Tinggal pilih desain favoritmu, sisanya
+                                                biar kami yang urus.' }}
+                    </p>
                     <div class=" flex">
                         <a href="{{ route('allarticle') }}" class="flex">
                             <button
@@ -32,7 +35,7 @@
                     </div>
                 </div>
                 <div class=" w-full flex justify-center items-center">
-                    <img src="{{ asset('/storage/images/banner/'. $banner->banner) }}"
+                    <img src="{{ asset('/storage/images/banner/' . $banner->banner) }}"
                         class=" w-full h-full object-contain object-center" alt="">
                 </div>
             </div>
@@ -95,6 +98,25 @@
                     </div>
                 </div>
             </div>
+            @if ($articlePreview->isNotEmpty())
+                <div class=" w-full px-4 sm:px-6 py-16 sm:py-32">
+                    <div class=" w-full max-w-[1080px] mx-auto">
+                        <div class=" w-full space-y-6 sm:space-y-8">
+                            <div class="w-full flex justify-between items-center">
+                                <div style='font-family: "Montserrat", Sans-serif;'
+                                    class="w-full flex flex-col gap-2 sm:gap-4 items-center">
+                                    <p class="text-2xl sm:text-4xl font-bold text-center">Artikel Terbaru</p>
+                                </div>
+                            </div>
+                            <div class="w-full grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                                @foreach ($articlePreview as $item)
+                                    @include('components.guest.article')
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     @include('components.guest.footer')

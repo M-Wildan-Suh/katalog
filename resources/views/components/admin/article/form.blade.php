@@ -1,10 +1,18 @@
-@props(['link' => null, 'head' => null, 'form' => null, 'title' => null, 'spintax' => null])
+@props([
+    'link' => null,
+    'head' => null,
+    'form' => null,
+    'title' => null,
+    'spintax' => null,
+    'indexRoute' => 'article.index',
+    'indexLabel' => 'Article',
+])
 <x-app-layout :head="$head" :title="$title">
     <div class="sm:pl-12 sm:pr-12 lg:pr-32 duration-300 pt-8 pb-20 sm:pb-8 px-4 space-y-6">
         <div class=" w-full sm:py-4 p-4 sm:p-6 bg-white rounded-md shadow-md shadow-black/20">
             <div class=" flex items-center justify-between">
                 <div class=" flex items-center gap-2 text-sm sm:text-base">
-                    <a href="{{route('article.index')}}" class=" text-byolink-1 hover:text-byolink-3 duration-300">Article</a>
+                    <a href="{{route($indexRoute)}}" class=" text-byolink-1 hover:text-byolink-3 duration-300">{{$indexLabel}}</a>
                     <p class=" text-neutral-600">/</p>
                     <p class=" text-neutral-600">{{$head}}</p>
                 </div>

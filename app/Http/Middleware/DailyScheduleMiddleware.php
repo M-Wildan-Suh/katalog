@@ -35,7 +35,7 @@ class DailyScheduleMiddleware
         $article = Article::where('schedule', true)->get();
 
         foreach ($article as $item) {
-            if ($item->article_type === 'spintax') {
+            if ($item->article_type === Article::TYPE_SPINTAX) {
                 $scheduledArticles = $item->articleshow()->where('status', 'schedule')->get();
 
                 if ($scheduledArticles->isNotEmpty()) {
@@ -56,7 +56,7 @@ class DailyScheduleMiddleware
                 if ($item->articleshow()->where('status', 'schedule')->doesntExist()) {
                     $item->schedule = false;
                 }
-            } elseif ($item->article_type === 'unique') {
+            } elseif ($item->isCatalogType()) {
                 $articleshow = $item->articleshow->first();
 
                 if (now()->gte($articleshow->created_at)) {

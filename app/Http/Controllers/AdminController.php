@@ -20,13 +20,13 @@ class AdminController extends Controller
 
     public function dashboard() {
         $sc = $this->formatCount(SourceCode::all()->count());
-        $spintax = $this->formatCount(Article::where('article_type', 'spintax')->get()->count());
+        $spintax = $this->formatCount(Article::where('article_type', Article::TYPE_SPINTAX)->count());
         $spin = $this->formatCount(ArticleShow::whereHas('articles', function ($query) {
-            $query->where('article_type', 'spintax');
+            $query->where('article_type', Article::TYPE_SPINTAX);
         })->count());
 
-        $unique = $this->formatCount(Article::where('article_type', 'unique')->get()->count());
+        $catalog = $this->formatCount(Article::catalog()->count());
 
-        return view('dashboard', compact('sc', 'spintax', 'spin', 'unique'));
+        return view('dashboard', compact('sc', 'spintax', 'spin', 'catalog'));
     }
 }

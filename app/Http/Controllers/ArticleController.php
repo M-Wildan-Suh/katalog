@@ -16,7 +16,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
@@ -80,7 +79,7 @@ class ArticleController extends Controller
 
                 $newArticleShow->article_id = $article->id;
                 $newArticleShow->judul = $spinnedTitle;
-                $newArticleShow->slug = Str::slug($newArticleShow->judul);
+                $newArticleShow->slug = ArticleShow::buildSlug($newArticleShow->judul, $article->article_type);
                 $newArticleShow->article = $spinnedBody;
                 $newArticleShow->template_id = optional($article->template->random())->id;
                 $newArticleShow->banner = $article->articlebanner->isNotEmpty() ? $article->articlebanner->random()->image : null;
@@ -226,7 +225,7 @@ class ArticleController extends Controller
         
         $filter = $status === 'schedule' ? 1 : 0;
 
-        $data = Article::with('articleshow')->where('article_type', 'spintax')
+        $data = Article::with('articleshow')->where('article_type', Article::TYPE_SPINTAX)
             ->when($filtercat && $filtercat != 'all', function ($query) use ($filtercat){
                 $query->whereHas('articlecategory', function ($q) use ($filtercat) {
                     $q->where('category_id', $filtercat);
@@ -270,7 +269,7 @@ class ArticleController extends Controller
         
         $filter = $status === 'schedule' ? 1 : 0;
 
-        $data = Article::with('articleshow')->where('article_type', 'unique')
+        $data = Article::with('articleshow')->catalog()
             ->when($filtercat && $filtercat != 'all', function ($query) use ($filtercat){
                 $query->whereHas('articlecategory', function ($q) use ($filtercat) {
                     $q->where('category_id', $filtercat);
@@ -339,7 +338,7 @@ class ArticleController extends Controller
     {
         try {
             $validated = $request->validate([
-                'judul' => 'required|unique:'.Article::class.'|unique:'.ArticleShow::class,
+                'judul' => 'required',
                 'category' => 'array',
                 'tag' => 'array',
                 'template_id' => 'required|array',
@@ -555,8 +554,6 @@ class ArticleController extends Controller
             $validated = $request->validate([
                 'judul' => [
                     'required',
-                    Rule::unique('articles')->ignore($article->id),
-                    Rule::unique('article_shows'),
                 ],
                 'category' => 'array',
                 'tag' => 'array',

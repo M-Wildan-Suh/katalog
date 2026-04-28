@@ -6,6 +6,7 @@ use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleGalleryController;
 use App\Http\Controllers\ArticleGeneratedController;
+use App\Http\Controllers\ArticlePageController;
 use App\Http\Controllers\ArticleShowController;
 use App\Http\Controllers\ArticleShowGalleryController;
 use App\Http\Controllers\BannerController;
@@ -100,6 +101,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/article-unique', [ArticleController::class, 'indexunique'])->name('article.unique');
     Route::get('/admin/article-unique/status/{status}/category/{filtercat}', [ArticleController::class, 'indexunique'])->name('article.unique.filter');
 
+    Route::get('/admin/article-page/status/{status}/category/{filtercat}', [ArticlePageController::class, 'index'])->name('article-page.filter');
+    Route::get('/admin/article-page-spin/{id}', [ArticlePageController::class, 'spin'])->name('article-page.spin');
+    Route::get('/admin/article-page/shuffle-image/{id}', [ArticlePageController::class, 'shuffle'])->name('article-page.shuffle.image');
+    Route::get('/admin/article-page-ai', [ArticlePageController::class, 'aiSettings'])->name('article-page.ai-settings');
+    Route::post('/admin/article-page-ai', [ArticlePageController::class, 'handleAiSettings'])->name('article-page.ai-settings.submit');
+    Route::post('/admin/article-page/generate/{id}', [ArticlePageController::class, 'generatearticle'])->name('article-page.generate');
+    Route::delete('/admin/article-page/generate/{id}', [ArticlePageController::class, 'generatearticledestroy'])->name('article-page.generate.destroy');
+    Route::resource('/admin/article-page', ArticlePageController::class)->parameters([
+        'article-page' => 'article',
+    ]);
+
     Route::resource('/admin/category', ArticleCategoryController::class);
     Route::delete('/admin/category/destroy/all', [ArticleCategoryController::class, 'destroyAll'])->name('category.destroy.all');
 
@@ -130,6 +142,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/artikel/{slug}', [PageController::class, 'articleDetail'])->name('article.detail');
 Route::get('/{slug}', [PageController::class, 'business'])->name('business');
 Route::get('/{a}/{i}', function () { return redirect()->route('not.found'); });
 Route::get('/{a}/{i}/{u}', function () { return redirect()->route('not.found'); });

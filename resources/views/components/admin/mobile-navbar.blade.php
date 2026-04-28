@@ -81,6 +81,21 @@
                 </x-slot:svg>
                 Katalog
             </x-admin.mobile-navbutton>
+            <x-admin.mobile-navbutton route="article-page.index" :active="[
+                'article-page.index',
+                'article-page.create',
+                'article-page.show',
+                'article-page.ai-settings',
+                'article-page.filter',
+                'article-page.spin',
+            ]">
+                <x-slot:svg>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 4h9a3 3 0 0 1 3 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4Zm2 2v12h8V7a1 1 0 0 0-1-1H8Zm2 3h4v2h-4V9Zm0 4h4v2h-4v-2Z" fill="currentColor"></path>
+                    </svg>
+                </x-slot:svg>
+                Article
+            </x-admin.mobile-navbutton>
             <div x-data="{ dropdown: false }" class=" relative">
                 <x-admin.mobile-navbutton :active="['banner.index', 'leadcall.index', 'portfolio.index', 'gallery.index', 'package.index', 'package.create', 'package.show']" :dropdown="true">
                     <x-slot:svg>

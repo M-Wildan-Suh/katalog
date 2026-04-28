@@ -42,7 +42,7 @@
         @include('components.guest.contact.one')
     </div>
     @if (Auth::user())    
-        <a href="{{$data->articles->article_type === 'spintax' ? route('article-generated.show', ['article_generated' => $data->id]) : route('article-show.show', ['article_show' => $data->id])}}" target="__blank">
+        <a href="{{$data->articles->article_type === \App\Models\Article::TYPE_SPINTAX ? route('article-generated.show', ['article_generated' => $data->id]) : route('article-show.show', ['article_show' => $data->id])}}" target="__blank">
             <button class=" fixed top-24 right-8 bg-white text-black font-semibold hover:bg-byolink-1 hover:text-white duration-300 px-4 py-2 rounded-full">Edit</button>
         </a>
     @endif

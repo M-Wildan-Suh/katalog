@@ -81,6 +81,28 @@
                 <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Katalog
                 </p>
             </x-admin.navbutton>
+            <x-admin.navbutton route="article-page.index" :active="[
+                'article-page.index',
+                'article-page.create',
+                'article-page.show',
+                'article-page.ai-settings',
+                'article-page.filter',
+                'article-page.spin',
+            ]">
+                <div class="min-w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-newspaper-icon lucide-newspaper">
+                        <path d="M15 18h-5" />
+                        <path d="M18 14h-8" />
+                        <path
+                            d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2" />
+                        <rect width="8" height="4" x="10" y="6" rx="1" />
+                    </svg>
+                </div>
+                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Article
+                </p>
+            </x-admin.navbutton>
             <x-admin.navbutton route="category.index" :active="['category.index', 'category.create', 'category.show']">
                 <div class="min-w-5 h-5 mx-0.5">
                     <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">

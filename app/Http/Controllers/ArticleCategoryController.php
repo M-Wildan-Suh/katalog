@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\ArticleShow;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class ArticleCategoryController extends Controller
         }
 
         $data->transform(function ($data) {
-            $data->uniquecount = $data->articles->where('article_type', 'unique')->count();
+            $data->catalogcount = $data->articles->whereIn('article_type', Article::catalogTypes())->count();
             return $data;
         });
 

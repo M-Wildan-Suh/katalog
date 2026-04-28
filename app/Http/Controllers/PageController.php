@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\ArticleShow;
 use App\Models\ArticleTag;
@@ -11,7 +12,6 @@ use App\Models\Package;
 use App\Models\PhoneNumber;
 use App\Models\Portfolio;
 use App\Models\TeamGallery;
-use App\Models\Template;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,6 +25,9 @@ class PageController extends Controller
             return $request->route('page', 1); // default ke halaman 1
         });
         $data = ArticleShow::where('status', 'publish')
+            ->whereHas('articles', function ($query) {
+                $query->catalog();
+            })
             ->latest()->simplePaginate(6);
 
         $category = ArticleCategory::all();
@@ -61,11 +64,32 @@ class PageController extends Controller
 
         $trend = ArticleShow::orderBy('view', 'desc')
             ->where('status', 'publish')
+            ->whereHas('articles', function ($query) {
+                $query->catalog();
+            })
             ->take(6)->get();
+
+        $articlePreview = ArticleShow::where('status', 'publish')
+            ->whereHas('articles', function ($query) {
+                $query->whereIn('article_type', [
+                    Article::TYPE_ARTICLE_UNIQUE,
+                    Article::TYPE_ARTICLE_SPINTAX,
+                ]);
+            })
+            ->latest()
+            ->take(6)
+            ->get();
+
+        $articlePreview->transform(function ($item) {
+            $item->date = Carbon::parse($item->created_at)->locale('id')->translatedFormat('d F Y');
+            $item->articles->articletag;
+            $item->articles->user;
+            return $item;
+        });
 
         $banner = Banner::first();
 
-        return view('guest.home', compact('data', 'banner', 'trend', 'category', 'hp', 'leadcall'));
+        return view('guest.home', compact('data', 'banner', 'trend', 'articlePreview', 'category', 'hp', 'leadcall'));
     }
 
     public function article(Request $request, $username = null, $category = null, $tag = null)
@@ -74,6 +98,9 @@ class PageController extends Controller
             $data = ArticleShow::whereHas('articles.user', function ($query) use ($username) {
                 $query->where('slug', $username);
             })
+                ->whereHas('articles', function ($query) {
+                    $query->catalog();
+                })
                 ->where('status', 'publish')->latest()->simplePaginate(12);
 
             $user = User::where('slug', $username)->first();
@@ -82,6 +109,9 @@ class PageController extends Controller
             $data = ArticleShow::whereHas('articles.articleCategory', function ($query) use ($category) {
                 $query->where('slug', $category);
             })
+                ->whereHas('articles', function ($query) {
+                    $query->catalog();
+                })
                 ->where('status', 'publish')->latest()->simplePaginate(12);
 
             $category = ArticleCategory::where('slug', $category)->first()->category;
@@ -90,12 +120,18 @@ class PageController extends Controller
             $data = ArticleShow::whereHas('articles.articleTag', function ($query) use ($tag) {
                 $query->where('slug', $tag);
             })
+                ->whereHas('articles', function ($query) {
+                    $query->catalog();
+                })
                 ->where('status', 'publish')->latest()->simplePaginate(12);
 
             $tag = ArticleTag::where('slug', $tag)->first()->tag;
             $title = 'Tag : ' . $tag;
         } elseif ($request->search) {
             $data = ArticleShow::where('status', 'publish')
+                ->whereHas('articles', function ($query) {
+                    $query->catalog();
+                })
                 ->where(function ($query) use ($request) {
                     $query->where('judul', 'like', '%' . $request->search . '%')
                         ->orWhereHas('articles.articleCategory', function ($q) use ($request) {
@@ -111,6 +147,9 @@ class PageController extends Controller
             $title = 'Pencarian : ' . $request->search;
         } else {
             $data = ArticleShow::where('status', 'publish')
+                ->whereHas('articles', function ($query) {
+                    $query->catalog();
+                })
                 ->latest()->simplePaginate(12);
 
             $title = 'Desain Tipe Simpel';
@@ -151,6 +190,9 @@ class PageController extends Controller
             $cat->articles = ArticleShow::whereHas('articles.articleCategory', function ($query) use ($cat) {
                 $query->where('slug', $cat->slug);
             })
+                ->whereHas('articles', function ($query) {
+                    $query->catalog();
+                })
                 ->where('status', 'publish')->latest()->paginate(12);
 
             $cat->articles->transform(function ($data) {
@@ -172,13 +214,32 @@ class PageController extends Controller
 
     public function business($slug)
     {
-        $data = ArticleShow::where('slug', $slug)
-            ->with('articles.articleCategory')
-            ->first();
+        $data = $this->findDetailArticleShow($slug, Article::catalogTypes());
 
         if (!$data) {
             return redirect()->route('not.found');
         }
+
+        return $this->renderBusinessDetail($data);
+    }
+
+    public function articleDetail($slug)
+    {
+        $data = $this->findDetailArticleShow($slug, [
+            Article::TYPE_SPINTAX,
+            Article::TYPE_ARTICLE_UNIQUE,
+            Article::TYPE_ARTICLE_SPINTAX,
+        ], true);
+
+        if (!$data) {
+            return redirect()->route('not.found');
+        }
+
+        return $this->renderBusinessDetail($data);
+    }
+
+    private function renderBusinessDetail(ArticleShow $data)
+    {
 
         $categoryIds = $data->articles->articlecategory->pluck('id');
         $totalCategories = $categoryIds->count();
@@ -186,6 +247,10 @@ class PageController extends Controller
         // Query gabungan
         $related = ArticleShow::where('article_shows.id', '!=', $data->id)
             ->where('article_shows.status', 'publish')
+            ->whereHas('articles', function ($query) use ($data) {
+                $query->where('article_type', $data->articles->article_type);
+            })
+            ->with('articles.articlecategory')
             ->withCount(['articles as match_count' => function ($query) use ($categoryIds) {
                 $query->whereHas('articleCategory', function ($q) use ($categoryIds) {
                     $q->whereIn('article_categories.id', $categoryIds);
@@ -199,8 +264,6 @@ class PageController extends Controller
         $data->view = $data->view + 1;
 
         $data->save();
-
-        $template = $data->template;
 
         // dd($data->articles->phoneNumber);
         if ($data->phoneNumber) {
@@ -220,7 +283,23 @@ class PageController extends Controller
 
         $category = ArticleCategory::all();
 
-        return view('guest.business', compact('data', 'related', 'template', 'category', 'hp', 'leadcall'));
+        return view('guest.business', compact('data', 'related', 'category', 'hp', 'leadcall'));
+    }
+
+    private function findDetailArticleShow(string $slug, array $articleTypes, bool $prefixedArticleSlug = false): ?ArticleShow
+    {
+        $slugs = [$slug];
+
+        if ($prefixedArticleSlug) {
+            $slugs[] = ArticleShow::buildSlug($slug, Article::TYPE_ARTICLE_UNIQUE);
+        }
+
+        return ArticleShow::whereIn('slug', array_unique($slugs))
+            ->whereHas('articles', function ($query) use ($articleTypes) {
+                $query->whereIn('article_type', $articleTypes);
+            })
+            ->with('articles.articleCategory')
+            ->first();
     }
 
     public function contact()

@@ -4,7 +4,7 @@
         <td class="px-3 py-1 text-center font-semibold">
             {{ $loop->iteration + ($data->currentPage() == 1 ? 0 : 1) + ($data->currentPage() - 1) * 20 }}</td>
         <td class="px-2 sm:px-4 py-1 min-h-10 font-semibold break-all">{{ $item->category }}</td>
-        <td class="px-2 sm:px-4 py-1 min-h-10 text-nowrap text-center">{{ $item->uniquecount }}</td>
+        <td class="px-2 sm:px-4 py-1 min-h-10 text-nowrap text-center">{{ $item->catalogcount }}</td>
         <td class="px-1 sm:px-2">
             <div class="flex gap-1 sm:gap-2 items-center justify-center">
                 <div x-data="{ editmodal: false }" class=" w-5 h-5">

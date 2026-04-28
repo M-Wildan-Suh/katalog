@@ -8,7 +8,37 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
+
+    public const TYPE_CATALOG = 'catalog';
+    public const TYPE_LEGACY_UNIQUE = 'unique';
+    public const TYPE_SPINTAX = 'spintax';
+    public const TYPE_ARTICLE_UNIQUE = 'article_unique';
+    public const TYPE_ARTICLE_SPINTAX = 'article_spintax';
+
     protected $fillable = ['phone_number_id'];
+
+    public static function catalogTypes(): array
+    {
+        return [
+            self::TYPE_CATALOG,
+            self::TYPE_LEGACY_UNIQUE,
+        ];
+    }
+
+    public function scopeCatalog($query)
+    {
+        return $query->whereIn('article_type', self::catalogTypes());
+    }
+
+    public function isCatalogType(): bool
+    {
+        return in_array($this->article_type, self::catalogTypes(), true);
+    }
+
+    public function scopeArticleUnique($query)
+    {
+        return $query->where('article_type', self::TYPE_ARTICLE_UNIQUE);
+    }
 
     public function articleshow()
     {

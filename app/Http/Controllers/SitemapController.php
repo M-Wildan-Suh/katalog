@@ -8,7 +8,6 @@ use App\Models\ArticleTag;
 use App\Models\User;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
-use Illuminate\Support\Str;
 
 class SitemapController extends Controller
 {
@@ -16,7 +15,7 @@ class SitemapController extends Controller
     {
         $sitemap = Sitemap::create()
             ->add(Url::create('/')->setLastModificationDate(now()))
-            ->add(Url::create('/artikel')->setLastModificationDate(now()));
+            ->add(Url::create('/desain')->setLastModificationDate(now()));
 
         $perPage = 12;
         $totalArticles = ArticleShow::where('status', 'publish')->count();
@@ -24,7 +23,7 @@ class SitemapController extends Controller
 
         for ($page = 1; $page <= $totalPages; $page++) {
             $sitemap->add(
-                Url::create("/artikel/page/{$page}")->setLastModificationDate(now())
+                Url::create("/desain/page/{$page}")->setLastModificationDate(now())
             );
         }
 
@@ -83,8 +82,7 @@ class SitemapController extends Controller
         }
 
         foreach (ArticleShow::where('status', 'publish')->get() as $model ) {
-            $slug = $model->slug;
-            $sitemap->add(Url::create("/{$slug}")->setLastModificationDate($model->updated_at));
+            $sitemap->add(Url::create($model->public_path)->setLastModificationDate($model->updated_at));
         }
 
         $sitemap->writeToFile(public_path('sitemap.xml'));

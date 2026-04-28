@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('judul');
             $table->integer('price');
             $table->longText('article');
-            $table->string('article_type')->default('unique');
+            $table->string('article_type')->default('catalog');
             $table->string('video_type');
             $table->string('youtube')->nullable();
             $table->string('tiktok')->nullable();

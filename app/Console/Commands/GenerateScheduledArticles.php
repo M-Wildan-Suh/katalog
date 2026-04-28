@@ -6,7 +6,6 @@ use App\Models\Article;
 use App\Models\ArticleShow;
 use App\Models\ArticleShowGallery;
 use App\Models\SourceCode;
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 
 class GenerateScheduledArticles extends Command
@@ -78,7 +77,7 @@ class GenerateScheduledArticles extends Command
                 $newArticleShow = new ArticleShow;
                 $newArticleShow->article_id = $article->id;
                 $newArticleShow->judul = $spinnedTitle;
-                $newArticleShow->slug = Str::slug($spinnedTitle);
+                $newArticleShow->slug = ArticleShow::buildSlug($spinnedTitle, $article->article_type);
                 $newArticleShow->article = $spinnedBody;
                 $newArticleShow->template_id = optional($article->template->random())->id;
                 $newArticleShow->banner = optional($article->articlebanner->random())->image;
