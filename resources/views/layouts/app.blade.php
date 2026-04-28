@@ -27,8 +27,8 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        {{-- <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet" /> --}}
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet" />
     </head>
     <body class="font-sans antialiased"
         x-data="{ loading: true }" 
@@ -82,7 +82,7 @@
             @include('components.admin.navbar')
         </div>
     </body>
-    {{-- <script src="{{ asset('build/assets/app.js') }}"></script> --}}
+    <script src="{{ asset('build/assets/app.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     
