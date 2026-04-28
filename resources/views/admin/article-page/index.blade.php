@@ -21,7 +21,7 @@
                     </div>
                     <a href="{{ route('source-code.index') }}"
                         class="flex items-center justify-center gap-2 text-nowrap w-full text-center text-sm sm:text-base md:w-auto px-4 py-2 bg-white text-byolink-1 rounded-md font-semibold border border-byolink-1 hover:bg-byolink-1 hover:text-white duration-300">
-                        Source Code
+                        Short Code
                     </a>
                     <a href="{{ route('article-page.ai-settings') }}"
                         class="flex items-center justify-center gap-2 text-nowrap w-full text-center text-sm sm:text-base md:w-auto px-4 py-2 bg-white text-byolink-1 rounded-md font-semibold border border-byolink-1 hover:bg-byolink-1 hover:text-white duration-300">

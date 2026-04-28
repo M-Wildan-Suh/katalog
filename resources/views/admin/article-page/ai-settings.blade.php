@@ -74,9 +74,9 @@
                 <div x-show="articleType === 'spintax'" x-transition class="space-y-4">
                     <div class="rounded-md border border-byolink-1/20 bg-neutral-50 p-4 space-y-4">
                         <div class="space-y-1">
-                            <p class="text-sm sm:text-base font-semibold text-neutral-800">Source Code Spintax</p>
+                            <p class="text-sm sm:text-base font-semibold text-neutral-800">Short Code Spintax</p>
                             <p class="text-sm text-neutral-600">
-                                Pilih masing-masing satu source code untuk `barang` dan `lokasi`. Nilai ini akan
+                                Pilih masing-masing satu short code untuk `barang` dan `lokasi`. Nilai ini akan
                                 diberitahukan ke prompt agar AI memakai shortcode tersebut dalam artikel.
                             </p>
                         </div>
@@ -84,13 +84,13 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="space-y-2">
                                 <label for="source_code_barang" class="text-sm sm:text-base font-semibold text-neutral-800">
-                                    Source Code Barang
+                                    Short Code Barang
                                 </label>
                                 <select
                                     id="source_code_barang"
                                     name="source_code_barang"
                                     class="w-full text-sm sm:text-base py-2.5 px-3 border border-byolink-1 rounded-md focus:border-byolink-3 focus:outline-none">
-                                    <option value="">Pilih source code barang</option>
+                                    <option value="">Pilih short code barang</option>
                                     @foreach ($sourceCodes as $sourceCode)
                                         <option value="{{ $sourceCode->id }}" {{ (string) old('source_code_barang') === (string) $sourceCode->id ? 'selected' : '' }}>
                                             {{ $sourceCode->title }}
@@ -101,13 +101,13 @@
 
                             <div class="space-y-2">
                                 <label for="source_code_lokasi" class="text-sm sm:text-base font-semibold text-neutral-800">
-                                    Source Code Lokasi
+                                    Short Code Lokasi
                                 </label>
                                 <select
                                     id="source_code_lokasi"
                                     name="source_code_lokasi"
                                     class="w-full text-sm sm:text-base py-2.5 px-3 border border-byolink-1 rounded-md focus:border-byolink-3 focus:outline-none">
-                                    <option value="">Pilih source code lokasi</option>
+                                    <option value="">Pilih short code lokasi</option>
                                     @foreach ($sourceCodes as $sourceCode)
                                         <option value="{{ $sourceCode->id }}" {{ (string) old('source_code_lokasi') === (string) $sourceCode->id ? 'selected' : '' }}>
                                             {{ $sourceCode->title }}

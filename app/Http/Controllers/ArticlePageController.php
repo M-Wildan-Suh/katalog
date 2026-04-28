@@ -103,7 +103,7 @@ class ArticlePageController extends Controller
             && ($validated['source_code_barang'] ?? null) === ($validated['source_code_lokasi'] ?? null)
         ) {
             throw ValidationException::withMessages([
-                'source_code_lokasi' => 'Source code lokasi harus berbeda dari source code barang.',
+                'source_code_lokasi' => 'Short code lokasi harus berbeda dari short code barang.',
             ]);
         }
 
